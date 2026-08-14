@@ -1,0 +1,186 @@
+/* ---------------------------------------------------------------------
+   TCG card component — two layouts:
+   .layout-classic   -> common / holo / reverseholo (traditional frame)
+   .layout-fullart   -> ir / sir / ssir              (modern illustration rare)
+--------------------------------------------------------------------- */
+
+.tcg-card-wrap{
+  width:260px;
+  aspect-ratio:5/7;
+  perspective:1200px;
+}
+
+.tcg-card{
+  position:relative;
+  width:100%;height:100%;
+  border-radius:16px;
+  padding:9px;
+  background:linear-gradient(155deg, var(--type-color), #14151f 78%);
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.65), 0 2px 0 rgba(255,255,255,.05) inset;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  transition:box-shadow .25s ease;
+}
+.tcg-card:hover{box-shadow:0 22px 40px -14px rgba(0,0,0,.75), 0 2px 0 rgba(255,255,255,.08) inset;}
+
+.tcg-face{
+  position:relative;
+  width:100%;height:100%;
+  border-radius:11px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  border:2px solid rgba(255,255,255,.55);
+}
+
+/* -------- classic layout -------- */
+.layout-classic .tcg-face{
+  background:linear-gradient(180deg,#f6efdd,#efe4c8);
+  color:#1c1a12;
+}
+.layout-classic .top-row{
+  display:flex;align-items:flex-start;justify-content:space-between;
+  padding:6px 8px 0;
+}
+.layout-classic .stage-pill{
+  font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  background:#1c1a12;color:#f6efdd;border-radius:5px;padding:2px 6px;
+}
+.layout-classic .name{
+  font-size:14.5px;font-weight:800;line-height:1.1;margin-top:3px;
+}
+.layout-classic .hp{
+  font-size:14px;font-weight:800;color:#c0392b;display:flex;align-items:center;gap:4px;white-space:nowrap;
+}
+.layout-classic .hp small{font-size:8px;color:#6b6552;font-weight:700;}
+
+.layout-classic .art{
+  margin:5px 8px 0;height:34%;border-radius:7px;
+  background:linear-gradient(150deg, var(--type-color), #0d0f16 130%);
+  display:flex;align-items:center;justify-content:center;font-size:42px;
+  border:2px solid #d8cca0;position:relative;overflow:hidden;flex-shrink:0;
+}
+.layout-classic .dex-line{
+  padding:4px 9px 2px;font-size:8px;font-style:italic;color:#6b6552;border-bottom:1px solid #d8cca0;
+}
+
+.layout-classic .attacks{padding:5px 9px;flex:1;overflow:hidden;}
+.layout-classic .attack{display:flex;gap:6px;padding:4px 0;}
+.layout-classic .attack + .attack{border-top:1px dashed #cabf94;}
+.layout-classic .atk-head{display:flex;justify-content:space-between;font-size:11.5px;font-weight:800;}
+.layout-classic .atk-dmg{color:#c0392b;}
+.layout-classic .atk-text{font-size:9.3px;color:#4a4636;margin-top:1px;}
+
+.layout-classic .bottom{
+  border-top:2px solid #cabf94;padding:5px 9px 6px;background:#e9dcb6;
+}
+.layout-classic .wrr{display:flex;justify-content:space-between;font-size:8px;font-weight:700;color:#4a4636;}
+.layout-classic .flavor{font-size:8.3px;font-style:italic;color:#5c5745;margin:4px 0;}
+.layout-classic .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.6px;color:#6b6552;}
+
+/* -------- full-art layout (ir / sir / ssir) -------- */
+.layout-fullart .tcg-face{background:#0c0d13;color:#f4efe0;}
+.layout-fullart .art-bg{
+  position:absolute;inset:0;z-index:0;
+  background:radial-gradient(120% 120% at 30% 20%, var(--type-color) 0%, #0c0d13 72%);
+  display:flex;align-items:center;justify-content:center;font-size:150px;opacity:.9;
+}
+.layout-fullart .art-bg span{filter:drop-shadow(0 10px 24px rgba(0,0,0,.6));}
+.layout-fullart .top-row{
+  position:relative;z-index:2;padding:8px 10px 20px;
+  background:linear-gradient(180deg, rgba(6,6,10,.82), transparent);
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.layout-fullart .stage-pill{
+  font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  background:rgba(255,255,255,.14);color:#f4efe0;border-radius:5px;padding:2px 6px;
+}
+.layout-fullart .name{font-size:16.5px;font-weight:800;margin-top:3px;text-shadow:0 2px 6px rgba(0,0,0,.6);}
+.layout-fullart .hp{font-size:14px;font-weight:800;color:var(--gold);display:flex;align-items:center;gap:4px;white-space:nowrap;}
+.layout-fullart .hp small{font-size:8px;opacity:.7;font-weight:700;}
+
+.layout-fullart .bottom{
+  position:relative;z-index:2;margin-top:auto;
+  background:linear-gradient(0deg, rgba(6,6,10,.94) 40%, rgba(6,6,10,.7) 80%, transparent);
+  padding:8px 10px 8px;
+}
+.layout-fullart .attacks{margin-bottom:4px;}
+.layout-fullart .attack{display:flex;gap:6px;padding:3px 0;}
+.layout-fullart .atk-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;}
+.layout-fullart .atk-dmg{color:var(--gold);}
+.layout-fullart .atk-text{font-size:8.8px;color:#c9c6ba;margin-top:1px;}
+.layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:#a9a596;margin-top:2px;}
+.layout-fullart .flavor{font-size:8px;font-style:italic;color:#c9c6ba;margin:4px 0 2px;}
+.layout-fullart .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.4px;color:#a9a596;}
+
+/* rarity-specific accents on top of the frame */
+.rarity-ssir .tcg-card{background:linear-gradient(155deg,#ffe9a8,var(--gold) 45%,#5a4a1c 80%,#14151f);}
+.rarity-ssir .name{font-size:17.5px;}
+.rarity-sir .tcg-card{background:linear-gradient(155deg,var(--gold),#8e44ad 55%,#14151f);}
+
+/* energy pip */
+.energy-pip{
+  width:15px;height:15px;border-radius:50%;font-size:6.6px;font-weight:800;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:#fff;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);
+}
+.atk-cost{display:flex;flex-direction:column;gap:2px;padding-top:1px;}
+
+/* holo shine overlay, position driven by --mx/--my custom props set on hover */
+.holo-shine{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  opacity:0;transition:opacity .2s ease;
+  background:linear-gradient(115deg, transparent 25%, #ffe07a 38%, #ff9ecb 46%, #9ecbff 54%, #9effc7 62%, transparent 75%);
+  background-size:250% 250%;
+  background-position: var(--mx,50%) var(--my,50%);
+  mix-blend-mode:overlay;
+}
+.tcg-card:hover .holo-shine{opacity:.5;}
+.rarity-common .holo-shine{display:none;}
+
+/* flip mechanics for pack opening */
+.flip-outer{width:100%;height:100%;perspective:1400px;}
+.flip-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;}
+.flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.flip-face.flip-back{transform:rotateY(180deg);}
+
+/* compact supporter / energy faces used inside the pack flow */
+.pack-supporter, .pack-energy{
+  width:100%;height:100%;border-radius:11px;border:2px solid #f4de8e;
+  background:linear-gradient(180deg,#1c1a10,#15141c);color:#f4efe0;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.pack-supporter .ps-top, .pack-energy .pe-top{
+  background:linear-gradient(90deg,#d9b23c,#f4de8e);color:#1a1608;
+  font-weight:800;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  padding:6px 10px;display:flex;justify-content:space-between;
+}
+.pack-supporter .ps-body{padding:12px;flex:1;display:flex;flex-direction:column;}
+.pack-supporter h4{margin:0 0 4px;font-size:15px;}
+.pack-supporter .ps-meta{font-size:9.5px;color:#c9b876;margin-bottom:8px;}
+.pack-supporter p{font-size:10.5px;color:#d4d8e6;flex:1;}
+.pack-supporter .ps-rule{border-top:1px solid #d9b23c55;padding-top:6px;font-size:9px;font-style:italic;color:#c9b876;}
+
+.pack-energy{align-items:center;justify-content:center;text-align:center;gap:10px;}
+.pack-energy .pe-orb{
+  width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:20px;color:#fff;
+}
+.pack-energy h5{margin:8px 16px 2px;font-size:13px;}
+.pack-energy span{font-size:10px;color:#c9c6ba;padding:0 16px;}
+
+/* card-back (used in pack opening) */
+.card-back{
+  width:100%;height:100%;border-radius:16px;
+  background:
+    repeating-linear-gradient(45deg, #1a2a6c 0 8px, #16225a 8px 16px);
+  border:6px solid #f4c542;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 24px -10px rgba(0,0,0,.65);
+}
+.card-back .mark{
+  width:78%;height:78%;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, #ffe9a8, #f4c542 55%, #a97d1a 100%);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Baloo 2';font-weight:800;font-size:54px;color:#1a1608;
+  border:4px solid #1a2a6c;
+}

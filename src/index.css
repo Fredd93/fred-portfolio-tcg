@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg:#0e1016;
+  --panel:#1b2030;
+  --ink:#eef1f8;
+  --muted:#9aa3b8;
+  --line:#2a3145;
+  --gold:#e8c15a;
+}
+*{box-sizing:border-box;}
+html,body,#root{height:100%;}
+body{
+  margin:0;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #1a2038 0%, transparent 60%),
+    radial-gradient(1200px 700px at 100% 0%, #241a30 0%, transparent 55%),
+    var(--bg);
+  color:var(--ink);
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  line-height:1.5;
+}
+h1,h2,h3,.card-name,.trainer-name{font-family:'Baloo 2','Inter',sans-serif;}
+a{color:var(--gold);}
+button{font-family:inherit;}
