@@ -1,16 +1,40 @@
-# React + Vite
+# Fred TCG — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A Pokémon-TCG-styled portfolio for Mahmoud "Fred" Farid. React + Vite + Framer Motion.
 
-Currently, two official plugins are available:
+## Quick start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Then open the printed localhost URL. `npm run build` produces a static `dist/` you can host anywhere
+(Netlify, Vercel, GitHub Pages, or just open `dist/index.html` directly).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What's here
 
-## Expanding the Oxlint configuration
+- **Open Pack** (`src/views/PackOpeningView.jsx`) — an Elite-Trainer-Box-style interactive reveal.
+  Tap the pack, flip cards one at a time (energy → supporters → commons → holo → reverse holo →
+  IR → SIR → SSIR), land on the flagship (Jericho) last.
+- **Full Collection** (`src/views/GalleryView.jsx`) — the whole set laid out at once: hero/Trainer ID,
+  rarity legend, all 12 project cards, 2 Supporter (experience) cards, 3 Energy (certification) cards,
+  and a type chart mapping every attack back to a skill category.
+- **Card data** (`src/data/cards.js`) — single source of truth for both views. Every project's
+  attacks, HP (est. work hours), weakness/resistance/retreat and flavor text live here. Edit this
+  file to change content; the UI updates everywhere automatically.
+- **Card visuals** (`src/components/Card.jsx`, `src/components/FlipCard.jsx`, `src/styles/card.css`) —
+  two layouts: `layout-classic` (common/holo/reverse-holo, traditional framed card) and
+  `layout-fullart` (IR/SIR/SSIR, full-bleed illustration like a modern Illustration Rare).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Known follow-ups (flagged, not fixed)
+
+- **HP numbers are estimated work hours**, not logged time — sanity-check them against reality,
+  they're rough guesses from project duration and are labeled "est." throughout.
+- **No real artwork** — cards currently use emoji as placeholder illustrations
+  (`icon` field per project in `cards.js`). Swap in real screenshots/renders when ready.
+- **Grand Transmission Auto repo** is marked private (needs credential sanitizing before it could
+  link out — see `TulipVision_Portfolio_Handoff.md` equivalent note for GTA).
+- If `.git/index.lock`, `.git/HEAD.lock`, or a stray file named `t91gtKh` show up as untracked/blocking
+  a commit, that's leftover residue from the Cowork sandbox that first scaffolded this repo — safe to
+  delete, then commit normally.
