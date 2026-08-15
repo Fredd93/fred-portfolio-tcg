@@ -47,6 +47,17 @@
 .pull-progress .dot.done{background:var(--gold);}
 .pull-progress .dot.active{background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.2);}
 
+.pull-nav{display:flex;align-items:center;gap:12px;}
+.pull-arrow{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  background:#1b2030;border:1px solid var(--line);color:var(--ink);
+  font-size:14px;cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center;
+}
+.pull-arrow:hover:not(:disabled){border-color:var(--gold);}
+.pull-arrow:disabled{opacity:.35;cursor:default;}
+.pull-arrow:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
 /* ---- summary ---- */
 .pull-summary{width:100%;display:flex;flex-direction:column;align-items:center;gap:24px;}
 .pull-grid{

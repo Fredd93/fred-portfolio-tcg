@@ -2,17 +2,21 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FlipCard from '../components/FlipCard.jsx';
+import CardModal from '../components/CardModal.jsx';
 import { PACK_ORDER, RARITY } from '../data/cards.js';
 
 export default function PackOpeningView({ pull, navigate }) {
   const [tearing, setTearing] = useState(false);
-  const [flipped, setFlipped] = useState(false);
+  const [revealedSet, setRevealedSet] = useState(() => new Set());
+  const [highestReached, setHighestReached] = useState(() => (typeof pull === 'number' ? pull : 0));
+  const [modalOpen, setModalOpen] = useState(false);
   const timerRef = useRef(null);
 
   const total = PACK_ORDER.length;
   const cursor = typeof pull === 'number' ? pull : 0;
   const current = PACK_ORDER[cursor];
   const isLast = cursor === total - 1;
+  const flipped = typeof pull === 'number' && revealedSet.has(pull);
 
   const stage = tearing
     ? 'opening'
@@ -23,11 +27,39 @@ export default function PackOpeningView({ pull, navigate }) {
         : 'revealing';
 
   useEffect(() => {
-    setFlipped(false);
     setTearing(false);
+    setModalOpen(false);
+  }, [pull]);
+
+  useEffect(() => {
+    if (typeof pull === 'number') {
+      setHighestReached((h) => Math.max(h, pull));
+    }
+  }, [pull]);
+
+  useEffect(() => {
+    if (pull === null) {
+      setRevealedSet((s) => (s.size ? new Set() : s));
+      setHighestReached(0);
+    }
   }, [pull]);
 
   useEffect(() => () => clearTimeout(timerRef.current), []);
+
+  useEffect(() => {
+    if (stage !== 'revealing') return;
+    function onKeyDown(e) {
+      if (e.key === 'ArrowLeft' && cursor > 0) {
+        e.preventDefault();
+        navigate(`#/pack/${cursor - 1}`);
+      } else if (e.key === 'ArrowRight' && cursor < highestReached) {
+        e.preventDefault();
+        navigate(`#/pack/${cursor + 1}`);
+      }
+    }
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [stage, cursor, highestReached, navigate]);
 
   function openPack() {
     setTearing(true);
@@ -37,7 +69,11 @@ export default function PackOpeningView({ pull, navigate }) {
   }
 
   function reveal() {
-    setFlipped(true);
+    setRevealedSet((prev) => {
+      const next = new Set(prev);
+      next.add(pull);
+      return next;
+    });
   }
 
   function next() {
@@ -46,6 +82,14 @@ export default function PackOpeningView({ pull, navigate }) {
     } else {
       navigate(`#/pack/${cursor + 1}`);
     }
+  }
+
+  function prevPull() {
+    if (cursor > 0) navigate(`#/pack/${cursor - 1}`);
+  }
+
+  function nextPull() {
+    if (cursor < highestReached) navigate(`#/pack/${cursor + 1}`);
   }
 
   function resetPack() {
@@ -106,7 +150,14 @@ export default function PackOpeningView({ pull, navigate }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.4 }}
             >
-              <FlipCard item={current} index={cursor} total={total} flipped={flipped} onReveal={reveal} />
+              <FlipCard
+                item={current}
+                index={cursor}
+                total={total}
+                flipped={flipped}
+                onReveal={reveal}
+                onInspect={() => setModalOpen(true)}
+              />
               <div className="reveal-controls">
                 {!flipped ? (
                   <button className="pack-btn" onClick={reveal}>Flip card</button>
@@ -116,11 +167,35 @@ export default function PackOpeningView({ pull, navigate }) {
                   </button>
                 )}
               </div>
-              <div className="pull-progress">
-                {PACK_ORDER.map((_, i) => (
-                  <span key={i} className={`dot ${i < cursor ? 'done' : ''} ${i === cursor ? 'active' : ''}`} />
-                ))}
+              <div className="pull-nav">
+                <button
+                  className="pull-arrow"
+                  onClick={prevPull}
+                  disabled={cursor === 0}
+                  aria-label="Previous card"
+                >
+                  ←
+                </button>
+                <div className="pull-progress">
+                  {PACK_ORDER.map((_, i) => (
+                    <span key={i} className={`dot ${revealedSet.has(i) ? 'done' : ''} ${i === cursor ? 'active' : ''}`} />
+                  ))}
+                </div>
+                <button
+                  className="pull-arrow"
+                  onClick={nextPull}
+                  disabled={cursor >= highestReached}
+                  aria-label="Next revealed card"
+                >
+                  →
+                </button>
               </div>
+              {current.kind === 'project' && (
+                <CardModal
+                  project={modalOpen ? current.data : null}
+                  onClose={() => setModalOpen(false)}
+                />
+              )}
             </motion.div>
           )}
 
