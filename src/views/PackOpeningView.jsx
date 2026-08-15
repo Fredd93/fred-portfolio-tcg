@@ -1,21 +1,39 @@
-import { useState } from 'react';
+// src/views/PackOpeningView.jsx
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FlipCard from '../components/FlipCard.jsx';
 import { PACK_ORDER, RARITY } from '../data/cards.js';
 
-export default function PackOpeningView({ onGoGallery }) {
-  const [stage, setStage] = useState('closed'); // closed -> opening -> revealing -> done
-  const [pulled, setPulled] = useState([]); // indices revealed
+export default function PackOpeningView({ pull, navigate }) {
+  const [tearing, setTearing] = useState(false);
   const [flipped, setFlipped] = useState(false);
-  const [cursor, setCursor] = useState(0);
+  const timerRef = useRef(null);
 
   const total = PACK_ORDER.length;
+  const cursor = typeof pull === 'number' ? pull : 0;
   const current = PACK_ORDER[cursor];
   const isLast = cursor === total - 1;
 
+  const stage = tearing
+    ? 'opening'
+    : pull === 'done'
+      ? 'done'
+      : pull === null
+        ? 'closed'
+        : 'revealing';
+
+  useEffect(() => {
+    setFlipped(false);
+    setTearing(false);
+  }, [pull]);
+
+  useEffect(() => () => clearTimeout(timerRef.current), []);
+
   function openPack() {
-    setStage('opening');
-    setTimeout(() => setStage('revealing'), 750);
+    setTearing(true);
+    timerRef.current = setTimeout(() => {
+      navigate('#/pack/0');
+    }, 750);
   }
 
   function reveal() {
@@ -23,20 +41,15 @@ export default function PackOpeningView({ onGoGallery }) {
   }
 
   function next() {
-    setPulled((p) => [...p, cursor]);
     if (isLast) {
-      setStage('done');
-      return;
+      navigate('#/pack/done');
+    } else {
+      navigate(`#/pack/${cursor + 1}`);
     }
-    setFlipped(false);
-    setCursor((c) => c + 1);
   }
 
   function resetPack() {
-    setStage('closed');
-    setPulled([]);
-    setFlipped(false);
-    setCursor(0);
+    navigate('#/pack');
   }
 
   return (
@@ -46,7 +59,7 @@ export default function PackOpeningView({ onGoGallery }) {
         <div className="section-sub">
           {stage === 'closed' && `One pack, ${total} pulls, one flagship chase card. Tap it.`}
           {stage === 'opening' && 'Tearing it open…'}
-          {stage === 'revealing' && `Pull ${pulled.length + 1} of ${total} — tap the card to flip it.`}
+          {stage === 'revealing' && `Pull ${cursor + 1} of ${total} — tap the card to flip it.`}
           {stage === 'done' && `That's the whole box. Here's everything that was pulled.`}
         </div>
       </div>
@@ -124,7 +137,7 @@ export default function PackOpeningView({ onGoGallery }) {
               </div>
               <div className="pull-actions">
                 <button className="pack-btn" onClick={resetPack}>Open another pack</button>
-                <button className="pack-btn primary" onClick={onGoGallery}>Browse the full collection →</button>
+                <button className="pack-btn primary" onClick={() => navigate('#/gallery')}>Browse the full collection →</button>
               </div>
             </motion.div>
           )}

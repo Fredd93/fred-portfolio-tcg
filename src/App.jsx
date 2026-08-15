@@ -1,9 +1,10 @@
-import { useState } from 'react';
+// src/App.jsx
+import { useHashRoute } from './hooks/useHashRoute.js';
 import GalleryView from './views/GalleryView.jsx';
 import PackOpeningView from './views/PackOpeningView.jsx';
 
 export default function App() {
-  const [view, setView] = useState('pack'); // 'pack' | 'gallery'
+  const { route, navigate } = useHashRoute();
 
   return (
     <>
@@ -11,20 +12,26 @@ export default function App() {
         <div className="top-nav-inner">
           <div className="brand">Fred<span className="dot">TCG</span></div>
           <div className="tabs">
-            <button className={`tab-btn ${view === 'pack' ? 'active' : ''}`} onClick={() => setView('pack')}>
+            <button
+              className={`tab-btn ${route.view === 'pack' ? 'active' : ''}`}
+              onClick={() => navigate('#/pack')}
+            >
               Open Pack
             </button>
-            <button className={`tab-btn ${view === 'gallery' ? 'active' : ''}`} onClick={() => setView('gallery')}>
+            <button
+              className={`tab-btn ${route.view === 'gallery' ? 'active' : ''}`}
+              onClick={() => navigate('#/gallery')}
+            >
               Full Collection
             </button>
           </div>
         </div>
       </div>
 
-      {view === 'pack' ? (
-        <PackOpeningView onGoGallery={() => setView('gallery')} />
+      {route.view === 'pack' ? (
+        <PackOpeningView pull={route.pull} navigate={navigate} />
       ) : (
-        <GalleryView />
+        <GalleryView activeCardId={route.card} navigate={navigate} />
       )}
     </>
   );
