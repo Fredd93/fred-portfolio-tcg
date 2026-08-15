@@ -37,6 +37,13 @@ export default function PackOpeningView({ pull, navigate }) {
     }
   }, [pull]);
 
+  useEffect(() => {
+    if (pull === null) {
+      setRevealedSet((s) => (s.size ? new Set() : s));
+      setHighestReached(0);
+    }
+  }, [pull]);
+
   useEffect(() => () => clearTimeout(timerRef.current), []);
 
   useEffect(() => {
@@ -86,8 +93,6 @@ export default function PackOpeningView({ pull, navigate }) {
   }
 
   function resetPack() {
-    setRevealedSet(new Set());
-    setHighestReached(0);
     navigate('#/pack');
   }
 
@@ -173,7 +178,7 @@ export default function PackOpeningView({ pull, navigate }) {
                 </button>
                 <div className="pull-progress">
                   {PACK_ORDER.map((_, i) => (
-                    <span key={i} className={`dot ${i < cursor ? 'done' : ''} ${i === cursor ? 'active' : ''}`} />
+                    <span key={i} className={`dot ${revealedSet.has(i) ? 'done' : ''} ${i === cursor ? 'active' : ''}`} />
                   ))}
                 </div>
                 <button
