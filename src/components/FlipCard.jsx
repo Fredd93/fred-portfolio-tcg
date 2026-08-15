@@ -1,3 +1,4 @@
+// src/components/FlipCard.jsx
 import { motion } from 'framer-motion';
 import PackCard from './PackCard.jsx';
 import { TYPES } from '../data/cards.js';
@@ -10,12 +11,20 @@ function CardBack() {
   );
 }
 
-export default function FlipCard({ item, index, total, flipped, onReveal }) {
+export default function FlipCard({ item, index, total, flipped, onReveal, onInspect }) {
   const isProject = item.kind === 'project';
   const typeColor = isProject ? TYPES[item.data.type].color : '#e8c15a';
 
+  function handleClick() {
+    if (!flipped) {
+      onReveal?.();
+    } else if (isProject) {
+      onInspect?.();
+    }
+  }
+
   return (
-    <div className="tcg-card-wrap" onClick={() => !flipped && onReveal?.()}>
+    <div className="tcg-card-wrap" onClick={handleClick}>
       <div className="flip-outer">
         <motion.div
           className="flip-inner"
@@ -27,7 +36,7 @@ export default function FlipCard({ item, index, total, flipped, onReveal }) {
           </div>
           <div
             className={`flip-face flip-back ${isProject ? `tcg-card rarity-${item.data.rarity}` : ''}`}
-            style={isProject ? { '--type-color': typeColor, cursor: 'default' } : undefined}
+            style={isProject ? { '--type-color': typeColor, cursor: flipped ? 'pointer' : 'default' } : undefined}
           >
             <PackCard item={item} index={index} total={total} />
           </div>
