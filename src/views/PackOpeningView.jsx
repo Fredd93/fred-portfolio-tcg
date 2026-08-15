@@ -1,5 +1,5 @@
 // src/views/PackOpeningView.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import FlipCard from '../components/FlipCard.jsx';
 import { PACK_ORDER, RARITY } from '../data/cards.js';
@@ -7,6 +7,7 @@ import { PACK_ORDER, RARITY } from '../data/cards.js';
 export default function PackOpeningView({ pull, navigate }) {
   const [tearing, setTearing] = useState(false);
   const [flipped, setFlipped] = useState(false);
+  const timerRef = useRef(null);
 
   const total = PACK_ORDER.length;
   const cursor = typeof pull === 'number' ? pull : 0;
@@ -23,12 +24,14 @@ export default function PackOpeningView({ pull, navigate }) {
 
   useEffect(() => {
     setFlipped(false);
+    setTearing(false);
   }, [pull]);
+
+  useEffect(() => () => clearTimeout(timerRef.current), []);
 
   function openPack() {
     setTearing(true);
-    setTimeout(() => {
-      setTearing(false);
+    timerRef.current = setTimeout(() => {
       navigate('#/pack/0');
     }, 750);
   }
