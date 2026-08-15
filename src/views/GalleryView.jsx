@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import CardModal from '../components/CardModal.jsx';
 import { PROJECTS, SUPPORTERS, CERTS, TYPES, TYPE_SKILLS } from '../data/cards.js';
@@ -8,8 +7,8 @@ function EnergyPip({ type }) {
   return <span className="energy-pip" style={{ background: t.color }}>{t.code}</span>;
 }
 
-export default function GalleryView() {
-  const [active, setActive] = useState(null);
+export default function GalleryView({ activeCardId, navigate }) {
+  const active = activeCardId ? PROJECTS.find((p) => p.id === activeCardId) : null;
 
   return (
     <div className="wrap">
@@ -53,7 +52,7 @@ export default function GalleryView() {
         <div className="section-sub">Twelve cards. Click any of them to flip and read the full stats.</div>
         <div className="grid">
           {PROJECTS.map((p, i) => (
-            <Card key={p.id} project={p} index={i} total={17} onClick={setActive} />
+            <Card key={p.id} project={p} index={i} total={17} onClick={(project) => navigate(`#/gallery/${project.id}`)} />
           ))}
         </div>
       </div>
@@ -112,7 +111,7 @@ export default function GalleryView() {
         </div>
       </footer>
 
-      <CardModal project={active} onClose={() => setActive(null)} />
+      <CardModal project={active} onClose={() => navigate('#/gallery')} />
     </div>
   );
 }
