@@ -18,6 +18,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
   const r = RARITY[project.rarity];
   const type = TYPES[project.type];
   const fullArt = FULLART.has(project.rarity);
+  const languages = project.languages ?? [];
 
   return (
     <div className={`tcg-face ${fullArt ? 'layout-fullart' : 'layout-classic'}`} style={{ '--type-color': type.color }}>
@@ -28,7 +29,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
           <div className="name">{project.name}</div>
         </div>
         <div className="hp">
-          HP {project.hp}<small>est.</small>
+          HP {project.hp}<small>{project.hpMetric === 'loc' ? 'LOC' : 'est.'}</small>
           <EnergyPip type={project.type} />
         </div>
       </div>
@@ -74,8 +75,18 @@ export function CardFace({ project, index = 0, total = 17 }) {
             ))}
           </div>
         )}
+        {fullArt && project.description && (
+          <div className="card-description">{project.description}</div>
+        )}
+        {fullArt && languages.length > 0 && (
+          <div className="card-languages">
+            {languages.map((lang) => (
+              <span className="lang-pip" key={lang}>{lang}</span>
+            ))}
+          </div>
+        )}
         <div className="wrr">
-          <span>Weak: {project.weakness}</span>
+          <span>Role: {project.role}</span>
           <span>Retreat: {project.retreat}</span>
         </div>
         <div className="flavor">{project.flavor}</div>

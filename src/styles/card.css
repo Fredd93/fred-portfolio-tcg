@@ -103,7 +103,7 @@
   background:linear-gradient(0deg, rgba(6,6,10,.94) 40%, rgba(6,6,10,.7) 80%, transparent);
   padding:8px 10px 8px;
 }
-.layout-fullart .attacks{margin-bottom:4px;}
+.layout-fullart .attacks{margin-bottom:4px;min-height:0;overflow:hidden;}
 .layout-fullart .attack{display:flex;gap:6px;padding:3px 0;}
 .layout-fullart .atk-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;}
 .layout-fullart .atk-dmg{color:var(--gold);}
@@ -111,6 +111,9 @@
 .layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:#a9a596;margin-top:2px;}
 .layout-fullart .flavor{font-size:8px;font-style:italic;color:#c9c6ba;margin:4px 0 2px;}
 .layout-fullart .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.4px;color:#a9a596;}
+.layout-fullart .card-description{font-size:9.5px;line-height:1.35;color:#e4e1d6;margin:2px 0 6px;}
+.layout-fullart .card-languages{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;}
+.layout-fullart .lang-pip{font-size:7.4px;font-weight:700;background:rgba(255,255,255,.12);color:#f4efe0;border-radius:4px;padding:2px 6px;letter-spacing:.02em;}
 
 /* rarity-specific accents on top of the frame */
 .rarity-ssir .tcg-card{background:linear-gradient(155deg,#ffe9a8,var(--gold) 45%,#5a4a1c 80%,#14151f);}
