@@ -28,7 +28,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
           <div className="name">{project.name}</div>
         </div>
         <div className="hp">
-          HP {project.hp}<small>est.</small>
+          HP {project.hp}<small>{project.hpMetric === 'loc' ? 'LOC' : 'est.'}</small>
           <EnergyPip type={project.type} />
         </div>
       </div>
@@ -74,8 +74,18 @@ export function CardFace({ project, index = 0, total = 17 }) {
             ))}
           </div>
         )}
+        {fullArt && project.description && (
+          <div className="card-description">{project.description}</div>
+        )}
+        {fullArt && project.languages.length > 0 && (
+          <div className="card-languages">
+            {project.languages.map((lang) => (
+              <span className="lang-pip" key={lang}>{lang}</span>
+            ))}
+          </div>
+        )}
         <div className="wrr">
-          <span>Weak: {project.weakness}</span>
+          <span>Role: {project.role}</span>
           <span>Retreat: {project.retreat}</span>
         </div>
         <div className="flavor">{project.flavor}</div>
