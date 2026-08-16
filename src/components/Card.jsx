@@ -106,6 +106,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
 
 export default function Card({ project, index, total, onClick, tiltEnabled = true }) {
   const ref = useRef(null);
+  const touchStateRef = useRef({ startX: 0, startY: 0, isDragging: false });
   const type = TYPES[project.type];
 
   function updateTilt(clientX, clientY) {
@@ -132,6 +133,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
 
   function handleTouchStart(e) {
     if (!tiltEnabled || !e.touches[0]) return;
+    touchStateRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, isDragging: false };
     ref.current?.classList.add('tilting');
     updateTilt(e.touches[0].clientX, e.touches[0].clientY);
   }
@@ -142,7 +144,14 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
 
     function nativeTouchMove(e) {
       if (!e.touches[0]) return;
-      e.preventDefault();
+      const { startX, startY, isDragging } = touchStateRef.current;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      const shouldDrag = isDragging || (Math.hypot(dx, dy) > 10 && Math.abs(dx) > Math.abs(dy));
+      if (shouldDrag) {
+        touchStateRef.current.isDragging = true;
+        e.preventDefault();
+      }
       updateTilt(e.touches[0].clientX, e.touches[0].clientY);
     }
 
