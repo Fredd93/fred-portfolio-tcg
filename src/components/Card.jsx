@@ -36,7 +36,10 @@ export function CardFace({ project, index = 0, total = 17 }) {
 
       {!fullArt && (
         <>
-          <div className="art"><span>{project.icon}</span></div>
+          <div className="art">
+            <span>{project.icon}</span>
+            <div className="art-shine" />
+          </div>
           <div className="dex-line">{project.context} · {project.dates}</div>
         </>
       )}
