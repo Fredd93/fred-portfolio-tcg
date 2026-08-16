@@ -46,9 +46,14 @@ export default function CardModal({ project, onClose }) {
             <p style={{ marginTop: 14 }}>
               <b>Role:</b> {project.role} &nbsp; <b>Resistance:</b> {project.resistance} &nbsp; <b>Retreat:</b> {project.retreat}
             </p>
-            <p><b>Languages:</b> {project.languages.join(', ')}</p>
+            <p><b>Languages:</b> {(project.languages ?? []).join(', ')}</p>
+            {(project.description || project.detail) && (
+              <>
+                {project.description && <p>{project.description}</p>}
+                {project.detail && <p>{project.detail}</p>}
+              </>
+            )}
             <p style={{ fontStyle: 'italic', color: '#b7bdd0' }}>{project.flavor}</p>
-            {project.detail && <p>{project.detail}</p>}
             {project.link ? (
               <a className="modal-link" href={`https://${project.link}`} target="_blank" rel="noopener noreferrer">
                 {project.linkLabel || 'View repo'} →

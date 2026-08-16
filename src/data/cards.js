@@ -236,3 +236,12 @@ export const PACK_ORDER = [
   ...[...PROJECTS].sort((a, b) => RARITY[a.rarity].order - RARITY[b.rarity].order)
     .map((p) => ({ kind: 'project', data: p })),
 ];
+
+if (import.meta.env.DEV) {
+  for (const p of PROJECTS) {
+    console.assert(Array.isArray(p.languages) && p.languages.length > 0, `${p.id}: languages missing or empty`);
+    console.assert(typeof p.role === 'string' && p.role.length > 0, `${p.id}: role missing`);
+    console.assert(p.hpMetric === 'loc' || p.hpMetric === 'hours', `${p.id}: hpMetric invalid`);
+    console.assert(!('weakness' in p), `${p.id}: stale weakness field present`);
+  }
+}
