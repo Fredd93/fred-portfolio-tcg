@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
 
@@ -108,20 +108,47 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
   const ref = useRef(null);
   const type = TYPES[project.type];
 
-  function handleMove(e) {
+  function updateTilt(clientX, clientY) {
     if (!tiltEnabled || !ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    const mx = ((e.clientX - rect.left) / rect.width) * 100;
-    const my = ((e.clientY - rect.top) / rect.height) * 100;
+    const mx = ((clientX - rect.left) / rect.width) * 100;
+    const my = ((clientY - rect.top) / rect.height) * 100;
     ref.current.style.setProperty('--mx', `${mx.toFixed(1)}%`);
     ref.current.style.setProperty('--my', `${my.toFixed(1)}%`);
     const rx = ((my - 50) / 50) * -8;
     const ry = ((mx - 50) / 50) * 8;
     ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
   }
-  function handleLeave() {
-    if (ref.current) ref.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
+
+  function handleMouseMove(e) {
+    updateTilt(e.clientX, e.clientY);
   }
+
+  function handleLeave() {
+    if (!ref.current) return;
+    ref.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    ref.current.classList.remove('tilting');
+  }
+
+  function handleTouchStart(e) {
+    if (!tiltEnabled || !e.touches[0]) return;
+    ref.current?.classList.add('tilting');
+    updateTilt(e.touches[0].clientX, e.touches[0].clientY);
+  }
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !tiltEnabled) return;
+
+    function nativeTouchMove(e) {
+      if (!e.touches[0]) return;
+      e.preventDefault();
+      updateTilt(e.touches[0].clientX, e.touches[0].clientY);
+    }
+
+    el.addEventListener('touchmove', nativeTouchMove, { passive: false });
+    return () => el.removeEventListener('touchmove', nativeTouchMove);
+  }, [tiltEnabled]);
 
   return (
     <motion.div
@@ -135,8 +162,11 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
         ref={ref}
         className={`tcg-card rarity-${project.rarity}`}
         style={{ '--type-color': type.color }}
-        onMouseMove={handleMove}
+        onMouseMove={handleMouseMove}
         onMouseLeave={handleLeave}
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleLeave}
+        onTouchCancel={handleLeave}
         onClick={() => onClick?.(project)}
       >
         <CardFace project={project} index={index} total={total} />
