@@ -1,3 +1,4 @@
+// src/components/CardModal.jsx
 import { motion, AnimatePresence } from 'framer-motion';
 import { RARITY, TYPES } from '../data/cards.js';
 
@@ -28,7 +29,7 @@ export default function CardModal({ project, onClose }) {
             <div style={{ fontSize: 40, marginBottom: 6 }}>{project.icon}</div>
             <h3>{project.name}</h3>
             <div className="modal-meta">
-              {project.context} · {project.dates} · {RARITY[project.rarity].sym} {RARITY[project.rarity].label} · HP {project.hp} (est.)
+              {project.context} · {project.dates} · {RARITY[project.rarity].sym} {RARITY[project.rarity].label} · HP {project.hp} ({project.hpMetric === 'loc' ? 'LOC' : 'est.'})
             </div>
             {project.attacks.map((a) => (
               <div className="attack" key={a.name}>
@@ -43,9 +44,11 @@ export default function CardModal({ project, onClose }) {
               </div>
             ))}
             <p style={{ marginTop: 14 }}>
-              <b>Weakness:</b> {project.weakness} &nbsp; <b>Resistance:</b> {project.resistance} &nbsp; <b>Retreat:</b> {project.retreat}
+              <b>Role:</b> {project.role} &nbsp; <b>Resistance:</b> {project.resistance} &nbsp; <b>Retreat:</b> {project.retreat}
             </p>
+            <p><b>Languages:</b> {project.languages.join(', ')}</p>
             <p style={{ fontStyle: 'italic', color: '#b7bdd0' }}>{project.flavor}</p>
+            {project.detail && <p>{project.detail}</p>}
             {project.link ? (
               <a className="modal-link" href={`https://${project.link}`} target="_blank" rel="noopener noreferrer">
                 {project.linkLabel || 'View repo'} →
