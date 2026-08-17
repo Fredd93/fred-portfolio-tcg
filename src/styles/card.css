@@ -42,6 +42,7 @@
   padding:6px 8px 0;
 }
 .layout-classic .stage-pill{
+  display:inline-block;
   font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
   background:#1c1a12;color:#f6efdd;border-radius:5px;padding:2px 6px;
 }
@@ -91,6 +92,7 @@
   display:flex;justify-content:space-between;align-items:flex-start;
 }
 .layout-fullart .stage-pill{
+  display:inline-block;
   font-size:8px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
   background:rgba(255,255,255,.14);color:#f4efe0;border-radius:5px;padding:2px 6px;
 }
