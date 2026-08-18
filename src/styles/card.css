@@ -172,6 +172,33 @@
 .tulip-conf-high{background:#7CFFB2;color:#0a2b16;}
 .tulip-conf-mid{background:#ffd166;color:#3a2a05;}
 .tulip-conf-low{background:rgba(255,182,214,.55);color:#2a0a18;}
+/* Severe Weather Alert System (SIR) — hard vertical split telling the
+   heatwave-vs-cold-snap story: sun + wind on the heat side, snowflake +
+   creeping ice-frost on the cold side. No central icon. */
+.scene-weather{
+  background:linear-gradient(90deg,#e6791f 0%,#c94a1c 46%,#1d2340 52%,#1c3f6b 100%);
+}
+.weather-sun{
+  position:absolute;left:16%;top:16%;width:64px;height:64px;border-radius:50%;
+  background:radial-gradient(circle, #ffe9a8, #ffb648 70%);
+  box-shadow:0 0 38px 9px rgba(255,182,72,.55);
+}
+.weather-wind{position:absolute;left:6%;top:38%;width:42%;}
+.weather-wind path{fill:none;stroke:#ffe9c8;stroke-width:2.5;stroke-linecap:round;opacity:.75;}
+.weather-snowflake{
+  position:absolute;right:12%;top:18%;font-size:50px;color:#eaf4ff;
+  text-shadow:0 0 14px rgba(160,210,255,.8);filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));
+}
+.weather-icing{
+  position:absolute;right:0;top:0;bottom:0;width:14%;
+  background:linear-gradient(90deg, transparent, rgba(200,230,255,.28));
+  -webkit-mask-image:repeating-linear-gradient(0deg, #000 0 10px, transparent 10px 16px);
+  mask-image:repeating-linear-gradient(0deg, #000 0 10px, transparent 10px 16px);
+}
+.weather-icing2{
+  position:absolute;right:0;top:0;bottom:0;width:5%;
+  background:linear-gradient(90deg, transparent, rgba(220,240,255,.55));
+}
 .layout-fullart .top-row{
   position:relative;z-index:2;padding:8px 10px 20px;
   background:linear-gradient(180deg, rgba(6,6,10,.82), transparent);

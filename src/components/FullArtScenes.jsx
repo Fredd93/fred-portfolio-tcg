@@ -94,9 +94,26 @@ function TulipVisionScene() {
   );
 }
 
+function SevereWeatherScene() {
+  return (
+    <div className="art-bg scene-weather">
+      <div className="weather-sun" />
+      <svg className="weather-wind" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 10 Q 30 4, 55 10 T 95 8" />
+        <path d="M2 22 Q 25 16, 48 22 T 85 20" />
+        <path d="M2 33 Q 20 29, 38 33 T 70 31" />
+      </svg>
+      <span className="weather-snowflake">❄️</span>
+      <div className="weather-icing" />
+      <div className="weather-icing2" />
+    </div>
+  );
+}
+
 const FULLART_SCENES = {
   jericho: JerichoScene,
   tulip: TulipVisionScene,
+  impala: SevereWeatherScene,
 };
 
 export function FullArtScene({ project }) {
