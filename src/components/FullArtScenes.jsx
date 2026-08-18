@@ -3,6 +3,8 @@
 // Falls back to a centered icon on a radial gradient for any full-art
 // project that doesn't have a registered scene yet.
 
+import { Fragment } from 'react';
+
 function DefaultFullArtScene({ icon }) {
   return (
     <div className="art-bg">
@@ -22,9 +24,9 @@ function JerichoScene() {
       <span className="jericho-house">🏠</span>
       <div className="jericho-sat-wrap">
         <div className="jericho-rings">
-          <span className="jericho-ring r3" />
-          <span className="jericho-ring r2" />
-          <span className="jericho-ring r1" />
+          <span className="jericho-ring jericho-ring-3" />
+          <span className="jericho-ring jericho-ring-2" />
+          <span className="jericho-ring jericho-ring-1" />
         </div>
         <span className="jericho-sat">🛰️</span>
       </div>
@@ -79,7 +81,7 @@ function TulipVisionScene() {
         >🌷</span>
       ))}
       {TULIP_DETECTIONS.map((d) => (
-        <div key={d.tier}>
+        <Fragment key={d.tier}>
           <div
             className={`tulip-box tulip-box-${d.tier}`}
             style={{ left: d.left, bottom: d.bottom, width: d.width, height: d.height }}
@@ -88,7 +90,7 @@ function TulipVisionScene() {
             className={`tulip-conf tulip-conf-${d.tier}`}
             style={{ left: d.left, bottom: `calc(${d.bottom} + ${d.height + 1}px)` }}
           >R-CNN {d.pct}%</div>
-        </div>
+        </Fragment>
       ))}
     </div>
   );
@@ -96,23 +98,23 @@ function TulipVisionScene() {
 
 function SevereWeatherScene() {
   return (
-    <div className="art-bg scene-weather">
-      <div className="weather-sun" />
-      <svg className="weather-wind" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
+    <div className="art-bg scene-impala">
+      <div className="impala-sun" />
+      <svg className="impala-wind" viewBox="0 0 100 40" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 10 Q 30 4, 55 10 T 95 8" />
         <path d="M2 22 Q 25 16, 48 22 T 85 20" />
         <path d="M2 33 Q 20 29, 38 33 T 70 31" />
       </svg>
-      <svg className="weather-shimmer" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+      <svg className="impala-shimmer" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 18 Q 8 13, 16 18 T 32 18" />
         <path d="M0 32 Q 8 27, 16 32 T 32 32" />
         <path d="M0 46 Q 8 41, 16 46 T 32 46" />
       </svg>
-      <span className="weather-snowflake">❄️</span>
-      <span className="weather-crystal weather-crystal-a">❆</span>
-      <span className="weather-crystal weather-crystal-b">❆</span>
-      <div className="weather-icing" />
-      <div className="weather-icing2" />
+      <span className="impala-snowflake">❄️</span>
+      <span className="impala-crystal impala-crystal-a">❆</span>
+      <span className="impala-crystal impala-crystal-b">❆</span>
+      <div className="impala-icing" />
+      <div className="impala-icing2" />
     </div>
   );
 }
