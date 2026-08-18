@@ -11,7 +11,30 @@ function DefaultFullArtScene({ icon }) {
   );
 }
 
-const FULLART_SCENES = {};
+function JerichoScene() {
+  return (
+    <div className="art-bg scene-jericho">
+      <div className="jericho-stars" />
+      <div className="jericho-horizon" />
+      <div className="jericho-hex" />
+      <div className="jericho-signal" />
+      <div className="jericho-house-glow" />
+      <span className="jericho-house">🏠</span>
+      <div className="jericho-sat-wrap">
+        <div className="jericho-rings">
+          <span className="jericho-ring r3" />
+          <span className="jericho-ring r2" />
+          <span className="jericho-ring r1" />
+        </div>
+        <span className="jericho-sat">🛰️</span>
+      </div>
+    </div>
+  );
+}
+
+const FULLART_SCENES = {
+  jericho: JerichoScene,
+};
 
 export function FullArtScene({ project }) {
   const Scene = FULLART_SCENES[project.id];
