@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
+import { FullArtScene } from './FullArtScenes.jsx';
 
 const FULLART = new Set(['ir', 'sir', 'ssir']);
 
@@ -22,7 +23,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
 
   return (
     <div className={`tcg-face ${fullArt ? 'layout-fullart' : 'layout-classic'}`} style={{ '--type-color': type.color }}>
-      {fullArt && <div className="art-bg"><span>{project.icon}</span></div>}
+      {fullArt && <FullArtScene project={project} />}
       <div className="top-row">
         <div>
           <div className="stage-pill">{project.stage}</div>

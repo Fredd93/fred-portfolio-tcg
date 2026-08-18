@@ -94,6 +94,11 @@
   display:flex;align-items:center;justify-content:center;font-size:150px;opacity:.9;
 }
 .layout-fullart .art-bg span{filter:drop-shadow(0 10px 24px rgba(0,0,0,.6));}
+/* bespoke per-project scenes opt out of the generic centered-icon layout;
+   each scene class below defines its own internal layout instead */
+.art-bg.scene-jericho, .art-bg.scene-weather, .art-bg.scene-tulip{
+  display:block;font-size:inherit;opacity:1;
+}
 .layout-fullart .top-row{
   position:relative;z-index:2;padding:8px 10px 20px;
   background:linear-gradient(180deg, rgba(6,6,10,.82), transparent);
