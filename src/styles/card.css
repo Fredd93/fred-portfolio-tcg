@@ -37,7 +37,15 @@
   background:linear-gradient(180deg,#f6efdd,#efe4c8);
   color:#1c1a12;
 }
+.tcg-face.layout-classic::before{
+  content:'';
+  position:absolute;top:0;right:0;width:60%;height:24%;z-index:0;
+  background:radial-gradient(circle at 100% 0%, var(--type-color) 0%, transparent 70%);
+  opacity:.25;
+  pointer-events:none;
+}
 .layout-classic .top-row{
+  position:relative;z-index:1;
   display:flex;align-items:flex-start;justify-content:space-between;
   padding:6px 8px 0;
 }
@@ -118,9 +126,27 @@
 .layout-fullart .lang-pip{font-size:7.4px;font-weight:700;background:rgba(255,255,255,.12);color:#f4efe0;border-radius:4px;padding:2px 6px;letter-spacing:.02em;}
 
 /* rarity-specific accents on top of the frame */
-.rarity-ssir .tcg-card{background:linear-gradient(155deg,#ffe9a8,var(--gold) 45%,#5a4a1c 80%,#14151f);}
+.tcg-card.rarity-common, .tcg-card.rarity-holo, .tcg-card.rarity-reverseholo{
+  background:linear-gradient(155deg,#e8e8ec,#a4a4ac 45%,#5c5c64 78%,#2b2b30);
+}
+.tcg-card.rarity-ir, .tcg-card.rarity-sir, .tcg-card.rarity-ssir{
+  padding:4px;
+}
+.tcg-card.rarity-ir{background:linear-gradient(155deg,#caa858,#5a4a1c 60%,#14151f);}
+.tcg-card.rarity-ssir{
+  background:linear-gradient(155deg,#ffe9a8,var(--gold) 45%,#5a4a1c 80%,#14151f);
+  box-shadow:0 0 20px -2px var(--gold), 0 10px 24px -10px rgba(0,0,0,.65), 0 2px 0 rgba(255,255,255,.05) inset;
+}
+.tcg-card.rarity-ssir:hover{
+  box-shadow:0 0 20px -2px var(--gold), 0 22px 40px -14px rgba(0,0,0,.75), 0 2px 0 rgba(255,255,255,.08) inset;
+}
 .rarity-ssir .name{font-size:17.5px;}
-.rarity-sir .tcg-card{background:linear-gradient(155deg,var(--gold),#8e44ad 55%,#14151f);}
+.tcg-card.rarity-sir{background:linear-gradient(155deg,var(--gold),#8e44ad 55%,#14151f);}
+.rarity-sir .name, .rarity-ssir .name{
+  background:linear-gradient(180deg,#fff6da,var(--gold));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.3));
+}
 
 /* energy pip */
 .energy-pip{
@@ -144,7 +170,15 @@
 .tcg-card:hover .holo-shine, .tcg-card.tilting .holo-shine{opacity:.5;}
 .rarity-common .holo-shine{display:none;}
 .rarity-holo .holo-shine{display:none;}
-.rarity-reverseholo .art{z-index:4;}
+.rarity-ir .holo-shine{opacity:.12;}
+.tcg-card.rarity-ir:hover .holo-shine, .tcg-card.rarity-ir.tilting .holo-shine{opacity:.25;}
+.tcg-card.rarity-reverseholo:hover .holo-shine, .tcg-card.rarity-reverseholo.tilting .holo-shine{opacity:.2;}
+
+.rarity-sir .holo-shine{opacity:.18;}
+.tcg-card.rarity-sir:hover .holo-shine, .tcg-card.rarity-sir.tilting .holo-shine{opacity:.6;}
+
+.rarity-ssir .holo-shine{opacity:.25;}
+.tcg-card.rarity-ssir:hover .holo-shine, .tcg-card.rarity-ssir.tilting .holo-shine{opacity:.75;}
 
 .rarity-holo .art-shine{display:block;}
 .tcg-card:hover .art-shine, .tcg-card.tilting .art-shine{opacity:.5;}
