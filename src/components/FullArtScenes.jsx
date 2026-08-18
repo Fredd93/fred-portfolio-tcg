@@ -103,7 +103,14 @@ function SevereWeatherScene() {
         <path d="M2 22 Q 25 16, 48 22 T 85 20" />
         <path d="M2 33 Q 20 29, 38 33 T 70 31" />
       </svg>
+      <svg className="weather-shimmer" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 18 Q 8 13, 16 18 T 32 18" />
+        <path d="M0 32 Q 8 27, 16 32 T 32 32" />
+        <path d="M0 46 Q 8 41, 16 46 T 32 46" />
+      </svg>
       <span className="weather-snowflake">❄️</span>
+      <span className="weather-crystal weather-crystal-a">❆</span>
+      <span className="weather-crystal weather-crystal-b">❆</span>
       <div className="weather-icing" />
       <div className="weather-icing2" />
     </div>

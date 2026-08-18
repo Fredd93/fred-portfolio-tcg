@@ -189,6 +189,14 @@
 }
 .weather-wind{position:absolute;left:6%;top:38%;width:42%;}
 .weather-wind path{fill:none;stroke:#ffe9c8;stroke-width:2.5;stroke-linecap:round;opacity:.75;}
+.weather-shimmer{position:absolute;left:8%;bottom:8%;width:34%;opacity:.4;}
+.weather-shimmer path{fill:none;stroke:#ffe9c8;stroke-width:1.5;stroke-linecap:round;}
+.art-bg.scene-weather .weather-crystal{
+  position:absolute;color:#cfe6ff;text-shadow:0 0 6px rgba(160,210,255,.6);
+  filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+}
+.weather-crystal-a{right:6%;top:46%;font-size:16px;opacity:.65;}
+.weather-crystal-b{right:22%;top:62%;font-size:12px;opacity:.5;}
 .art-bg.scene-weather .weather-snowflake{
   position:absolute;right:12%;top:18%;font-size:50px;color:#eaf4ff;
   text-shadow:0 0 14px rgba(160,210,255,.8);filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));
