@@ -144,6 +144,34 @@
   position:absolute;left:50%;bottom:29%;width:39px;height:16px;
   transform:translateX(-50%);background:radial-gradient(ellipse, rgba(255,224,140,.35), transparent 70%);
 }
+/* TulipVision (IR) — dusk field with a full spread of tulips; three in the
+   foreground carry R-CNN detection boxes at varying confidence, evoking
+   the project's actual best-of-four object-detection result */
+.scene-tulip{
+  background:linear-gradient(180deg,#159487 0%,#0d5a52 35%,#101a22 72%,#0a0a10 100%);
+}
+.tulip-rows{
+  position:absolute;left:0;right:0;bottom:18%;height:62%;opacity:.35;
+  background:repeating-linear-gradient(100deg, transparent 0 18px, rgba(255,255,255,.25) 18px 19px);
+  mask:linear-gradient(180deg, transparent, #000 60%);
+  -webkit-mask:linear-gradient(180deg, transparent, #000 60%);
+}
+.tulip-glow{
+  position:absolute;left:50%;top:48%;width:220px;height:150px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(255,182,214,.22), transparent 70%);border-radius:50%;
+}
+.tulip-glyph{position:absolute;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5));}
+.tulip-box{position:absolute;border-radius:2px;}
+.tulip-box-high{border:1.5px solid #7CFFB2;box-shadow:0 0 6px rgba(124,255,178,.4);}
+.tulip-box-mid{border:1.5px solid #ffd166;box-shadow:0 0 6px rgba(255,209,102,.35);}
+.tulip-box-low{border:1.5px dashed rgba(255,182,214,.55);}
+.tulip-conf{
+  position:absolute;font-size:7px;font-weight:800;letter-spacing:.02em;
+  padding:1px 3px;border-radius:2px;white-space:nowrap;
+}
+.tulip-conf-high{background:#7CFFB2;color:#0a2b16;}
+.tulip-conf-mid{background:#ffd166;color:#3a2a05;}
+.tulip-conf-low{background:rgba(255,182,214,.55);color:#2a0a18;}
 .layout-fullart .top-row{
   position:relative;z-index:2;padding:8px 10px 20px;
   background:linear-gradient(180deg, rgba(6,6,10,.82), transparent);

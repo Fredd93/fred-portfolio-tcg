@@ -32,8 +32,71 @@ function JerichoScene() {
   );
 }
 
+const TULIP_BACKGROUND = [
+  { left: '6%', bottom: '26%', size: 14, opacity: .6 },
+  { left: '12%', bottom: '47%', size: 18, opacity: .75 },
+  { left: '24%', bottom: '22%', size: 13, opacity: .55 },
+  { left: '40%', bottom: '24%', size: 15, opacity: .6 },
+  { left: '45%', bottom: '50%', size: 17, opacity: .7 },
+  { left: '70%', bottom: '23%', size: 14, opacity: .55 },
+  { left: '82%', bottom: '46%', size: 18, opacity: .75 },
+  { left: '90%', bottom: '25%', size: 13, opacity: .55 },
+  { left: '37%', bottom: '20%', size: 12, opacity: .5 },
+  { left: '56%', bottom: '21%', size: 13, opacity: .5 },
+];
+
+const TULIP_FOREGROUND = [
+  { left: '20%', bottom: '42%', size: 21 },
+  { left: '34%', bottom: '38%', size: 25 },
+  { left: '50%', bottom: '44%', size: 18 },
+  { left: '63%', bottom: '36%', size: 28 },
+  { left: '74%', bottom: '41%', size: 20 },
+];
+
+const TULIP_DETECTIONS = [
+  { left: '29%', bottom: '35%', width: 39, height: 44, tier: 'high', pct: 94 },
+  { left: '58%', bottom: '33%', width: 44, height: 48, tier: 'mid', pct: 78 },
+  { left: '15%', bottom: '39%', width: 30, height: 32, tier: 'low', pct: 52 },
+];
+
+function TulipVisionScene() {
+  return (
+    <div className="art-bg scene-tulip">
+      <div className="tulip-rows" />
+      <div className="tulip-glow" />
+      {TULIP_BACKGROUND.map((t, i) => (
+        <span
+          key={`bg-${i}`}
+          className="tulip-glyph"
+          style={{ left: t.left, bottom: t.bottom, fontSize: t.size, opacity: t.opacity }}
+        >🌷</span>
+      ))}
+      {TULIP_FOREGROUND.map((t, i) => (
+        <span
+          key={`fg-${i}`}
+          className="tulip-glyph"
+          style={{ left: t.left, bottom: t.bottom, fontSize: t.size }}
+        >🌷</span>
+      ))}
+      {TULIP_DETECTIONS.map((d) => (
+        <div key={d.tier}>
+          <div
+            className={`tulip-box tulip-box-${d.tier}`}
+            style={{ left: d.left, bottom: d.bottom, width: d.width, height: d.height }}
+          />
+          <div
+            className={`tulip-conf tulip-conf-${d.tier}`}
+            style={{ left: d.left, bottom: `calc(${d.bottom} + ${d.height + 1}px)` }}
+          >R-CNN {d.pct}%</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const FULLART_SCENES = {
   jericho: JerichoScene,
+  tulip: TulipVisionScene,
 };
 
 export function FullArtScene({ project }) {
