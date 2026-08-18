@@ -51,7 +51,7 @@ export const PROJECTS = [
   },
   {
     id: 'impala', name: 'Severe Weather Alert System', rarity: 'sir', type: 'ml',
-    stage: 'Stage 1 · Internship', hp: 650, hpMetric: 'hours', icon: '⛈️',
+    stage: 'Stage 1 · Internship', hp: 650, hpMetric: 'hours', icon: '🌡️',
     attacks: [
       { cost: ['ml', 'data'], name: 'Threat Forecast', dmg: 92,
         text: 'XGBoost model predicting dangerous severe-weather events at ~92% accuracy. Sole developer, end to end.' },
