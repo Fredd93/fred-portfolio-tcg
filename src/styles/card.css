@@ -39,8 +39,8 @@
 }
 .tcg-face.layout-classic::before{
   content:'';
-  position:absolute;inset:0;z-index:0;
-  background:radial-gradient(circle at 100% 0%, var(--type-color) 0%, transparent 60%);
+  position:absolute;top:0;right:0;width:60%;height:24%;z-index:0;
+  background:radial-gradient(circle at 100% 0%, var(--type-color) 0%, transparent 70%);
   opacity:.25;
   pointer-events:none;
 }
@@ -137,12 +137,15 @@
   background:linear-gradient(155deg,#ffe9a8,var(--gold) 45%,#5a4a1c 80%,#14151f);
   box-shadow:0 0 20px -2px var(--gold), 0 10px 24px -10px rgba(0,0,0,.65), 0 2px 0 rgba(255,255,255,.05) inset;
 }
+.tcg-card.rarity-ssir:hover{
+  box-shadow:0 0 20px -2px var(--gold), 0 22px 40px -14px rgba(0,0,0,.75), 0 2px 0 rgba(255,255,255,.08) inset;
+}
 .rarity-ssir .name{font-size:17.5px;}
 .tcg-card.rarity-sir{background:linear-gradient(155deg,var(--gold),#8e44ad 55%,#14151f);}
 .rarity-sir .name, .rarity-ssir .name{
   background:linear-gradient(180deg,#fff6da,var(--gold));
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  text-shadow:0 1px 0 rgba(0,0,0,.3);
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.3));
 }
 
 /* energy pip */
@@ -169,6 +172,7 @@
 .rarity-holo .holo-shine{display:none;}
 .rarity-ir .holo-shine{opacity:.12;}
 .tcg-card.rarity-ir:hover .holo-shine, .tcg-card.rarity-ir.tilting .holo-shine{opacity:.25;}
+.tcg-card.rarity-reverseholo:hover .holo-shine, .tcg-card.rarity-reverseholo.tilting .holo-shine{opacity:.2;}
 
 .rarity-sir .holo-shine{opacity:.18;}
 .tcg-card.rarity-sir:hover .holo-shine, .tcg-card.rarity-sir.tilting .holo-shine{opacity:.6;}
