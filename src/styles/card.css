@@ -99,6 +99,10 @@
 .art-bg.scene-jericho, .art-bg.scene-weather, .art-bg.scene-tulip{
   display:block;font-size:inherit;opacity:1;
 }
+/* reset inherited drop-shadow filter so scene-specific glyph rules apply */
+.art-bg.scene-jericho span, .art-bg.scene-weather span, .art-bg.scene-tulip span{
+  filter:none;
+}
 /* Jericho (SSIR) — night sky, circuit-skyline horizon, centered satellite
    listening over a small house it watches, connected by a signal line */
 .scene-jericho{
@@ -124,7 +128,7 @@
     linear-gradient(45deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%);
 }
 .jericho-sat-wrap{position:absolute;left:50%;top:26%;transform:translate(-50%,-50%);}
-.jericho-sat{position:relative;font-size:30px;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6));}
+.art-bg.scene-jericho .jericho-sat{position:relative;font-size:30px;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6));}
 .jericho-rings span{
   position:absolute;left:50%;top:50%;border:1px solid rgba(180,183,240,.5);
   border-radius:50%;transform:translate(-50%,-50%);
@@ -136,7 +140,7 @@
   position:absolute;left:50%;top:26%;width:1.5px;height:34%;
   background:repeating-linear-gradient(180deg, rgba(180,183,240,.55) 0 4px, transparent 4px 9px);
 }
-.jericho-house{
+.art-bg.scene-jericho .jericho-house{
   position:absolute;left:50%;bottom:32%;transform:translateX(-50%);
   font-size:23px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));
 }
@@ -160,7 +164,7 @@
   position:absolute;left:50%;top:48%;width:220px;height:150px;transform:translate(-50%,-50%);
   background:radial-gradient(circle, rgba(255,182,214,.22), transparent 70%);border-radius:50%;
 }
-.tulip-glyph{position:absolute;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5));}
+.art-bg.scene-tulip .tulip-glyph{position:absolute;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5));}
 .tulip-box{position:absolute;border-radius:2px;}
 .tulip-box-high{border:1.5px solid #7CFFB2;box-shadow:0 0 6px rgba(124,255,178,.4);}
 .tulip-box-mid{border:1.5px solid #ffd166;box-shadow:0 0 6px rgba(255,209,102,.35);}
@@ -185,7 +189,7 @@
 }
 .weather-wind{position:absolute;left:6%;top:38%;width:42%;}
 .weather-wind path{fill:none;stroke:#ffe9c8;stroke-width:2.5;stroke-linecap:round;opacity:.75;}
-.weather-snowflake{
+.art-bg.scene-weather .weather-snowflake{
   position:absolute;right:12%;top:18%;font-size:50px;color:#eaf4ff;
   text-shadow:0 0 14px rgba(160,210,255,.8);filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));
 }
