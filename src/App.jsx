@@ -11,7 +11,7 @@ function clamp(n, min, max) {
 
 export default function App() {
   const { route, navigate } = useHashRoute();
-  const [isTouchDevice] = useState(
+  const [isTouchDevice, setIsTouchDevice] = useState(
     () => typeof window !== 'undefined' && window.matchMedia('(hover: none) and (pointer: coarse)').matches
   );
   const [motionTiltEnabled, setMotionTiltEnabled] = useState(false);
@@ -19,6 +19,16 @@ export default function App() {
   const receivedOrientationRef = useRef(false);
   const pendingTiltRef = useRef(null);
   const rafIdRef = useRef(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mql = window.matchMedia('(hover: none) and (pointer: coarse)');
+    function onChange() {
+      setIsTouchDevice(mql.matches);
+    }
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     if (!motionTiltEnabled) return;
@@ -53,6 +63,7 @@ export default function App() {
         cancelAnimationFrame(rafIdRef.current);
         rafIdRef.current = null;
       }
+      pendingTiltRef.current = null;
     };
   }, [motionTiltEnabled]);
 
@@ -102,15 +113,18 @@ export default function App() {
             </button>
           </div>
           {isTouchDevice && (
-            <>
+            <div className="motion-tilt-group">
               <button
-                className={`motion-tilt-btn ${motionTiltEnabled ? 'active' : ''}`}
+                className={`pill motion-tilt-btn ${motionTiltEnabled ? 'active' : ''}`}
                 onClick={handleToggleMotionTilt}
+                aria-pressed={motionTiltEnabled}
               >
                 {motionTiltEnabled ? '✓ Motion tilt on — tap to disable' : 'Enable motion tilt'}
               </button>
-              {motionTiltError && <span className="motion-tilt-error">{motionTiltError}</span>}
-            </>
+              {motionTiltError && (
+                <span className="motion-tilt-error" role="status" aria-live="polite">{motionTiltError}</span>
+              )}
+            </div>
           )}
         </div>
       </div>
