@@ -111,11 +111,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
   const touchStateRef = useRef({ startX: 0, startY: 0, isDragging: false });
   const type = TYPES[project.type];
 
-  function updateTilt(clientX, clientY) {
-    if (!tiltEnabled || !ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const mx = ((clientX - rect.left) / rect.width) * 100;
-    const my = ((clientY - rect.top) / rect.height) * 100;
+  function writeTilt(mx, my) {
     ref.current.style.setProperty('--mx', `${mx.toFixed(1)}%`);
     ref.current.style.setProperty('--my', `${my.toFixed(1)}%`);
     const rx = ((my - 50) / 50) * -8;
@@ -123,13 +119,17 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
   }
 
+  function updateTilt(clientX, clientY) {
+    if (!tiltEnabled || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const mx = ((clientX - rect.left) / rect.width) * 100;
+    const my = ((clientY - rect.top) / rect.height) * 100;
+    writeTilt(mx, my);
+  }
+
   function applyOrientationTilt(mx, my) {
-    if (!ref.current) return;
-    ref.current.style.setProperty('--mx', `${mx.toFixed(1)}%`);
-    ref.current.style.setProperty('--my', `${my.toFixed(1)}%`);
-    const rx = ((my - 50) / 50) * -8;
-    const ry = ((mx - 50) / 50) * 8;
-    ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    if (!tiltEnabled || !ref.current) return;
+    writeTilt(mx, my);
     ref.current.classList.add('tilting');
   }
 
