@@ -36,14 +36,14 @@ export default function GalleryView({ activeCardId, navigate }) {
 
       <div className="section">
         <div className="section-title"><span className="num">HOW TO READ THIS</span> Rarity Guide</div>
-        <div className="section-sub">Same as a real booster pack — the higher the tier, the more of the project is actually mine and the bigger the result.</div>
+        <div className="section-sub">Same as a real booster pack — rarity tracks ownership and role, not size. HP is raw project volume, on its own axis; a Common can out-code a flagship.</div>
         <div className="legend">
-          <div className="legend-item">● <b>Common</b> — small academic build</div>
-          <div className="legend-item">◆ <b>Holo Rare</b> — solid, shipped</div>
-          <div className="legend-item">★ <b>Reverse Holo</b> — heaviest lift, most commits</div>
-          <div className="legend-item" style={{ color: '#e8c15a' }}>★ <b>IR</b> — flagship #3</div>
-          <div className="legend-item" style={{ color: '#e8c15a' }}>★★ <b>SIR</b> — flagship #2</div>
-          <div className="legend-item" style={{ color: '#e8c15a' }}>★★★ <b>SSIR</b> — top flagship</div>
+          <div className="legend-item">● <b>Common</b> — academic build, supporting role</div>
+          <div className="legend-item">◆ <b>Holo Rare</b> — shipped solo, or led the room</div>
+          <div className="legend-item">★ <b>Reverse Holo</b> — sole dev, heaviest personal commit share</div>
+          <div className="legend-item" style={{ color: '#e8c15a' }}>★ <b>IR</b> — flagship #3 — team capstone, client-facing lead</div>
+          <div className="legend-item" style={{ color: '#e8c15a' }}>★★ <b>SIR</b> — flagship #2 — solo, professional, end to end</div>
+          <div className="legend-item" style={{ color: '#e8c15a' }}>★★★ <b>SSIR</b> — top flagship — solo-architected, ongoing</div>
         </div>
       </div>
 
