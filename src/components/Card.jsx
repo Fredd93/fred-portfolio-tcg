@@ -196,8 +196,8 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
         onMouseMove={handleMouseMove}
         onMouseLeave={handleLeave}
         onTouchStart={handleTouchStart}
-        onTouchEnd={handleLeave}
-        onTouchCancel={handleLeave}
+        onTouchEnd={motionTiltEnabled ? undefined : handleLeave}
+        onTouchCancel={motionTiltEnabled ? undefined : handleLeave}
         onClick={() => onClick?.(project)}
       >
         <CardFace project={project} index={index} total={total} />

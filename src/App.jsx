@@ -1,5 +1,5 @@
 // src/App.jsx
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useHashRoute } from './hooks/useHashRoute.js';
 import GalleryView from './views/GalleryView.jsx';
 import PackOpeningView from './views/PackOpeningView.jsx';
@@ -16,22 +16,52 @@ export default function App() {
   );
   const [motionTiltEnabled, setMotionTiltEnabled] = useState(false);
   const [motionTiltError, setMotionTiltError] = useState('');
+  const receivedOrientationRef = useRef(false);
+  const pendingTiltRef = useRef(null);
+  const rafIdRef = useRef(null);
 
   useEffect(() => {
     if (!motionTiltEnabled) return;
+    receivedOrientationRef.current = false;
     function onOrientation(e) {
+      receivedOrientationRef.current = true;
       const beta = clamp(e.beta ?? 0, -20, 20);
       const gamma = clamp(e.gamma ?? 0, -20, 20);
       const my = ((beta + 20) / 40) * 100;
       const mx = ((gamma + 20) / 40) * 100;
-      publishTilt(mx, my);
+      pendingTiltRef.current = { mx, my };
+      if (rafIdRef.current === null) {
+        rafIdRef.current = requestAnimationFrame(() => {
+          rafIdRef.current = null;
+          if (pendingTiltRef.current) {
+            publishTilt(pendingTiltRef.current.mx, pendingTiltRef.current.my);
+          }
+        });
+      }
     }
     window.addEventListener('deviceorientation', onOrientation);
-    return () => window.removeEventListener('deviceorientation', onOrientation);
+    const watchdog = setTimeout(() => {
+      if (!receivedOrientationRef.current) {
+        setMotionTiltEnabled(false);
+        setMotionTiltError('Motion access unavailable — using touch-drag instead.');
+      }
+    }, 1000);
+    return () => {
+      window.removeEventListener('deviceorientation', onOrientation);
+      clearTimeout(watchdog);
+      if (rafIdRef.current !== null) {
+        cancelAnimationFrame(rafIdRef.current);
+        rafIdRef.current = null;
+      }
+    };
   }, [motionTiltEnabled]);
 
-  async function handleEnableMotionTilt() {
+  async function handleToggleMotionTilt() {
     setMotionTiltError('');
+    if (motionTiltEnabled) {
+      setMotionTiltEnabled(false);
+      return;
+    }
     if (typeof window.DeviceOrientationEvent === 'undefined') {
       setMotionTiltError('Motion access unavailable — using touch-drag instead.');
       return;
@@ -75,10 +105,9 @@ export default function App() {
             <>
               <button
                 className={`motion-tilt-btn ${motionTiltEnabled ? 'active' : ''}`}
-                onClick={handleEnableMotionTilt}
-                disabled={motionTiltEnabled}
+                onClick={handleToggleMotionTilt}
               >
-                {motionTiltEnabled ? '✓ Motion tilt on' : 'Enable motion tilt'}
+                {motionTiltEnabled ? '✓ Motion tilt on — tap to disable' : 'Enable motion tilt'}
               </button>
               {motionTiltError && <span className="motion-tilt-error">{motionTiltError}</span>}
             </>
