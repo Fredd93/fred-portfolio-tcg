@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
 import { FullArtScene } from './FullArtScenes.jsx';
+import { subscribeTilt } from '../utils/motionTiltBus.js';
 
 const FULLART = new Set(['ir', 'sir', 'ssir']);
 
@@ -105,7 +106,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
   );
 }
 
-export default function Card({ project, index, total, onClick, tiltEnabled = true }) {
+export default function Card({ project, index, total, onClick, tiltEnabled = true, motionTiltEnabled = false }) {
   const ref = useRef(null);
   const touchStateRef = useRef({ startX: 0, startY: 0, isDragging: false });
   const type = TYPES[project.type];
@@ -122,6 +123,16 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
   }
 
+  function applyOrientationTilt(mx, my) {
+    if (!ref.current) return;
+    ref.current.style.setProperty('--mx', `${mx.toFixed(1)}%`);
+    ref.current.style.setProperty('--my', `${my.toFixed(1)}%`);
+    const rx = ((my - 50) / 50) * -8;
+    const ry = ((mx - 50) / 50) * 8;
+    ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    ref.current.classList.add('tilting');
+  }
+
   function handleMouseMove(e) {
     updateTilt(e.clientX, e.clientY);
   }
@@ -133,7 +144,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
   }
 
   function handleTouchStart(e) {
-    if (!tiltEnabled || !e.touches[0]) return;
+    if (!tiltEnabled || motionTiltEnabled || !e.touches[0]) return;
     touchStateRef.current = { startX: e.touches[0].clientX, startY: e.touches[0].clientY, isDragging: false };
     ref.current?.classList.add('tilting');
     updateTilt(e.touches[0].clientX, e.touches[0].clientY);
@@ -141,7 +152,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
 
   useEffect(() => {
     const el = ref.current;
-    if (!el || !tiltEnabled) return;
+    if (!el || !tiltEnabled || motionTiltEnabled) return;
 
     function nativeTouchMove(e) {
       if (!e.touches[0]) return;
@@ -158,7 +169,17 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
 
     el.addEventListener('touchmove', nativeTouchMove, { passive: false });
     return () => el.removeEventListener('touchmove', nativeTouchMove);
-  }, [tiltEnabled]);
+  }, [tiltEnabled, motionTiltEnabled]);
+
+  useEffect(() => {
+    if (!motionTiltEnabled) return;
+    const unsubscribe = subscribeTilt(applyOrientationTilt);
+    return () => {
+      unsubscribe();
+      handleLeave();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [motionTiltEnabled]);
 
   return (
     <motion.div
@@ -175,8 +196,8 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
         onMouseMove={handleMouseMove}
         onMouseLeave={handleLeave}
         onTouchStart={handleTouchStart}
-        onTouchEnd={handleLeave}
-        onTouchCancel={handleLeave}
+        onTouchEnd={motionTiltEnabled ? undefined : handleLeave}
+        onTouchCancel={motionTiltEnabled ? undefined : handleLeave}
         onClick={() => onClick?.(project)}
       >
         <CardFace project={project} index={index} total={total} />

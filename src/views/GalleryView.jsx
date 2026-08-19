@@ -7,7 +7,7 @@ function EnergyPip({ type }) {
   return <span className="energy-pip" style={{ background: t.color }}>{t.code}</span>;
 }
 
-export default function GalleryView({ activeCardId, navigate }) {
+export default function GalleryView({ activeCardId, navigate, motionTiltEnabled = false }) {
   const active = activeCardId ? PROJECTS.find((p) => p.id === activeCardId) : null;
 
   return (
@@ -52,7 +52,14 @@ export default function GalleryView({ activeCardId, navigate }) {
         <div className="section-sub">Twelve cards. Click any of them to flip and read the full stats.</div>
         <div className="grid">
           {PROJECTS.map((p, i) => (
-            <Card key={p.id} project={p} index={i} total={17} onClick={(project) => navigate(`#/gallery/${project.id}`)} />
+            <Card
+              key={p.id}
+              project={p}
+              index={i}
+              total={17}
+              onClick={(project) => navigate(`#/gallery/${project.id}`)}
+              motionTiltEnabled={motionTiltEnabled}
+            />
           ))}
         </div>
       </div>
