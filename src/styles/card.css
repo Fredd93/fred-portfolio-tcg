@@ -172,6 +172,8 @@
   background:radial-gradient(circle, rgba(255,182,214,.22), transparent 70%);border-radius:50%;
 }
 .art-bg.scene-tulip .tulip-glyph{position:absolute;filter:drop-shadow(0 3px 6px rgba(0,0,0,.5));}
+.art-bg.scene-tulip .tulip-mascot-slot{ position:absolute; filter:drop-shadow(0 3px 6px rgba(0,0,0,.5)); }
+.art-bg.scene-tulip .tulip-mascot-slot .mascot{ width:100%; height:100%; display:block; }
 .tulip-box{position:absolute;border-radius:2px;}
 .tulip-box-high{border:1.5px solid #7CFFB2;box-shadow:0 0 6px rgba(124,255,178,.4);}
 .tulip-box-mid{border:1.5px solid #ffd166;box-shadow:0 0 6px rgba(255,209,102,.35);}

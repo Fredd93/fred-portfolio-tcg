@@ -28,8 +28,33 @@ export function JerichoMascot({ className = '' }) {
   );
 }
 
+export function TulipMascot({ className = '' }) {
+  return (
+    <svg
+      className={`mascot mascot-tulip ${className}`}
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="TulipVision bloom-scanner mascot"
+    >
+      <path className="tulip-m-stem" d="M50 95 L50 60" />
+      <path className="tulip-m-leaf tulip-m-leaf-l" d="M50 82 Q30 78 26 62 Q42 66 50 82Z" />
+      <path className="tulip-m-leaf tulip-m-leaf-r" d="M50 82 Q70 78 74 62 Q58 66 50 82Z" />
+      <g className="tulip-m-bloom">
+        <path className="tulip-m-petal tulip-m-petal-l" d="M50 60 Q20 55 26 28 Q42 34 50 60Z" />
+        <path className="tulip-m-petal tulip-m-petal-r" d="M50 60 Q80 55 74 28 Q58 34 50 60Z" />
+        <path className="tulip-m-petal tulip-m-petal-c" d="M46 60 Q46 20 50 14 Q54 20 54 60Z" />
+        <circle className="tulip-m-lens-outer" cx="50" cy="42" r="11" />
+        <circle className="tulip-m-lens-iris" cx="50" cy="42" r="6" />
+        <circle className="tulip-m-lens-pupil" cx="50" cy="42" r="2.4" />
+      </g>
+    </svg>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
+  tulip: TulipMascot,
 };
 
 export function MascotArt({ id, className }) {

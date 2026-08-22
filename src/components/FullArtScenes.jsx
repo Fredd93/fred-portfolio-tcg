@@ -4,7 +4,7 @@
 // project that doesn't have a registered scene yet.
 
 import { Fragment } from 'react';
-import { JerichoMascot } from './MascotArt.jsx';
+import { JerichoMascot, TulipMascot } from './MascotArt.jsx';
 
 function DefaultFullArtScene({ icon }) {
   return (
@@ -75,11 +75,13 @@ function TulipVisionScene() {
         >🌷</span>
       ))}
       {TULIP_FOREGROUND.map((t, i) => (
-        <span
+        <div
           key={`fg-${i}`}
-          className="tulip-glyph"
-          style={{ left: t.left, bottom: t.bottom, fontSize: t.size }}
-        >🌷</span>
+          className="tulip-mascot-slot"
+          style={{ left: t.left, bottom: t.bottom, width: t.size * 1.6, height: t.size * 1.6 }}
+        >
+          <TulipMascot />
+        </div>
       ))}
       {TULIP_DETECTIONS.map((d) => (
         <Fragment key={d.tier}>

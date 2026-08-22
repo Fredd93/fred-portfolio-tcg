@@ -67,7 +67,7 @@ export const PROJECTS = [
   },
   {
     id: 'tulip', name: 'TulipVision', rarity: 'ir', type: 'ml',
-    stage: 'Stage 2 · Deployed', hp: 2779, hpMetric: 'loc', icon: '🌷',
+    stage: 'Stage 2 · Deployed', hp: 2779, hpMetric: 'loc', icon: '🌷', mascot: 'tulip',
     attacks: [
       { cost: ['ml'], name: 'Faster R-CNN Bloom', dmg: 86,
         text: 'Best-of-four object detector (F1 0.86, mAP 0.83) — the one selected to power the production app, beating RetinaNet, YOLOv5 and YOLOv11.' },
