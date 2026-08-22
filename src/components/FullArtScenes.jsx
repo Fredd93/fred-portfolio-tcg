@@ -4,7 +4,7 @@
 // project that doesn't have a registered scene yet.
 
 import { Fragment, useEffect, useState } from 'react';
-import { JerichoMascot, TulipMascot } from './MascotArt.jsx';
+import { JerichoMascot, TulipMascot, ImpalaMascot } from './MascotArt.jsx';
 
 function DefaultFullArtScene({ icon }) {
   return (
@@ -125,6 +125,9 @@ function SevereWeatherScene() {
         <path d="M0 46 Q 8 41, 16 46 T 32 46" />
       </svg>
       <span className="impala-snowflake">❄️</span>
+      <div className="impala-mascot-slot">
+        <ImpalaMascot />
+      </div>
       <span className="impala-crystal impala-crystal-a">❆</span>
       <span className="impala-crystal impala-crystal-b">❆</span>
       <div className="impala-icing" />

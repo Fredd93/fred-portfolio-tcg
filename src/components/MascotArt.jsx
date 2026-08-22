@@ -52,9 +52,39 @@ export function TulipMascot({ className = '' }) {
   );
 }
 
+export function ImpalaMascot({ className = '' }) {
+  return (
+    <svg
+      className={`mascot mascot-impala ${className}`}
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Severe Weather heat/cold sentinel mascot"
+    >
+      <clipPath id="impala-m-split-left"><rect x="0" y="0" width="50" height="100" /></clipPath>
+      <clipPath id="impala-m-split-right"><rect x="50" y="0" width="50" height="100" /></clipPath>
+      <g className="impala-m-heat" clipPath="url(#impala-m-split-left)">
+        <path className="impala-m-tail impala-m-tail-heat" d="M26 66 Q6 60 10 40 Q22 46 26 66Z" />
+        <ellipse className="impala-m-torso impala-m-torso-heat" cx="50" cy="60" rx="26" ry="20" />
+        <circle className="impala-m-head impala-m-head-heat" cx="50" cy="34" r="16" />
+        <polygon className="impala-m-ear impala-m-ear-heat" points="38,24 30,6 46,18" />
+      </g>
+      <g className="impala-m-cold" clipPath="url(#impala-m-split-right)">
+        <path className="impala-m-tail impala-m-tail-cold" d="M74 66 Q94 60 90 40 Q78 46 74 66Z" />
+        <ellipse className="impala-m-torso impala-m-torso-cold" cx="50" cy="60" rx="26" ry="20" />
+        <circle className="impala-m-head impala-m-head-cold" cx="50" cy="34" r="16" />
+        <polygon className="impala-m-ear impala-m-ear-cold" points="62,24 70,6 54,18" />
+      </g>
+      <circle className="impala-m-eye" cx="44" cy="34" r="2" />
+      <circle className="impala-m-eye" cx="56" cy="34" r="2" />
+    </svg>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
+  impala: ImpalaMascot,
 };
 
 export function MascotArt({ id, className }) {

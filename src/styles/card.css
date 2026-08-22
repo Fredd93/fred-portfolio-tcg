@@ -251,6 +251,11 @@
   position:absolute;right:0;top:0;bottom:0;width:5%;
   background:linear-gradient(90deg, transparent, rgba(220,240,255,.55));
 }
+.impala-mascot-slot{
+  position:absolute; left:50%; bottom:18%; width:110px; height:110px; transform:translateX(-50%);
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,.5));
+}
+.impala-mascot-slot .mascot{ width:100%; height:100%; display:block; }
 .layout-fullart .top-row{
   position:relative;z-index:2;padding:8px 10px 20px;
   background:linear-gradient(180deg, rgba(6,6,10,.82), transparent);
