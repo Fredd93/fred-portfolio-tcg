@@ -3,6 +3,12 @@
    Hover/activate reuses the card's existing .tcg-card:hover / .tilting
    state (set by Card.jsx's pointer handlers) — no separate JS wiring. */
 
+.tcg-card.scene-paused .mascot-jericho,
+.tcg-card.scene-paused .tulip-m-bloom, .tcg-card.scene-paused .tulip-m-lens-outer,
+.tcg-card.scene-paused .mascot-impala{
+  animation-play-state: paused;
+}
+
 .mascot{ overflow:visible; }
 
 /* ---- Jericho: hex-plated satellite-fox sentinel ---- */
