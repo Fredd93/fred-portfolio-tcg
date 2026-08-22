@@ -3,7 +3,7 @@
 // Falls back to a centered icon on a radial gradient for any full-art
 // project that doesn't have a registered scene yet.
 
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { JerichoMascot, TulipMascot } from './MascotArt.jsx';
 
 function DefaultFullArtScene({ icon }) {
@@ -63,6 +63,15 @@ const TULIP_DETECTIONS = [
 ];
 
 function TulipVisionScene() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveIdx((i) => (i + 1) % TULIP_DETECTIONS.length);
+    }, 2800);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="art-bg scene-tulip">
       <div className="tulip-rows" />
@@ -83,14 +92,16 @@ function TulipVisionScene() {
           <TulipMascot />
         </div>
       ))}
-      {TULIP_DETECTIONS.map((d) => (
+      {TULIP_DETECTIONS.map((d, i) => (
         <Fragment key={d.tier}>
           <div
-            className={`tulip-box tulip-box-${d.tier}`}
+            className={`tulip-box tulip-box-${d.tier} ${i === activeIdx ? 'tulip-box-active' : ''}`}
             style={{ left: d.left, bottom: d.bottom, width: d.width, height: d.height }}
-          />
+          >
+            {i === activeIdx && <div className="tulip-box-scanline" />}
+          </div>
           <div
-            className={`tulip-conf tulip-conf-${d.tier}`}
+            className={`tulip-conf tulip-conf-${d.tier} ${i === activeIdx ? 'tulip-conf-active' : ''}`}
             style={{ left: d.left, bottom: `calc(${d.bottom} + ${d.height + 1}px)` }}
           >R-CNN {d.pct}%</div>
         </Fragment>
