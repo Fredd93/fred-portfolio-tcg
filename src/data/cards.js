@@ -33,7 +33,7 @@ export const RARITY = {
 export const PROJECTS = [
   {
     id: 'jericho', name: 'Jericho', rarity: 'ssir', type: 'arch',
-    stage: 'Stage 2 · In Progress', hp: 4108, hpMetric: 'loc', icon: '🛰️',
+    stage: 'Stage 2 · In Progress', hp: 4108, hpMetric: 'loc', icon: '🛰️', mascot: 'jericho',
     attacks: [
       { cost: ['arch'], name: 'Hexagonal Enforcement', dmg: null,
         text: 'Machine-enforced ports & adapters — import-linter contracts plus a custom reflection-based contract verifier. Boundaries cannot silently rot.' },

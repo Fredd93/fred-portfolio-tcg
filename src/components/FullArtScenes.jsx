@@ -4,6 +4,7 @@
 // project that doesn't have a registered scene yet.
 
 import { Fragment } from 'react';
+import { JerichoMascot } from './MascotArt.jsx';
 
 function DefaultFullArtScene({ icon }) {
   return (
@@ -28,7 +29,7 @@ function JerichoScene() {
           <span className="jericho-ring jericho-ring-2" />
           <span className="jericho-ring jericho-ring-1" />
         </div>
-        <span className="jericho-sat">🛰️</span>
+        <JerichoMascot className="jericho-sat" />
       </div>
     </div>
   );
