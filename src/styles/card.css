@@ -227,16 +227,29 @@
   background:radial-gradient(circle, #ffe9a8, #ffb648 70%);
   box-shadow:0 0 38px 9px rgba(255,182,72,.55);
 }
-.impala-wind{position:absolute;left:6%;top:44%;width:42%;}
+.impala-wind{position:absolute;left:6%;top:44%;width:42%;animation: impala-wind-drift 6s ease-in-out infinite;}
 .impala-wind path{fill:none;stroke:#ffe9c8;stroke-width:2.5;stroke-linecap:round;opacity:.75;}
-.impala-shimmer{position:absolute;left:8%;bottom:8%;width:34%;opacity:.4;}
+@keyframes impala-wind-drift{
+  0%, 100%{ transform: translateX(0); }
+  50%{ transform: translateX(6px); }
+}
+.impala-shimmer{position:absolute;left:8%;bottom:8%;width:34%;animation: impala-shimmer-pulse 3s ease-in-out infinite;}
 .impala-shimmer path{fill:none;stroke:#ffe9c8;stroke-width:1.5;stroke-linecap:round;}
+@keyframes impala-shimmer-pulse{
+  0%, 100%{ opacity:.25; }
+  50%{ opacity:.55; }
+}
 .art-bg.scene-impala .impala-crystal{
   position:absolute;color:#cfe6ff;text-shadow:0 0 6px rgba(160,210,255,.6);
   filter:drop-shadow(0 2px 4px rgba(0,0,0,.35));
+  animation: impala-crystal-twinkle 4s ease-in-out infinite;
 }
-.impala-crystal-a{right:6%;top:46%;font-size:16px;opacity:.65;}
-.impala-crystal-b{right:22%;top:62%;font-size:12px;opacity:.5;}
+.impala-crystal-a{right:6%;top:46%;font-size:16px;}
+.impala-crystal-b{right:22%;top:62%;font-size:12px;animation-delay:1.3s;}
+@keyframes impala-crystal-twinkle{
+  0%, 100%{ opacity:.5; transform: rotate(0deg); }
+  50%{ opacity:.9; transform: rotate(8deg); }
+}
 .art-bg.scene-impala .impala-snowflake{
   position:absolute;right:12%;top:28%;font-size:50px;color:#eaf4ff;
   text-shadow:0 0 14px rgba(160,210,255,.8);filter:drop-shadow(0 4px 10px rgba(0,0,0,.4));
@@ -246,6 +259,11 @@
   background:linear-gradient(90deg, transparent, rgba(200,230,255,.28));
   -webkit-mask-image:repeating-linear-gradient(0deg, #000 0 10px, transparent 10px 16px);
   mask-image:repeating-linear-gradient(0deg, #000 0 10px, transparent 10px 16px);
+  animation: impala-icing-flicker 5s ease-in-out infinite;
+}
+@keyframes impala-icing-flicker{
+  0%, 100%{ opacity:.85; }
+  50%{ opacity:1; }
 }
 .impala-icing2{
   position:absolute;right:0;top:0;bottom:0;width:5%;
@@ -400,4 +418,5 @@
   .tulip-box-scanline{ display:none; }
   .tulip-conf{ opacity:.9; }
   .tulip-conf-active{ animation:none; }
+  .impala-wind, .impala-shimmer, .impala-crystal, .impala-icing{ animation: none; }
 }
