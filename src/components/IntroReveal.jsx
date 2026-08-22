@@ -25,7 +25,7 @@ export default function IntroReveal({ replayKey = 0 }) {
       sessionStorage.setItem(SESSION_KEY, '1');
     }, 1300);
     return () => clearTimeout(timer);
-  }, [playing]);
+  }, [playing, replayKey]);
 
   function skip() {
     setPhase('revealed');
