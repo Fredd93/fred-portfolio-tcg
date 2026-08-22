@@ -41,3 +41,35 @@
   .tcg-card:hover .jericho-m-ear-l, .tcg-card.tilting .jericho-m-ear-l,
   .tcg-card:hover .jericho-m-ear-r, .tcg-card.tilting .jericho-m-ear-r{ animation: none; }
 }
+
+/* ---- TulipVision: bloom-scanner ---- */
+.tulip-m-stem, .tulip-m-leaf{ fill: none; stroke: #1f8f6a; stroke-width: 2; stroke-linejoin: round; }
+.tulip-m-leaf{ fill: rgba(31,143,106,.35); }
+.tulip-m-petal{ fill: rgba(255,182,214,.55); stroke: #ffb6d6; stroke-width: 1.2; stroke-linejoin: round; }
+.tulip-m-lens-outer{ fill: rgba(10,20,25,.55); stroke: #7CFFB2; stroke-width: 1.6; }
+.tulip-m-lens-iris{ fill: #159487; transition: r .25s ease; transform-origin: 50px 42px; }
+.tulip-m-lens-pupil{ fill: #0a2b16; }
+
+.tulip-m-bloom{
+  transform-origin: 50px 60px;
+  animation: tulip-m-sway 5s ease-in-out infinite;
+}
+@keyframes tulip-m-sway{
+  0%, 100%{ transform: rotate(-2deg); }
+  50%{ transform: rotate(2deg); }
+}
+.tulip-m-lens-outer{ animation: tulip-m-lens-pulse 3.5s ease-in-out infinite; }
+@keyframes tulip-m-lens-pulse{
+  0%, 100%{ opacity:.75; }
+  50%{ opacity:1; }
+}
+
+/* hover/tilt -> lens "focuses" (iris contracts), outer ring glows */
+.tcg-card:hover .tulip-m-lens-iris, .tcg-card.tilting .tulip-m-lens-iris{ r: 4; }
+.tcg-card:hover .tulip-m-lens-outer, .tcg-card.tilting .tulip-m-lens-outer{
+  stroke: #b6ffd6; filter: drop-shadow(0 0 5px rgba(124,255,178,.7));
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tulip-m-bloom, .tulip-m-lens-outer{ animation: none; }
+}
