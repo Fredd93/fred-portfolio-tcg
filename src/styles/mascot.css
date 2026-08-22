@@ -1,0 +1,43 @@
+/* src/styles/mascot.css
+   Idle-loop + hover/tilt "activate" animation for flagship mascots.
+   Hover/activate reuses the card's existing .tcg-card:hover / .tilting
+   state (set by Card.jsx's pointer handlers) — no separate JS wiring. */
+
+.mascot{ overflow:visible; }
+
+/* ---- Jericho: hex-plated satellite-fox sentinel ---- */
+.mascot-jericho{
+  animation: jericho-m-breathe 4s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+@keyframes jericho-m-breathe{
+  0%, 100%{ transform: scale(1); }
+  50%{ transform: scale(1.03); }
+}
+.jericho-m-body{ fill: rgba(139,143,224,.28); stroke: rgba(180,183,240,.7); stroke-width: 1.4; }
+.jericho-m-head{ fill: rgba(139,143,224,.22); stroke: rgba(180,183,240,.7); stroke-width: 1.4; }
+.jericho-m-ear{ fill: rgba(139,143,224,.3); stroke: rgba(180,183,240,.6); stroke-width: 1.2; transform-origin: 50% 100%; }
+.jericho-m-seam{ stroke: rgba(180,183,240,.35); stroke-width: 1; }
+.jericho-m-tip{ fill: rgba(180,183,240,.4); transition: fill .3s ease, filter .3s ease; }
+.jericho-m-eye{ fill: rgba(180,183,240,.35); transition: fill .3s ease, filter .3s ease; }
+
+/* dormant -> activate on hover/tilt */
+.tcg-card:hover .jericho-m-tip, .tcg-card.tilting .jericho-m-tip{
+  fill: var(--gold); filter: drop-shadow(0 0 4px var(--gold));
+}
+.tcg-card:hover .jericho-m-eye, .tcg-card.tilting .jericho-m-eye{
+  fill: #eaf4ff; filter: drop-shadow(0 0 3px #9ecbff);
+}
+.tcg-card:hover .jericho-m-ear-l, .tcg-card.tilting .jericho-m-ear-l{ animation: jericho-m-ear-twitch .4s ease; }
+.tcg-card:hover .jericho-m-ear-r, .tcg-card.tilting .jericho-m-ear-r{ animation: jericho-m-ear-twitch .4s ease .05s; }
+@keyframes jericho-m-ear-twitch{
+  0%{ transform: rotate(0deg); }
+  40%{ transform: rotate(-6deg); }
+  100%{ transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mascot-jericho{ animation: none; }
+  .tcg-card:hover .jericho-m-ear-l, .tcg-card.tilting .jericho-m-ear-l,
+  .tcg-card:hover .jericho-m-ear-r, .tcg-card.tilting .jericho-m-ear-r{ animation: none; }
+}

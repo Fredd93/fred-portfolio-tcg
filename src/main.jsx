@@ -4,6 +4,7 @@ import './index.css';
 import './styles/layout.css';
 import './styles/card.css';
 import './styles/pack.css';
+import './styles/mascot.css';
 import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(
