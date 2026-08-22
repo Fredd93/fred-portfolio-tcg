@@ -111,3 +111,25 @@ footer .foot-links{margin-top:10px;display:flex;gap:16px;justify-content:center;
   .avatar{margin:0 auto;}
   .contact-row{justify-content:center;}
 }
+
+/* ---- Who's That Dev? reveal ---- */
+.intro-reveal{
+  position:relative; width:150px; height:150px; border-radius:18px; overflow:hidden;
+  box-shadow:0 0 0 4px #0e1016, 0 0 0 6px var(--gold);
+  cursor:pointer;
+}
+.intro-reveal-photo{
+  position:absolute; inset:0; background-size:cover; background-position:center;
+}
+.intro-reveal-silhouette{ filter: brightness(0) saturate(100%); }
+.intro-reveal-color{ filter:none; }
+.intro-reveal-caption{
+  position:absolute; left:0; right:0; bottom:0;
+  background:linear-gradient(0deg, rgba(6,6,10,.9), transparent);
+  color:#f4ead0; font-family:'Baloo 2'; font-weight:800; font-size:11px;
+  text-align:center; padding:6px 4px 5px; letter-spacing:.02em;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .intro-reveal-photo{ transition:none; }
+}
