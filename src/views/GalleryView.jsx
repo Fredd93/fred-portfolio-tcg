@@ -16,7 +16,14 @@ export default function GalleryView({ activeCardId, navigate, motionTiltEnabled 
   return (
     <div className="wrap">
       <div className="hero">
-        <div onClick={() => setReplayKey((k) => k + 1)}>
+        <div
+          onClick={() => setReplayKey((k) => k + 1)}
+          role="button"
+          tabIndex={0}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') setReplayKey((k) => k + 1);
+          }}
+        >
           <IntroReveal replayKey={replayKey} />
         </div>
         <div>

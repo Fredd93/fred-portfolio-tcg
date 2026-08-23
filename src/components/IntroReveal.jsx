@@ -3,14 +3,31 @@
 // re-skinned. Plays once per session (sessionStorage-gated by the parent
 // via `autoplay`), and replays whenever `replayKey` changes.
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import fredPhoto from '../assets/fred-photo-placeholder.svg';
 
 const SESSION_KEY = 'fredtcg_intro_seen';
 
+function safeGetSeen() {
+  try {
+    return !!sessionStorage.getItem(SESSION_KEY);
+  } catch {
+    return false;
+  }
+}
+
+function safeMarkSeen() {
+  try {
+    sessionStorage.setItem(SESSION_KEY, '1');
+  } catch {
+    // ignore — sandboxed/restrictive environments may block storage access
+  }
+}
+
 export default function IntroReveal({ replayKey = 0 }) {
   const [phase, setPhase] = useState('silhouette'); // 'silhouette' | 'revealed'
-  const [playing, setPlaying] = useState(() => !sessionStorage.getItem(SESSION_KEY));
+  const [playing, setPlaying] = useState(() => !safeGetSeen());
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (replayKey === 0) return;
@@ -22,7 +39,7 @@ export default function IntroReveal({ replayKey = 0 }) {
     if (!playing) return;
     const timer = setTimeout(() => {
       setPhase('revealed');
-      sessionStorage.setItem(SESSION_KEY, '1');
+      safeMarkSeen();
     }, 1300);
     return () => clearTimeout(timer);
   }, [playing, replayKey]);
@@ -33,7 +50,7 @@ export default function IntroReveal({ replayKey = 0 }) {
     // the silhouette phase.
     e?.stopPropagation();
     setPhase('revealed');
-    sessionStorage.setItem(SESSION_KEY, '1');
+    safeMarkSeen();
     setPlaying(false);
   }
 
@@ -56,7 +73,7 @@ export default function IntroReveal({ replayKey = 0 }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: reduce ? 0 : 0.3 }}
           />
         ) : (
           <motion.div
@@ -65,7 +82,7 @@ export default function IntroReveal({ replayKey = 0 }) {
             style={{ backgroundImage: `url(${fredPhoto})` }}
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: reduce ? 0 : 0.35 }}
           />
         )}
       </AnimatePresence>

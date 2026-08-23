@@ -33,7 +33,7 @@ export const RARITY = {
 export const PROJECTS = [
   {
     id: 'jericho', name: 'Jericho', rarity: 'ssir', type: 'arch',
-    stage: 'Stage 2 · In Progress', hp: 4108, hpMetric: 'loc', icon: '🛰️', mascot: 'jericho',
+    stage: 'Stage 2 · In Progress', hp: 4108, hpMetric: 'loc', icon: '🛰️',
     attacks: [
       { cost: ['arch'], name: 'Hexagonal Enforcement', dmg: null,
         text: 'Machine-enforced ports & adapters — import-linter contracts plus a custom reflection-based contract verifier. Boundaries cannot silently rot.' },
@@ -51,7 +51,7 @@ export const PROJECTS = [
   },
   {
     id: 'impala', name: 'Severe Weather Alert System', rarity: 'sir', type: 'ml',
-    stage: 'Stage 1 · Internship', hp: 650, hpMetric: 'hours', icon: '🌡️', mascot: 'impala',
+    stage: 'Stage 1 · Internship', hp: 650, hpMetric: 'hours', icon: '🌡️',
     attacks: [
       { cost: ['ml', 'data'], name: 'Threat Forecast', dmg: 92,
         text: 'XGBoost model predicting dangerous severe-weather events at ~92% accuracy. Sole developer, end to end.' },
@@ -67,7 +67,7 @@ export const PROJECTS = [
   },
   {
     id: 'tulip', name: 'TulipVision', rarity: 'ir', type: 'ml',
-    stage: 'Stage 2 · Deployed', hp: 2779, hpMetric: 'loc', icon: '🌷', mascot: 'tulip',
+    stage: 'Stage 2 · Deployed', hp: 2779, hpMetric: 'loc', icon: '🌷',
     attacks: [
       { cost: ['ml'], name: 'Faster R-CNN Bloom', dmg: 86,
         text: 'Best-of-four object detector (F1 0.86, mAP 0.83) — the one selected to power the production app, beating RetinaNet, YOLOv5 and YOLOv11.' },

@@ -80,16 +80,3 @@ export function ImpalaMascot({ className = '' }) {
     </svg>
   );
 }
-
-export const MASCOTS = {
-  jericho: JerichoMascot,
-  tulip: TulipMascot,
-  impala: ImpalaMascot,
-};
-
-export function MascotArt({ id, className }) {
-  const Mascot = MASCOTS[id];
-  return Mascot ? <Mascot className={className} /> : null;
-}
-
-export default MascotArt;
