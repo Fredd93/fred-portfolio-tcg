@@ -1,0 +1,119 @@
+/* src/styles/mascot.css
+   Idle-loop + hover/tilt "activate" animation for flagship mascots.
+   Hover/activate reuses the card's existing .tcg-card:hover / .tilting
+   state (set by Card.jsx's pointer handlers) — no separate JS wiring. */
+
+.tcg-card.scene-paused .mascot-jericho,
+.tcg-card.scene-paused .tulip-m-bloom, .tcg-card.scene-paused .tulip-m-lens-outer,
+.tcg-card.scene-paused .mascot-impala{
+  animation-play-state: paused;
+}
+
+.mascot{ overflow:visible; }
+
+/* ---- Jericho: hex-plated satellite-fox sentinel ---- */
+.mascot-jericho{
+  animation: jericho-m-breathe 4s ease-in-out infinite;
+  transform-origin: 50% 60%;
+}
+@keyframes jericho-m-breathe{
+  0%, 100%{ transform: scale(1); }
+  50%{ transform: scale(1.03); }
+}
+.jericho-m-body{ fill: rgba(139,143,224,.28); stroke: rgba(180,183,240,.7); stroke-width: 1.4; }
+.jericho-m-head{ fill: rgba(139,143,224,.22); stroke: rgba(180,183,240,.7); stroke-width: 1.4; }
+.jericho-m-ear{ fill: rgba(139,143,224,.3); stroke: rgba(180,183,240,.6); stroke-width: 1.2; transform-origin: 50% 100%; }
+.jericho-m-seam{ stroke: rgba(180,183,240,.35); stroke-width: 1; }
+.jericho-m-tip{ fill: rgba(180,183,240,.4); transition: fill .3s ease, filter .3s ease; }
+.jericho-m-eye{ fill: rgba(180,183,240,.35); transition: fill .3s ease, filter .3s ease; }
+
+/* dormant -> activate on hover/tilt */
+.tcg-card:hover .jericho-m-tip, .tcg-card.tilting .jericho-m-tip{
+  fill: var(--gold); filter: drop-shadow(0 0 4px var(--gold));
+}
+.tcg-card:hover .jericho-m-eye, .tcg-card.tilting .jericho-m-eye{
+  fill: #eaf4ff; filter: drop-shadow(0 0 3px #9ecbff);
+}
+.tcg-card:hover .jericho-m-ear-l, .tcg-card.tilting .jericho-m-ear-l{ animation: jericho-m-ear-twitch .4s ease; }
+.tcg-card:hover .jericho-m-ear-r, .tcg-card.tilting .jericho-m-ear-r{ animation: jericho-m-ear-twitch .4s ease .05s; }
+@keyframes jericho-m-ear-twitch{
+  0%{ transform: rotate(0deg); }
+  40%{ transform: rotate(-6deg); }
+  100%{ transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mascot-jericho{ animation: none; }
+  .tcg-card:hover .jericho-m-ear-l, .tcg-card.tilting .jericho-m-ear-l,
+  .tcg-card:hover .jericho-m-ear-r, .tcg-card.tilting .jericho-m-ear-r{ animation: none; }
+}
+
+/* ---- TulipVision: bloom-scanner ---- */
+.tulip-m-stem, .tulip-m-leaf{ fill: none; stroke: #1f8f6a; stroke-width: 2; stroke-linejoin: round; }
+.tulip-m-leaf{ fill: rgba(31,143,106,.35); }
+.tulip-m-petal{ fill: rgba(255,182,214,.55); stroke: #ffb6d6; stroke-width: 1.2; stroke-linejoin: round; }
+.tulip-m-lens-outer{ fill: rgba(10,20,25,.55); stroke: #7CFFB2; stroke-width: 1.6; }
+.tulip-m-lens-iris{ fill: #159487; transition: r .25s ease; transform-origin: 50px 42px; }
+.tulip-m-lens-pupil{ fill: #0a2b16; }
+
+.tulip-m-bloom{
+  transform-origin: 50px 60px;
+  animation: tulip-m-sway 5s ease-in-out infinite;
+}
+@keyframes tulip-m-sway{
+  0%, 100%{ transform: rotate(-2deg); }
+  50%{ transform: rotate(2deg); }
+}
+.tulip-m-lens-outer{ animation: tulip-m-lens-pulse 3.5s ease-in-out infinite; }
+@keyframes tulip-m-lens-pulse{
+  0%, 100%{ opacity:.75; }
+  50%{ opacity:1; }
+}
+
+/* hover/tilt -> lens "focuses" (iris contracts), outer ring glows */
+.tcg-card:hover .tulip-m-lens-iris, .tcg-card.tilting .tulip-m-lens-iris{ r: 4; }
+.tcg-card:hover .tulip-m-lens-outer, .tcg-card.tilting .tulip-m-lens-outer{
+  stroke: #b6ffd6; filter: drop-shadow(0 0 5px rgba(124,255,178,.7));
+}
+
+@media (prefers-reduced-motion: reduce){
+  .tulip-m-bloom, .tulip-m-lens-outer{ animation: none; }
+}
+
+/* ---- Severe Weather: split heat/cold sentinel ---- */
+.impala-m-torso-heat, .impala-m-head-heat{ fill: rgba(230,121,31,.4); stroke: #ffb648; stroke-width: 1.4; }
+.impala-m-ear-heat, .impala-m-tail-heat{ fill: rgba(230,121,31,.5); stroke: #ffb648; stroke-width: 1.2; }
+.impala-m-torso-cold, .impala-m-head-cold{ fill: rgba(28,63,107,.45); stroke: #cfe6ff; stroke-width: 1.4; }
+.impala-m-ear-cold, .impala-m-tail-cold{ fill: rgba(28,63,107,.55); stroke: #cfe6ff; stroke-width: 1.2; }
+.impala-m-eye{ fill: #1a1608; }
+
+.mascot-impala{ animation: impala-m-bob 4.5s ease-in-out infinite; transform-origin: 50% 60%; }
+@keyframes impala-m-bob{
+  0%, 100%{ transform: translateY(0); }
+  50%{ transform: translateY(-2.5px); }
+}
+.impala-m-tail-heat{ transform-origin: 20px 66px; }
+.impala-m-tail-cold{ transform-origin: 80px 66px; }
+
+.tcg-card:hover .impala-m-ear-heat, .tcg-card.tilting .impala-m-ear-heat{ animation: impala-m-ear-flick .35s ease; }
+.tcg-card:hover .impala-m-ear-cold, .tcg-card.tilting .impala-m-ear-cold{ animation: impala-m-ear-flick .35s ease .05s; }
+.tcg-card:hover .impala-m-tail-heat, .tcg-card.tilting .impala-m-tail-heat{ animation: impala-m-tail-flick .5s ease; }
+.tcg-card:hover .impala-m-tail-cold, .tcg-card.tilting .impala-m-tail-cold{ animation: impala-m-tail-flick .5s ease .05s; }
+@keyframes impala-m-ear-flick{
+  0%{ transform: rotate(0deg); }
+  50%{ transform: rotate(-8deg); }
+  100%{ transform: rotate(0deg); }
+}
+@keyframes impala-m-tail-flick{
+  0%{ transform: rotate(0deg); }
+  50%{ transform: rotate(6deg); }
+  100%{ transform: rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .mascot-impala{ animation: none; }
+  .tcg-card:hover .impala-m-ear-heat, .tcg-card.tilting .impala-m-ear-heat,
+  .tcg-card:hover .impala-m-ear-cold, .tcg-card.tilting .impala-m-ear-cold,
+  .tcg-card:hover .impala-m-tail-heat, .tcg-card.tilting .impala-m-tail-heat,
+  .tcg-card:hover .impala-m-tail-cold, .tcg-card.tilting .impala-m-tail-cold{ animation: none; }
+}

@@ -3,7 +3,8 @@
 // Falls back to a centered icon on a radial gradient for any full-art
 // project that doesn't have a registered scene yet.
 
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
+import { JerichoMascot, TulipMascot, ImpalaMascot } from './MascotArt.jsx';
 
 function DefaultFullArtScene({ icon }) {
   return (
@@ -28,7 +29,7 @@ function JerichoScene() {
           <span className="jericho-ring jericho-ring-2" />
           <span className="jericho-ring jericho-ring-1" />
         </div>
-        <span className="jericho-sat">🛰️</span>
+        <JerichoMascot className="jericho-sat" />
       </div>
     </div>
   );
@@ -62,6 +63,15 @@ const TULIP_DETECTIONS = [
 ];
 
 function TulipVisionScene() {
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setActiveIdx((i) => (i + 1) % TULIP_DETECTIONS.length);
+    }, 2800);
+    return () => clearInterval(id);
+  }, []);
+
   return (
     <div className="art-bg scene-tulip">
       <div className="tulip-rows" />
@@ -74,20 +84,24 @@ function TulipVisionScene() {
         >🌷</span>
       ))}
       {TULIP_FOREGROUND.map((t, i) => (
-        <span
+        <div
           key={`fg-${i}`}
-          className="tulip-glyph"
-          style={{ left: t.left, bottom: t.bottom, fontSize: t.size }}
-        >🌷</span>
+          className="tulip-mascot-slot"
+          style={{ left: t.left, bottom: t.bottom, width: t.size * 1.6, height: t.size * 1.6 }}
+        >
+          <TulipMascot />
+        </div>
       ))}
-      {TULIP_DETECTIONS.map((d) => (
+      {TULIP_DETECTIONS.map((d, i) => (
         <Fragment key={d.tier}>
           <div
-            className={`tulip-box tulip-box-${d.tier}`}
+            className={`tulip-box tulip-box-${d.tier} ${i === activeIdx ? 'tulip-box-active' : ''}`}
             style={{ left: d.left, bottom: d.bottom, width: d.width, height: d.height }}
-          />
+          >
+            {i === activeIdx && <div className="tulip-box-scanline" />}
+          </div>
           <div
-            className={`tulip-conf tulip-conf-${d.tier}`}
+            className={`tulip-conf tulip-conf-${d.tier} ${i === activeIdx ? 'tulip-conf-active' : ''}`}
             style={{ left: d.left, bottom: `calc(${d.bottom} + ${d.height + 1}px)` }}
           >R-CNN {d.pct}%</div>
         </Fragment>
@@ -111,6 +125,9 @@ function SevereWeatherScene() {
         <path d="M0 46 Q 8 41, 16 46 T 32 46" />
       </svg>
       <span className="impala-snowflake">❄️</span>
+      <div className="impala-mascot-slot">
+        <ImpalaMascot />
+      </div>
       <span className="impala-crystal impala-crystal-a">❆</span>
       <span className="impala-crystal impala-crystal-b">❆</span>
       <div className="impala-icing" />

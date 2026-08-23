@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
 import { FullArtScene } from './FullArtScenes.jsx';
 import { subscribeTilt } from '../utils/motionTiltBus.js';
+import { useInViewAnimation } from '../hooks/useInViewAnimation.js';
 
 const FULLART = new Set(['ir', 'sir', 'ssir']);
 
@@ -108,6 +109,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
 
 export default function Card({ project, index, total, onClick, tiltEnabled = true, motionTiltEnabled = false }) {
   const ref = useRef(null);
+  const [inViewRef, inView] = useInViewAnimation();
   const touchStateRef = useRef({ startX: 0, startY: 0, isDragging: false });
   const type = TYPES[project.type];
 
@@ -183,6 +185,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
 
   return (
     <motion.div
+      ref={inViewRef}
       className="tcg-card-wrap"
       initial={{ opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -191,7 +194,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     >
       <div
         ref={ref}
-        className={`tcg-card rarity-${project.rarity}`}
+        className={`tcg-card rarity-${project.rarity} ${!inView ? 'scene-paused' : ''}`}
         style={{ '--type-color': type.color }}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleLeave}

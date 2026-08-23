@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import CardModal from '../components/CardModal.jsx';
+import IntroReveal from '../components/IntroReveal.jsx';
 import { PROJECTS, SUPPORTERS, CERTS, TYPES, TYPE_SKILLS } from '../data/cards.js';
 
 function EnergyPip({ type }) {
@@ -9,11 +11,14 @@ function EnergyPip({ type }) {
 
 export default function GalleryView({ activeCardId, navigate, motionTiltEnabled = false }) {
   const active = activeCardId ? PROJECTS.find((p) => p.id === activeCardId) : null;
+  const [replayKey, setReplayKey] = useState(0);
 
   return (
     <div className="wrap">
       <div className="hero">
-        <div className="avatar"><span>MF</span></div>
+        <div>
+          <IntroReveal replayKey={replayKey} onReplayRequest={() => setReplayKey((k) => k + 1)} />
+        </div>
         <div>
           <div className="eyebrow">Trainer ID · Career Set 2026</div>
           <h1 className="trainer-name">Mahmoud "Fred" Farid</h1>
