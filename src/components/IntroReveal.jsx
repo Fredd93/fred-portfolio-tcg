@@ -24,7 +24,7 @@ function safeMarkSeen() {
   }
 }
 
-export default function IntroReveal({ replayKey = 0 }) {
+export default function IntroReveal({ replayKey = 0, onReplayRequest }) {
   const [phase, setPhase] = useState('silhouette'); // 'silhouette' | 'revealed'
   const [playing, setPlaying] = useState(() => !safeGetSeen());
   const reduce = useReducedMotion();
@@ -44,25 +44,42 @@ export default function IntroReveal({ replayKey = 0 }) {
     return () => clearTimeout(timer);
   }, [playing, replayKey]);
 
-  function skip(e) {
-    // Stop propagation so a parent's click-to-replay handler (see
-    // GalleryView) doesn't immediately undo this skip by restarting
-    // the silhouette phase.
-    e?.stopPropagation();
+  function skip() {
     setPhase('revealed');
     safeMarkSeen();
     setPlaying(false);
   }
 
   const resolved = !playing || phase === 'revealed';
+  const isSkippable = playing && phase === 'silhouette';
+
+  // Single unified activation handler: skip the silhouette while it's
+  // playing, otherwise (already resolved) request a replay from the
+  // parent. This is the only interactive element in this subtree — the
+  // parent (GalleryView) no longer wraps it in its own role="button".
+  function activate() {
+    if (isSkippable) {
+      skip();
+    } else {
+      onReplayRequest?.();
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      if (e.key === ' ') e.preventDefault();
+      activate();
+    }
+  }
 
   return (
     <div
       className="intro-reveal"
-      onClick={playing && phase === 'silhouette' ? skip : undefined}
-      role={playing && phase === 'silhouette' ? 'button' : undefined}
-      tabIndex={playing && phase === 'silhouette' ? 0 : undefined}
-      onKeyDown={playing && phase === 'silhouette' ? (e) => e.key === 'Enter' && skip() : undefined}
+      onClick={activate}
+      role="button"
+      tabIndex={0}
+      aria-label={resolved ? "It's Fred! Click to replay" : "Who's that Dev? Click to reveal"}
+      onKeyDown={handleKeyDown}
     >
       <AnimatePresence mode="wait">
         {!resolved ? (
