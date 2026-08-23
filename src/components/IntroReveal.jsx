@@ -27,7 +27,11 @@ export default function IntroReveal({ replayKey = 0 }) {
     return () => clearTimeout(timer);
   }, [playing, replayKey]);
 
-  function skip() {
+  function skip(e) {
+    // Stop propagation so a parent's click-to-replay handler (see
+    // GalleryView) doesn't immediately undo this skip by restarting
+    // the silhouette phase.
+    e?.stopPropagation();
     setPhase('revealed');
     sessionStorage.setItem(SESSION_KEY, '1');
     setPlaying(false);
