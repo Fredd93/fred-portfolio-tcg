@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
 import { FullArtScene } from './FullArtScenes.jsx';
+import { MascotArt } from './MascotArt.jsx';
 import { subscribeTilt } from '../utils/motionTiltBus.js';
 import { useInViewAnimation } from '../hooks/useInViewAnimation.js';
 
@@ -40,7 +41,9 @@ export function CardFace({ project, index = 0, total = 17 }) {
       {!fullArt && (
         <>
           <div className="art">
-            <span>{project.icon}</span>
+            {project.mascot
+              ? <MascotArt id={project.mascot} className="mascot-classic" />
+              : <span>{project.icon}</span>}
             <div className="art-shine" />
           </div>
           <div className="dex-line">{project.context} · {project.dates}</div>

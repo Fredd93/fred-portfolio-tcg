@@ -80,3 +80,58 @@ export function ImpalaMascot({ className = '' }) {
     </svg>
   );
 }
+
+export function GtaMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, idle">
+        <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
+        <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
+        <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="70" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="50" cy="72" r="2.5" />
+        <path className="gta-m-whisker" d="M20 70 Q6 66 8 54" />
+        <path className="gta-m-whisker" d="M80 70 Q94 66 92 54" />
+        <circle className="gta-m-light" cx="38" cy="58" r="5" />
+        <circle className="gta-m-light" cx="62" cy="58" r="5" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, one headlight on">
+        <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
+        <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
+        <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="70" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="50" cy="72" r="2.5" />
+        <path className="gta-m-whisker" d="M20 70 Q6 66 8 54" />
+        <path className="gta-m-whisker" d="M80 70 Q94 66 92 54" />
+        <circle className="gta-m-light gta-m-light-on" cx="38" cy="58" r="5" />
+        <circle className="gta-m-light" cx="62" cy="58" r="5" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, both headlights on">
+        <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
+        <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
+        <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="70" cy="65" r="2.5" />
+        <circle className="gta-m-bolt" cx="50" cy="72" r="2.5" />
+        <path className="gta-m-whisker" d="M20 70 Q6 66 8 54" />
+        <path className="gta-m-whisker" d="M80 70 Q94 66 92 54" />
+        <circle className="gta-m-light gta-m-light-on" cx="38" cy="58" r="5" />
+        <circle className="gta-m-light gta-m-light-on" cx="62" cy="58" r="5" />
+        <ellipse className="gta-m-exhaust" cx="8" cy="50" rx="4" ry="2.5" />
+        <ellipse className="gta-m-exhaust" cx="92" cy="50" rx="4" ry="2.5" />
+      </svg>
+    </div>
+  );
+}
+
+export const MASCOTS = {
+  jericho: JerichoMascot,
+  tulip: TulipMascot,
+  impala: ImpalaMascot,
+  gta: GtaMascot,
+};
+
+export function MascotArt({ id, className = '' }) {
+  const MascotComponent = MASCOTS[id];
+  if (!MascotComponent) return null;
+  return <MascotComponent className={className} />;
+}

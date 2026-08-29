@@ -131,3 +131,12 @@
   .tcg-card:not([data-tilt-frame]) .mascot-frame-0,
   .tcg-card[data-tilt-frame] .mascot-frame-0{ opacity:1 !important; }
 }
+
+/* ---- Grand Transmission Auto: Varoom/Revavroom engine-block ---- */
+.gta-m-body{ fill:rgba(138,143,154,.35); stroke:#cfd3da; stroke-width:1.4; }
+.gta-m-block{ fill:rgba(138,143,154,.5); stroke:#cfd3da; stroke-width:1.2; }
+.gta-m-bolt{ fill:#cfd3da; }
+.gta-m-whisker{ fill:none; stroke:#9aa0ab; stroke-width:2; stroke-linecap:round; }
+.gta-m-light{ fill:#3a3d44; stroke:#cfd3da; stroke-width:1; }
+.gta-m-light-on{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }
+.gta-m-exhaust{ fill:#c7cbd2; opacity:.5; }

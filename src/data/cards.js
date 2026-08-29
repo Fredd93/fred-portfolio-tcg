@@ -84,7 +84,7 @@ export const PROJECTS = [
   },
   {
     id: 'gta', name: 'Grand Transmission Auto', rarity: 'reverseholo', type: 'frontend',
-    stage: 'Stage 1 · Primary Dev', hp: 9534, hpMetric: 'loc', icon: '🚗',
+    stage: 'Stage 1 · Primary Dev', hp: 9534, hpMetric: 'loc', icon: '🚗', mascot: 'gta',
     attacks: [
       { cost: ['frontend', 'backend'], name: 'Dual Frontend Serve', dmg: null,
         text: 'One PHP/PDO REST API backing both a server-rendered site and a Vue 3 SPA, routed through Nginx.' },
