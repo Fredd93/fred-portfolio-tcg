@@ -139,7 +139,7 @@ export const PROJECTS = [
   },
   {
     id: 'souls', name: 'Souls Within', rarity: 'common', type: 'creative',
-    stage: 'Basic', hp: 137, hpMetric: 'loc', icon: '🎮',
+    stage: 'Basic', hp: 137, hpMetric: 'loc', icon: '🎮', mascot: 'souls',
     attacks: [{ cost: ['creative'], name: '2D World Build', dmg: null, text: 'Indie 2D game, C#/Unity — creativity kept alive outside the day job.' }],
     role: 'Sole Developer (Personal Project)', resistance: '—', retreat: 1,
     languages: ['C#'],

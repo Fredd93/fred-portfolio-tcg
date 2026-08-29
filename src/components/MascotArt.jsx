@@ -230,6 +230,28 @@ export function SomerinMascot({ className = '' }) {
   );
 }
 
+export function SoulsMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, translucent">
+        <path className="souls-m-body souls-m-body-faint" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
+        <circle className="souls-m-eye" cx="43" cy="50" r="3" />
+        <circle className="souls-m-eye" cx="57" cy="50" r="3" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, solidifying">
+        <path className="souls-m-body souls-m-body-mid" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
+        <circle className="souls-m-eye" cx="43" cy="50" r="3" />
+        <circle className="souls-m-eye" cx="57" cy="50" r="3" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, solid and bright-eyed">
+        <path className="souls-m-body souls-m-body-full" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
+        <circle className="souls-m-eye souls-m-eye-glow" cx="43" cy="50" r="3" />
+        <circle className="souls-m-eye souls-m-eye-glow" cx="57" cy="50" r="3" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -238,6 +260,7 @@ export const MASCOTS = {
   haarlem: HaarlemMascot,
   selfhost: SelfhostMascot,
   somerin: SomerinMascot,
+  souls: SoulsMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

@@ -167,3 +167,11 @@
 .somerin-m-bandana-flap{ opacity:1; }
 .somerin-m-wing{ fill:none; stroke:#c3d6e8; stroke-width:2.5; stroke-linecap:round; }
 .somerin-m-wing-open{ stroke:#e6effa; }
+
+/* ---- Souls Within: Gastly-lineage sprite ghost ---- */
+.souls-m-body{ stroke:#a58ae0; stroke-width:1.2; }
+.souls-m-body-faint{ fill:#6a4fa3; opacity:.3; }
+.souls-m-body-mid{ fill:#6a4fa3; opacity:.6; }
+.souls-m-body-full{ fill:#6a4fa3; opacity:.95; }
+.souls-m-eye{ fill:#f4ead0; }
+.souls-m-eye-glow{ filter:drop-shadow(0 0 4px var(--type-color)); }
