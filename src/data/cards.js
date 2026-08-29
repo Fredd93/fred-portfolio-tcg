@@ -114,7 +114,7 @@ export const PROJECTS = [
   },
   {
     id: 'selfhost', name: 'Self-Hosted AI Infrastructure', rarity: 'holo', type: 'devops',
-    stage: 'Basic', hp: 159, hpMetric: 'loc', icon: '🖥️',
+    stage: 'Basic', hp: 159, hpMetric: 'loc', icon: '🖥️', mascot: 'selfhost',
     attacks: [
       { cost: ['devops'], name: 'Local-First Stack', dmg: null,
         text: 'Local MCP servers plus self-hosted SearXNG search — no cloud API key required.' },

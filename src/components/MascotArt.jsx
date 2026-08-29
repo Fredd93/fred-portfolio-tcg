@@ -167,12 +167,45 @@ export function HaarlemMascot({ className = '' }) {
   );
 }
 
+export function SelfhostMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, dormant">
+        <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
+        <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="46" width="28" height="3" />
+        <circle className="selfhost-m-led" cx="40" cy="80" r="2" />
+        <path className="selfhost-m-spark selfhost-m-spark-dim" d="M50 55 L44 65 L49 65 L46 75 L58 60 L52 60 Z" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, flickering">
+        <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
+        <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="46" width="28" height="3" />
+        <circle className="selfhost-m-led" cx="40" cy="80" r="2" />
+        <path className="selfhost-m-spark selfhost-m-spark-mid" d="M50 55 L44 65 L49 65 L46 75 L58 60 L52 60 Z" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, fully lit">
+        <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
+        <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
+        <rect className="selfhost-m-vent" x="36" y="46" width="28" height="3" />
+        <circle className="selfhost-m-led" cx="40" cy="80" r="2" />
+        <path className="selfhost-m-spark selfhost-m-spark-full" d="M50 55 L44 65 L49 65 L46 75 L58 60 L52 60 Z" />
+        <circle className="selfhost-m-fan" cx="50" cy="35" r="8" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
   impala: ImpalaMascot,
   gta: GtaMascot,
   haarlem: HaarlemMascot,
+  selfhost: SelfhostMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

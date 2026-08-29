@@ -149,3 +149,11 @@
 .haarlem-m-flag:nth-of-type(even){ fill:#ffe08a; }
 .haarlem-m-flag-active{ opacity:.9; }
 .haarlem-m-lantern{ fill:#ffe08a; filter:drop-shadow(0 0 3px #ffe08a); }
+
+/* ---- Self-Hosted AI Infrastructure: Rotom-lineage server spark ---- */
+.selfhost-m-tower{ fill:rgba(127,140,156,.3); stroke:#c7ccd3; stroke-width:1.4; }
+.selfhost-m-vent, .selfhost-m-led{ fill:#c7ccd3; }
+.selfhost-m-spark-dim{ fill:#5a6068; opacity:.3; }
+.selfhost-m-spark-mid{ fill:var(--type-color); opacity:.6; }
+.selfhost-m-spark-full{ fill:var(--type-color); opacity:1; filter:drop-shadow(0 0 4px var(--type-color)); }
+.selfhost-m-fan{ fill:none; stroke:var(--type-color); stroke-width:1; stroke-dasharray:3 2; opacity:.6; }
