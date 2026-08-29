@@ -123,11 +123,56 @@ export function GtaMascot({ className = '' }) {
   );
 }
 
+export function HaarlemMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, garland loose">
+        <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
+        <path className="haarlem-m-stem" d="M50 73 L50 88" />
+        <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
+        <circle className="haarlem-m-eye" cx="44" cy="52" r="2" />
+        <circle className="haarlem-m-eye" cx="56" cy="52" r="2" />
+        <polygon className="haarlem-m-flag" points="30,42 34,50 26,50" />
+        <polygon className="haarlem-m-flag" points="45,38 49,47 41,47" />
+        <polygon className="haarlem-m-flag" points="60,38 64,47 56,47" />
+        <polygon className="haarlem-m-flag" points="72,42 76,50 68,50" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, garland straightening">
+        <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
+        <path className="haarlem-m-stem" d="M50 73 L50 88" />
+        <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
+        <circle className="haarlem-m-eye" cx="44" cy="52" r="2" />
+        <circle className="haarlem-m-eye" cx="56" cy="52" r="2" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="30,40 34,48 26,48" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="45,36 49,45 41,45" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="60,36 64,45 56,45" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="72,40 76,48 68,48" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, lanterns lit">
+        <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
+        <path className="haarlem-m-stem" d="M50 73 L50 88" />
+        <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
+        <circle className="haarlem-m-eye" cx="44" cy="52" r="2" />
+        <circle className="haarlem-m-eye" cx="56" cy="52" r="2" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="30,40 34,48 26,48" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="45,36 49,45 41,45" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="60,36 64,45 56,45" />
+        <polygon className="haarlem-m-flag haarlem-m-flag-active" points="72,40 76,48 68,48" />
+        <circle className="haarlem-m-lantern" cx="30" cy="46" r="2.5" />
+        <circle className="haarlem-m-lantern" cx="45" cy="42" r="2.5" />
+        <circle className="haarlem-m-lantern" cx="60" cy="42" r="2.5" />
+        <circle className="haarlem-m-lantern" cx="72" cy="46" r="2.5" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
   impala: ImpalaMascot,
   gta: GtaMascot,
+  haarlem: HaarlemMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

@@ -100,7 +100,7 @@ export const PROJECTS = [
   },
   {
     id: 'haarlem', name: 'Haarlem Festival', rarity: 'holo', type: 'frontend',
-    stage: 'Stage 1 · Design Lead', hp: 4583, hpMetric: 'loc', icon: '🎪',
+    stage: 'Stage 1 · Design Lead', hp: 4583, hpMetric: 'loc', icon: '🎪', mascot: 'haarlem',
     attacks: [
       { cost: ['frontend'], name: 'Design → Ship', dmg: null,
         text: 'Led the Figma design team, then built the full-stack site — PHP, API, JS.' },

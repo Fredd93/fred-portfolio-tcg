@@ -140,3 +140,12 @@
 .gta-m-light{ fill:#3a3d44; stroke:#cfd3da; stroke-width:1; }
 .gta-m-light-on{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }
 .gta-m-exhaust{ fill:#c7cbd2; opacity:.5; }
+
+/* ---- Haarlem Festival: Comfey-lineage bunting decorator ---- */
+.haarlem-m-body{ fill:rgba(47,168,90,.28); stroke:#7be0a0; stroke-width:1.4; }
+.haarlem-m-stem, .haarlem-m-leaf{ fill:rgba(47,168,90,.35); stroke:#7be0a0; stroke-width:1.2; }
+.haarlem-m-eye{ fill:#1c3d24; }
+.haarlem-m-flag{ opacity:.5; fill:#ffb6d6; }
+.haarlem-m-flag:nth-of-type(even){ fill:#ffe08a; }
+.haarlem-m-flag-active{ opacity:.9; }
+.haarlem-m-lantern{ fill:#ffe08a; filter:drop-shadow(0 0 3px #ffe08a); }
