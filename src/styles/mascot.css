@@ -157,3 +157,13 @@
 .selfhost-m-spark-mid{ fill:var(--type-color); opacity:.6; }
 .selfhost-m-spark-full{ fill:var(--type-color); opacity:1; filter:drop-shadow(0 0 4px var(--type-color)); }
 .selfhost-m-fan{ fill:none; stroke:var(--type-color); stroke-width:1; stroke-dasharray:3 2; opacity:.6; }
+
+/* ---- Somerin: Swablu-lineage camp cloud-bird ---- */
+.somerin-m-body{ fill:rgba(230,240,250,.85); stroke:#d7e6f4; stroke-width:1.4; }
+.somerin-m-head{ fill:rgba(230,240,250,.9); stroke:#d7e6f4; stroke-width:1.4; }
+.somerin-m-eye{ fill:#1c1c1c; }
+.somerin-m-beak{ fill:#ffcf6b; }
+.somerin-m-bandana{ fill:var(--type-color); opacity:.85; }
+.somerin-m-bandana-flap{ opacity:1; }
+.somerin-m-wing{ fill:none; stroke:#c3d6e8; stroke-width:2.5; stroke-linecap:round; }
+.somerin-m-wing-open{ stroke:#e6effa; }

@@ -199,6 +199,37 @@ export function SelfhostMascot({ className = '' }) {
   );
 }
 
+export function SomerinMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, grounded">
+        <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
+        <circle className="somerin-m-head" cx="72" cy="48" r="10" />
+        <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
+        <polygon className="somerin-m-beak" points="82,48 90,50 82,52" />
+        <path className="somerin-m-bandana" d="M62 42 L70 38 L70 46 Z" />
+        <path className="somerin-m-wing" d="M35 55 Q22 55 20 60" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, wings opening">
+        <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
+        <circle className="somerin-m-head" cx="72" cy="48" r="10" />
+        <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
+        <polygon className="somerin-m-beak" points="82,48 90,50 82,52" />
+        <path className="somerin-m-bandana" d="M62 42 L70 37 L71 46 Z" />
+        <path className="somerin-m-wing" d="M35 55 Q16 52 14 58" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, airborne">
+        <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
+        <circle className="somerin-m-head" cx="72" cy="48" r="10" />
+        <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
+        <polygon className="somerin-m-beak" points="82,48 90,50 82,52" />
+        <path className="somerin-m-bandana somerin-m-bandana-flap" d="M62 42 L72 35 L73 46 Z" />
+        <path className="somerin-m-wing somerin-m-wing-open" d="M35 55 Q10 48 8 56 Q10 62 20 60" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -206,6 +237,7 @@ export const MASCOTS = {
   gta: GtaMascot,
   haarlem: HaarlemMascot,
   selfhost: SelfhostMascot,
+  somerin: SomerinMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

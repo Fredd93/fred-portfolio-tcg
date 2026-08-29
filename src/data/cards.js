@@ -128,7 +128,7 @@ export const PROJECTS = [
   },
   {
     id: 'somerin', name: 'Somerin', rarity: 'common', type: 'cloud',
-    stage: 'Basic', hp: 40, hpMetric: 'hours', icon: '🏕️',
+    stage: 'Basic', hp: 40, hpMetric: 'hours', icon: '🏕️', mascot: 'somerin',
     attacks: [{ cost: ['cloud'], name: 'Camp Ops', dmg: null, text: 'Camp activity management system — C#, Azure, SSMS.' }],
     role: 'Team Lead (Team Dispersed — Delivered Alone)', resistance: '—', retreat: 1,
     languages: ['C#', 'Azure', 'SQL'],
