@@ -199,3 +199,11 @@
 .movie-m-eye{ fill:#1c1c1c; }
 .movie-m-stub{ fill:#ffe08a; stroke:#c9a24a; stroke-width:1; }
 .movie-m-stub-torn{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }
+
+/* ---- Service Desk Ticket System: Yamask-lineage archivist ghost ---- */
+.servicedesk-m-body{ fill:rgba(43,127,209,.22); stroke:#8fbeeb; stroke-width:1.4; }
+.servicedesk-m-eye{ fill:#12202e; }
+.servicedesk-m-plaque{ fill:#3a3428; stroke:#c9a24a; stroke-width:1.2; }
+.servicedesk-m-plaque-active{ stroke:var(--type-color); }
+.servicedesk-m-plaque-line{ stroke:#c9a24a; stroke-width:1.4; stroke-linecap:round; }
+.servicedesk-m-plaque-check{ fill:none; stroke:var(--type-color); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 3px var(--type-color)); }

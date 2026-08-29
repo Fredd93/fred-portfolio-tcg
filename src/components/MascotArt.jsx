@@ -336,6 +336,33 @@ export function MovieMascot({ className = '' }) {
   );
 }
 
+export function ServicedeskMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque blank">
+        <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
+        <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
+        <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
+        <rect className="servicedesk-m-plaque" x="40" y="70" width="20" height="16" rx="2" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque logging">
+        <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
+        <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
+        <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
+        <rect className="servicedesk-m-plaque servicedesk-m-plaque-active" x="40" y="70" width="20" height="16" rx="2" />
+        <line className="servicedesk-m-plaque-line" x1="43" y1="78" x2="57" y2="78" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque stamped">
+        <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
+        <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
+        <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
+        <rect className="servicedesk-m-plaque servicedesk-m-plaque-active" x="40" y="70" width="20" height="16" rx="2" />
+        <path className="servicedesk-m-plaque-check" d="M44 78 l4 4 l8 -8" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -348,6 +375,7 @@ export const MASCOTS = {
   chapeau: ChapeauMascot,
   greenhouse: GreenhouseMascot,
   movie: MovieMascot,
+  servicedesk: ServicedeskMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

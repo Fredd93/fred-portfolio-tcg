@@ -183,7 +183,7 @@ export const PROJECTS = [
   },
   {
     id: 'servicedesk', name: 'Service Desk Ticket System', rarity: 'common', type: 'backend',
-    stage: 'Basic', hp: 1903, hpMetric: 'loc', icon: '🎫',
+    stage: 'Basic', hp: 1903, hpMetric: 'loc', icon: '🎫', mascot: 'servicedesk',
     attacks: [{ cost: ['backend', 'data'], name: 'Queue & Route', dmg: null, text: 'Ticketing system, C#/MongoDB, academic build.' }],
     role: 'Team Lead', resistance: '—', retreat: 1,
     languages: ['C#', 'MongoDB'],
