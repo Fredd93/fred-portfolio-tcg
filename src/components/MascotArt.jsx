@@ -252,6 +252,35 @@ export function SoulsMascot({ className = '' }) {
   );
 }
 
+export function ChapeauMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, beak closed">
+        <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
+        <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
+        <polygon className="chapeau-m-crest" points="38,26 50,12 62,26" />
+        <circle className="chapeau-m-eye" cx="45" cy="32" r="2" />
+        <polygon className="chapeau-m-beak" points="50,38 56,40 50,42" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, beak opening">
+        <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
+        <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
+        <polygon className="chapeau-m-crest" points="38,26 50,11 62,26" />
+        <circle className="chapeau-m-eye" cx="45" cy="32" r="2" />
+        <polygon className="chapeau-m-beak" points="50,37 60,41 50,45" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, chirping">
+        <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
+        <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
+        <polygon className="chapeau-m-crest chapeau-m-crest-raised" points="38,26 50,8 62,26" />
+        <circle className="chapeau-m-eye" cx="45" cy="32" r="2" />
+        <polygon className="chapeau-m-beak" points="50,36 63,42 50,48" />
+        <path className="chapeau-m-note" d="M70 20 q3 -6 6 0 l0 10" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -261,6 +290,7 @@ export const MASCOTS = {
   selfhost: SelfhostMascot,
   somerin: SomerinMascot,
   souls: SoulsMascot,
+  chapeau: ChapeauMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

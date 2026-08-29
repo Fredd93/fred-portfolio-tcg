@@ -150,7 +150,7 @@ export const PROJECTS = [
   },
   {
     id: 'chapeau', name: 'Chapeau POS', rarity: 'common', type: 'backend',
-    stage: 'Basic', hp: 30, hpMetric: 'hours', icon: '🧾',
+    stage: 'Basic', hp: 30, hpMetric: 'hours', icon: '🧾', mascot: 'chapeau',
     attacks: [{ cost: ['backend'], name: 'Ring It Up', dmg: null, text: 'Point-of-sale system, academic build.' }],
     role: 'Team Member (Design + Dev)', resistance: '—', retreat: 1,
     languages: ['C#', 'SQL'],
