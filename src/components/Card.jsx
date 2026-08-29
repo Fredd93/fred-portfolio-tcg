@@ -119,6 +119,9 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     const rx = ((my - 50) / 50) * -8;
     const ry = ((mx - 50) / 50) * 8;
     ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    const magnitude = Math.hypot(rx, ry);
+    const frame = magnitude < 3 ? 0 : magnitude < 7 ? 1 : 2;
+    ref.current.dataset.tiltFrame = String(frame);
   }
 
   function updateTilt(clientX, clientY) {
@@ -143,6 +146,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     if (!ref.current) return;
     ref.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
     ref.current.classList.remove('tilting');
+    ref.current.dataset.tiltFrame = '0';
   }
 
   function handleTouchStart(e) {

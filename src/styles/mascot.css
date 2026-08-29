@@ -117,3 +117,17 @@
   .tcg-card:hover .impala-m-tail-heat, .tcg-card.tilting .impala-m-tail-heat,
   .tcg-card:hover .impala-m-tail-cold, .tcg-card.tilting .impala-m-tail-cold{ animation: none; }
 }
+
+/* ---- Non-flagship lenticular mascots: generic frame-swap ---- */
+.layout-classic .art .mascot-frames{ position:relative; width:52px; height:52px; }
+.mascot-frame{ position:absolute; inset:0; width:100%; height:100%; opacity:0; overflow:visible; }
+.tcg-card:not([data-tilt-frame]) .mascot-frame-0,
+.tcg-card[data-tilt-frame="0"] .mascot-frame-0,
+.tcg-card[data-tilt-frame="1"] .mascot-frame-1,
+.tcg-card[data-tilt-frame="2"] .mascot-frame-2{ opacity:1; }
+
+@media (prefers-reduced-motion: reduce){
+  .tcg-card .mascot-frame-1, .tcg-card .mascot-frame-2{ opacity:0 !important; }
+  .tcg-card:not([data-tilt-frame]) .mascot-frame-0,
+  .tcg-card[data-tilt-frame] .mascot-frame-0{ opacity:1 !important; }
+}
