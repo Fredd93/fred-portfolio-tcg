@@ -172,7 +172,7 @@ export const PROJECTS = [
   },
   {
     id: 'movie', name: 'Movie Theater Ticketing', rarity: 'common', type: 'frontend',
-    stage: 'Basic', hp: 3129, hpMetric: 'loc', icon: '🎟️',
+    stage: 'Basic', hp: 3129, hpMetric: 'loc', icon: '🎟️', mascot: 'movie',
     attacks: [{ cost: ['frontend', 'backend'], name: 'Seat Select', dmg: null, text: 'Ticketing system, Java/JavaFX, academic build.' }],
     role: 'Sole Developer', resistance: '—', retreat: 1,
     languages: ['Java'],

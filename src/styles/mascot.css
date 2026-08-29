@@ -192,3 +192,10 @@
 .greenhouse-m-wire-active{ stroke:var(--type-color); opacity:.9; filter:drop-shadow(0 0 3px var(--type-color)); }
 .greenhouse-m-droplet{ fill:#8fc6e8; opacity:.85; }
 .greenhouse-m-sprout{ fill:#4a9a4a; }
+
+/* ---- Movie Theater Ticketing: Klefki-lineage ticket-stub keyring ---- */
+.movie-m-ring{ fill:none; stroke:#c7ccd3; stroke-width:2.5; transform-origin:50px 35px; }
+.movie-m-ring-turn{ stroke:var(--type-color); }
+.movie-m-eye{ fill:#1c1c1c; }
+.movie-m-stub{ fill:#ffe08a; stroke:#c9a24a; stroke-width:1; }
+.movie-m-stub-torn{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }

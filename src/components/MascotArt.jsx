@@ -308,6 +308,34 @@ export function GreenhouseMascot({ className = '' }) {
   );
 }
 
+export function MovieMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, stubs still">
+        <circle className="movie-m-ring" cx="50" cy="35" r="14" />
+        <circle className="movie-m-eye" cx="45" cy="35" r="1.8" />
+        <circle className="movie-m-eye" cx="55" cy="35" r="1.8" />
+        <rect className="movie-m-stub" x="40" y="55" width="8" height="14" rx="1" />
+        <rect className="movie-m-stub" x="52" y="58" width="8" height="14" rx="1" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, ring turning">
+        <circle className="movie-m-ring movie-m-ring-turn" cx="50" cy="35" r="14" />
+        <circle className="movie-m-eye" cx="46" cy="34" r="1.8" />
+        <circle className="movie-m-eye" cx="56" cy="36" r="1.8" />
+        <rect className="movie-m-stub" x="39" y="56" width="8" height="14" rx="1" transform="rotate(-4 43 63)" />
+        <rect className="movie-m-stub" x="53" y="58" width="8" height="14" rx="1" transform="rotate(4 57 65)" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, stub torn">
+        <circle className="movie-m-ring movie-m-ring-turn" cx="50" cy="35" r="14" />
+        <circle className="movie-m-eye" cx="46" cy="34" r="1.8" />
+        <circle className="movie-m-eye" cx="56" cy="36" r="1.8" />
+        <polygon className="movie-m-stub movie-m-stub-torn" points="38,52 48,52 50,60 46,66 42,60 40,66 36,60" />
+        <rect className="movie-m-stub" x="53" y="58" width="8" height="14" rx="1" transform="rotate(4 57 65)" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -319,6 +347,7 @@ export const MASCOTS = {
   souls: SoulsMascot,
   chapeau: ChapeauMascot,
   greenhouse: GreenhouseMascot,
+  movie: MovieMascot,
 };
 
 export function MascotArt({ id, className = '' }) {
