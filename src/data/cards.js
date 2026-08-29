@@ -161,7 +161,7 @@ export const PROJECTS = [
   },
   {
     id: 'greenhouse', name: 'Greenhouse Automation', rarity: 'common', type: 'hardware',
-    stage: 'Basic', hp: 25, hpMetric: 'hours', icon: '🌱',
+    stage: 'Basic', hp: 25, hpMetric: 'hours', icon: '🌱', mascot: 'greenhouse',
     attacks: [{ cost: ['hardware'], name: 'Auto-Water', dmg: null, text: 'Arduino-based greenhouse automation, academic build.' }],
     role: 'Sole Developer', resistance: '—', retreat: 1,
     languages: ['C++ (Arduino)'],

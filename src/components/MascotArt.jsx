@@ -281,6 +281,33 @@ export function ChapeauMascot({ className = '' }) {
   );
 }
 
+export function GreenhouseMascot({ className = '' }) {
+  return (
+    <div className={`mascot-frames ${className}`}>
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, dry">
+        <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
+        <path className="greenhouse-m-face" d="M44 52 q2 -2 4 0" />
+        <path className="greenhouse-m-face" d="M52 52 q2 -2 4 0" />
+        <path className="greenhouse-m-wire" d="M34 55 Q50 75 66 55 Q50 40 34 55Z" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, wire glowing">
+        <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
+        <path className="greenhouse-m-face" d="M44 52 q2 -2 4 0" />
+        <path className="greenhouse-m-face" d="M52 52 q2 -2 4 0" />
+        <path className="greenhouse-m-wire greenhouse-m-wire-active" d="M34 55 Q50 75 66 55 Q50 40 34 55Z" />
+      </svg>
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, watered and sprouting">
+        <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
+        <path className="greenhouse-m-face" d="M44 51 q2 -3 4 0" />
+        <path className="greenhouse-m-face" d="M52 51 q2 -3 4 0" />
+        <path className="greenhouse-m-wire greenhouse-m-wire-active" d="M34 55 Q50 75 66 55 Q50 40 34 55Z" />
+        <path className="greenhouse-m-droplet" d="M50 26 Q54 34 50 38 Q46 34 50 26Z" />
+        <path className="greenhouse-m-sprout" d="M50 39 Q46 34 50 30 Q54 34 50 39Z" />
+      </svg>
+    </div>
+  );
+}
+
 export const MASCOTS = {
   jericho: JerichoMascot,
   tulip: TulipMascot,
@@ -291,6 +318,7 @@ export const MASCOTS = {
   somerin: SomerinMascot,
   souls: SoulsMascot,
   chapeau: ChapeauMascot,
+  greenhouse: GreenhouseMascot,
 };
 
 export function MascotArt({ id, className = '' }) {

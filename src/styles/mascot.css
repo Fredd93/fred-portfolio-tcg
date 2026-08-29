@@ -184,3 +184,11 @@
 .chapeau-m-eye{ fill:#12202e; }
 .chapeau-m-beak{ fill:#ffcf6b; }
 .chapeau-m-note{ fill:none; stroke:#f4ead0; stroke-width:1.6; stroke-linecap:round; }
+
+/* ---- Greenhouse Automation: Sunkern-lineage seed sprout ---- */
+.greenhouse-m-seed{ fill:rgba(192,57,43,.2); stroke:#e0a89f; stroke-width:1.4; }
+.greenhouse-m-face{ fill:none; stroke:#5a2b22; stroke-width:1.6; stroke-linecap:round; }
+.greenhouse-m-wire{ fill:none; stroke:#7a5a3a; stroke-width:2; opacity:.5; }
+.greenhouse-m-wire-active{ stroke:var(--type-color); opacity:.9; filter:drop-shadow(0 0 3px var(--type-color)); }
+.greenhouse-m-droplet{ fill:#8fc6e8; opacity:.85; }
+.greenhouse-m-sprout{ fill:#4a9a4a; }
