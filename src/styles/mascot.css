@@ -119,8 +119,8 @@
 }
 
 /* ---- Non-flagship lenticular mascots: generic frame-swap ---- */
-.layout-classic .art .mascot-frames{ position:relative; width:52px; height:52px; }
-.mascot-frame{ position:absolute; inset:0; width:100%; height:100%; opacity:0; overflow:visible; }
+.layout-classic .art .mascot-frames.mascot-classic{ position:relative; width:52px; height:52px; }
+.mascot-frame{ position:absolute; inset:0; width:100%; height:100%; opacity:0; overflow:visible; transition: opacity .18s ease; }
 .tcg-card:not([data-tilt-frame]) .mascot-frame-0,
 .tcg-card[data-tilt-frame="0"] .mascot-frame-0,
 .tcg-card[data-tilt-frame="1"] .mascot-frame-1,
@@ -194,7 +194,7 @@
 .greenhouse-m-sprout{ fill:#4a9a4a; }
 
 /* ---- Movie Theater Ticketing: Klefki-lineage ticket-stub keyring ---- */
-.movie-m-ring{ fill:none; stroke:#c7ccd3; stroke-width:2.5; transform-origin:50px 35px; }
+.movie-m-ring{ fill:none; stroke:#c7ccd3; stroke-width:2.5; }
 .movie-m-ring-turn{ stroke:var(--type-color); }
 .movie-m-eye{ fill:#1c1c1c; }
 .movie-m-stub{ fill:#ffe08a; stroke:#c9a24a; stroke-width:1; }

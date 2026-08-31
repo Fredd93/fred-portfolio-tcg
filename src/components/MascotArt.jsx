@@ -1,8 +1,9 @@
 // src/components/MascotArt.jsx
-// Bespoke SVG mascots for the flagship IR/SIR/SSIR projects, replacing the
-// flat project emoji. Mirrors the FULLART_SCENES registry pattern in
-// FullArtScenes.jsx. Each mascot is a self-contained <svg> using class
-// hooks (no inline style) so mascot.css can drive idle/hover animation.
+// Bespoke SVG mascots for the flagship IR/SIR/SSIR projects (single-svg
+// idle-loop) and the 9 non-flagship projects (3-frame lenticular tilt-swap),
+// replacing the flat project emoji. Mirrors the FULLART_SCENES registry
+// pattern in FullArtScenes.jsx. Each mascot uses class hooks (no inline
+// style) so mascot.css can drive idle/hover/frame-swap animation.
 
 export function JerichoMascot({ className = '' }) {
   return (
@@ -83,8 +84,8 @@ export function ImpalaMascot({ className = '' }) {
 
 export function GtaMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, idle">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Grand Transmission Auto mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
         <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
         <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
@@ -95,7 +96,7 @@ export function GtaMascot({ className = '' }) {
         <circle className="gta-m-light" cx="38" cy="58" r="5" />
         <circle className="gta-m-light" cx="62" cy="58" r="5" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, one headlight on">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
         <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
         <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
@@ -106,7 +107,7 @@ export function GtaMascot({ className = '' }) {
         <circle className="gta-m-light gta-m-light-on" cx="38" cy="58" r="5" />
         <circle className="gta-m-light" cx="62" cy="58" r="5" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Grand Transmission Auto mascot, both headlights on">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <polygon className="gta-m-body" points="20,55 20,80 80,80 80,55 65,40 35,40" />
         <rect className="gta-m-block" x="30" y="30" width="40" height="18" rx="3" />
         <circle className="gta-m-bolt" cx="30" cy="65" r="2.5" />
@@ -125,8 +126,8 @@ export function GtaMascot({ className = '' }) {
 
 export function HaarlemMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, garland loose">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Haarlem Festival mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
         <path className="haarlem-m-stem" d="M50 73 L50 88" />
         <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
@@ -137,7 +138,7 @@ export function HaarlemMascot({ className = '' }) {
         <polygon className="haarlem-m-flag" points="60,38 64,47 56,47" />
         <polygon className="haarlem-m-flag" points="72,42 76,50 68,50" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, garland straightening">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
         <path className="haarlem-m-stem" d="M50 73 L50 88" />
         <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
@@ -148,7 +149,7 @@ export function HaarlemMascot({ className = '' }) {
         <polygon className="haarlem-m-flag haarlem-m-flag-active" points="60,36 64,45 56,45" />
         <polygon className="haarlem-m-flag haarlem-m-flag-active" points="72,40 76,48 68,48" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Haarlem Festival mascot, lanterns lit">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="haarlem-m-body" cx="50" cy="55" rx="20" ry="18" />
         <path className="haarlem-m-stem" d="M50 73 L50 88" />
         <path className="haarlem-m-leaf" d="M50 80 Q38 78 36 68 Q46 70 50 80Z" />
@@ -169,8 +170,8 @@ export function HaarlemMascot({ className = '' }) {
 
 export function SelfhostMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, dormant">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Self-Hosted AI Infrastructure mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
         <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
         <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
@@ -178,7 +179,7 @@ export function SelfhostMascot({ className = '' }) {
         <circle className="selfhost-m-led" cx="40" cy="80" r="2" />
         <path className="selfhost-m-spark selfhost-m-spark-dim" d="M50 55 L44 65 L49 65 L46 75 L58 60 L52 60 Z" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, flickering">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
         <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
         <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
@@ -186,7 +187,7 @@ export function SelfhostMascot({ className = '' }) {
         <circle className="selfhost-m-led" cx="40" cy="80" r="2" />
         <path className="selfhost-m-spark selfhost-m-spark-mid" d="M50 55 L44 65 L49 65 L46 75 L58 60 L52 60 Z" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Self-Hosted AI Infrastructure mascot, fully lit">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <rect className="selfhost-m-tower" x="30" y="20" width="40" height="70" rx="4" />
         <rect className="selfhost-m-vent" x="36" y="30" width="28" height="3" />
         <rect className="selfhost-m-vent" x="36" y="38" width="28" height="3" />
@@ -201,8 +202,8 @@ export function SelfhostMascot({ className = '' }) {
 
 export function SomerinMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, grounded">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Somerin mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
         <circle className="somerin-m-head" cx="72" cy="48" r="10" />
         <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
@@ -210,7 +211,7 @@ export function SomerinMascot({ className = '' }) {
         <path className="somerin-m-bandana" d="M62 42 L70 38 L70 46 Z" />
         <path className="somerin-m-wing" d="M35 55 Q22 55 20 60" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, wings opening">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
         <circle className="somerin-m-head" cx="72" cy="48" r="10" />
         <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
@@ -218,7 +219,7 @@ export function SomerinMascot({ className = '' }) {
         <path className="somerin-m-bandana" d="M62 42 L70 37 L71 46 Z" />
         <path className="somerin-m-wing" d="M35 55 Q16 52 14 58" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Somerin mascot, airborne">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="somerin-m-body" cx="50" cy="55" rx="22" ry="15" />
         <circle className="somerin-m-head" cx="72" cy="48" r="10" />
         <circle className="somerin-m-eye" cx="75" cy="46" r="1.6" />
@@ -232,18 +233,18 @@ export function SomerinMascot({ className = '' }) {
 
 export function SoulsMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, translucent">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Souls Within mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="souls-m-body souls-m-body-faint" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
         <circle className="souls-m-eye" cx="43" cy="50" r="3" />
         <circle className="souls-m-eye" cx="57" cy="50" r="3" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, solidifying">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="souls-m-body souls-m-body-mid" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
         <circle className="souls-m-eye" cx="43" cy="50" r="3" />
         <circle className="souls-m-eye" cx="57" cy="50" r="3" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Souls Within mascot, solid and bright-eyed">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="souls-m-body souls-m-body-full" d="M50 30 Q70 30 70 55 Q70 65 60 65 Q65 72 58 72 Q60 78 50 75 Q40 78 42 72 Q35 72 40 65 Q30 65 30 55 Q30 30 50 30 Z" />
         <circle className="souls-m-eye souls-m-eye-glow" cx="43" cy="50" r="3" />
         <circle className="souls-m-eye souls-m-eye-glow" cx="57" cy="50" r="3" />
@@ -254,22 +255,22 @@ export function SoulsMascot({ className = '' }) {
 
 export function ChapeauMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, beak closed">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Chapeau POS mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
         <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
         <polygon className="chapeau-m-crest" points="38,26 50,12 62,26" />
         <circle className="chapeau-m-eye" cx="45" cy="32" r="2" />
         <polygon className="chapeau-m-beak" points="50,38 56,40 50,42" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, beak opening">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
         <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
         <polygon className="chapeau-m-crest" points="38,26 50,11 62,26" />
         <circle className="chapeau-m-eye" cx="45" cy="32" r="2" />
         <polygon className="chapeau-m-beak" points="50,37 60,41 50,45" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chapeau POS mascot, chirping">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <ellipse className="chapeau-m-body" cx="50" cy="58" rx="16" ry="20" />
         <circle className="chapeau-m-head" cx="50" cy="34" r="13" />
         <polygon className="chapeau-m-crest chapeau-m-crest-raised" points="38,26 50,8 62,26" />
@@ -283,20 +284,20 @@ export function ChapeauMascot({ className = '' }) {
 
 export function GreenhouseMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, dry">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Greenhouse Automation mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
         <path className="greenhouse-m-face" d="M44 52 q2 -2 4 0" />
         <path className="greenhouse-m-face" d="M52 52 q2 -2 4 0" />
         <path className="greenhouse-m-wire" d="M34 55 Q50 75 66 55 Q50 40 34 55Z" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, wire glowing">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
         <path className="greenhouse-m-face" d="M44 52 q2 -2 4 0" />
         <path className="greenhouse-m-face" d="M52 52 q2 -2 4 0" />
         <path className="greenhouse-m-wire greenhouse-m-wire-active" d="M34 55 Q50 75 66 55 Q50 40 34 55Z" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Greenhouse Automation mascot, watered and sprouting">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="greenhouse-m-seed" cx="50" cy="55" r="16" />
         <path className="greenhouse-m-face" d="M44 51 q2 -3 4 0" />
         <path className="greenhouse-m-face" d="M52 51 q2 -3 4 0" />
@@ -310,22 +311,22 @@ export function GreenhouseMascot({ className = '' }) {
 
 export function MovieMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, stubs still">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Movie Theater Ticketing mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="movie-m-ring" cx="50" cy="35" r="14" />
         <circle className="movie-m-eye" cx="45" cy="35" r="1.8" />
         <circle className="movie-m-eye" cx="55" cy="35" r="1.8" />
         <rect className="movie-m-stub" x="40" y="55" width="8" height="14" rx="1" />
         <rect className="movie-m-stub" x="52" y="58" width="8" height="14" rx="1" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, ring turning">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="movie-m-ring movie-m-ring-turn" cx="50" cy="35" r="14" />
         <circle className="movie-m-eye" cx="46" cy="34" r="1.8" />
         <circle className="movie-m-eye" cx="56" cy="36" r="1.8" />
         <rect className="movie-m-stub" x="39" y="56" width="8" height="14" rx="1" transform="rotate(-4 43 63)" />
         <rect className="movie-m-stub" x="53" y="58" width="8" height="14" rx="1" transform="rotate(4 57 65)" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Movie Theater Ticketing mascot, stub torn">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <circle className="movie-m-ring movie-m-ring-turn" cx="50" cy="35" r="14" />
         <circle className="movie-m-eye" cx="46" cy="34" r="1.8" />
         <circle className="movie-m-eye" cx="56" cy="36" r="1.8" />
@@ -338,21 +339,21 @@ export function MovieMascot({ className = '' }) {
 
 export function ServicedeskMascot({ className = '' }) {
   return (
-    <div className={`mascot-frames ${className}`}>
-      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque blank">
+    <div className={`mascot-frames ${className}`} role="img" aria-label="Service Desk Ticket System mascot">
+      <svg className="mascot-frame mascot-frame-0" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
         <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
         <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
         <rect className="servicedesk-m-plaque" x="40" y="70" width="20" height="16" rx="2" />
       </svg>
-      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque logging">
+      <svg className="mascot-frame mascot-frame-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
         <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
         <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
         <rect className="servicedesk-m-plaque servicedesk-m-plaque-active" x="40" y="70" width="20" height="16" rx="2" />
         <line className="servicedesk-m-plaque-line" x1="43" y1="78" x2="57" y2="78" />
       </svg>
-      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Service Desk mascot, plaque stamped">
+      <svg className="mascot-frame mascot-frame-2" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
         <path className="servicedesk-m-body" d="M50 25 Q68 25 68 45 Q68 60 58 62 Q60 70 50 68 Q40 70 42 62 Q32 60 32 45 Q32 25 50 25Z" />
         <circle className="servicedesk-m-eye" cx="44" cy="42" r="2" />
         <circle className="servicedesk-m-eye" cx="56" cy="42" r="2" />
