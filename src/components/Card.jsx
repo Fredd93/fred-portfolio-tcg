@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { TYPES, RARITY } from '../data/cards.js';
 import { FullArtScene } from './FullArtScenes.jsx';
+import { MascotArt } from './MascotArt.jsx';
 import { subscribeTilt } from '../utils/motionTiltBus.js';
 import { useInViewAnimation } from '../hooks/useInViewAnimation.js';
 
@@ -40,7 +41,9 @@ export function CardFace({ project, index = 0, total = 17 }) {
       {!fullArt && (
         <>
           <div className="art">
-            <span>{project.icon}</span>
+            {project.mascot
+              ? <MascotArt id={project.mascot} className="mascot-classic" />
+              : <span>{project.icon}</span>}
             <div className="art-shine" />
           </div>
           <div className="dex-line">{project.context} · {project.dates}</div>
@@ -119,6 +122,9 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     const rx = ((my - 50) / 50) * -8;
     const ry = ((mx - 50) / 50) * 8;
     ref.current.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+    const magnitude = Math.hypot(rx, ry);
+    const frame = magnitude < 3 ? 0 : magnitude < 7 ? 1 : 2;
+    ref.current.dataset.tiltFrame = String(frame);
   }
 
   function updateTilt(clientX, clientY) {
@@ -143,6 +149,7 @@ export default function Card({ project, index, total, onClick, tiltEnabled = tru
     if (!ref.current) return;
     ref.current.style.transform = 'rotateX(0deg) rotateY(0deg)';
     ref.current.classList.remove('tilting');
+    ref.current.dataset.tiltFrame = '0';
   }
 
   function handleTouchStart(e) {

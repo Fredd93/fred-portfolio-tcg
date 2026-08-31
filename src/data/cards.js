@@ -84,7 +84,7 @@ export const PROJECTS = [
   },
   {
     id: 'gta', name: 'Grand Transmission Auto', rarity: 'reverseholo', type: 'frontend',
-    stage: 'Stage 1 · Primary Dev', hp: 9534, hpMetric: 'loc', icon: '🚗',
+    stage: 'Stage 1 · Primary Dev', hp: 9534, hpMetric: 'loc', icon: '🚗', mascot: 'gta',
     attacks: [
       { cost: ['frontend', 'backend'], name: 'Dual Frontend Serve', dmg: null,
         text: 'One PHP/PDO REST API backing both a server-rendered site and a Vue 3 SPA, routed through Nginx.' },
@@ -100,7 +100,7 @@ export const PROJECTS = [
   },
   {
     id: 'haarlem', name: 'Haarlem Festival', rarity: 'holo', type: 'frontend',
-    stage: 'Stage 1 · Design Lead', hp: 4583, hpMetric: 'loc', icon: '🎪',
+    stage: 'Stage 1 · Design Lead', hp: 4583, hpMetric: 'loc', icon: '🎪', mascot: 'haarlem',
     attacks: [
       { cost: ['frontend'], name: 'Design → Ship', dmg: null,
         text: 'Led the Figma design team, then built the full-stack site — PHP, API, JS.' },
@@ -114,7 +114,7 @@ export const PROJECTS = [
   },
   {
     id: 'selfhost', name: 'Self-Hosted AI Infrastructure', rarity: 'holo', type: 'devops',
-    stage: 'Basic', hp: 159, hpMetric: 'loc', icon: '🖥️',
+    stage: 'Basic', hp: 159, hpMetric: 'loc', icon: '🖥️', mascot: 'selfhost',
     attacks: [
       { cost: ['devops'], name: 'Local-First Stack', dmg: null,
         text: 'Local MCP servers plus self-hosted SearXNG search — no cloud API key required.' },
@@ -128,7 +128,7 @@ export const PROJECTS = [
   },
   {
     id: 'somerin', name: 'Somerin', rarity: 'common', type: 'cloud',
-    stage: 'Basic', hp: 40, hpMetric: 'hours', icon: '🏕️',
+    stage: 'Basic', hp: 40, hpMetric: 'hours', icon: '🏕️', mascot: 'somerin',
     attacks: [{ cost: ['cloud'], name: 'Camp Ops', dmg: null, text: 'Camp activity management system — C#, Azure, SSMS.' }],
     role: 'Team Lead (Team Dispersed — Delivered Alone)', resistance: '—', retreat: 1,
     languages: ['C#', 'Azure', 'SQL'],
@@ -139,7 +139,7 @@ export const PROJECTS = [
   },
   {
     id: 'souls', name: 'Souls Within', rarity: 'common', type: 'creative',
-    stage: 'Basic', hp: 137, hpMetric: 'loc', icon: '🎮',
+    stage: 'Basic', hp: 137, hpMetric: 'loc', icon: '🎮', mascot: 'souls',
     attacks: [{ cost: ['creative'], name: '2D World Build', dmg: null, text: 'Indie 2D game, C#/Unity — creativity kept alive outside the day job.' }],
     role: 'Sole Developer (Personal Project)', resistance: '—', retreat: 1,
     languages: ['C#'],
@@ -150,7 +150,7 @@ export const PROJECTS = [
   },
   {
     id: 'chapeau', name: 'Chapeau POS', rarity: 'common', type: 'backend',
-    stage: 'Basic', hp: 30, hpMetric: 'hours', icon: '🧾',
+    stage: 'Basic', hp: 30, hpMetric: 'hours', icon: '🧾', mascot: 'chapeau',
     attacks: [{ cost: ['backend'], name: 'Ring It Up', dmg: null, text: 'Point-of-sale system, academic build.' }],
     role: 'Team Member (Design + Dev)', resistance: '—', retreat: 1,
     languages: ['C#', 'SQL'],
@@ -161,7 +161,7 @@ export const PROJECTS = [
   },
   {
     id: 'greenhouse', name: 'Greenhouse Automation', rarity: 'common', type: 'hardware',
-    stage: 'Basic', hp: 25, hpMetric: 'hours', icon: '🌱',
+    stage: 'Basic', hp: 25, hpMetric: 'hours', icon: '🌱', mascot: 'greenhouse',
     attacks: [{ cost: ['hardware'], name: 'Auto-Water', dmg: null, text: 'Arduino-based greenhouse automation, academic build.' }],
     role: 'Sole Developer', resistance: '—', retreat: 1,
     languages: ['C++ (Arduino)'],
@@ -172,7 +172,7 @@ export const PROJECTS = [
   },
   {
     id: 'movie', name: 'Movie Theater Ticketing', rarity: 'common', type: 'frontend',
-    stage: 'Basic', hp: 3129, hpMetric: 'loc', icon: '🎟️',
+    stage: 'Basic', hp: 3129, hpMetric: 'loc', icon: '🎟️', mascot: 'movie',
     attacks: [{ cost: ['frontend', 'backend'], name: 'Seat Select', dmg: null, text: 'Ticketing system, Java/JavaFX, academic build.' }],
     role: 'Sole Developer', resistance: '—', retreat: 1,
     languages: ['Java'],
@@ -183,7 +183,7 @@ export const PROJECTS = [
   },
   {
     id: 'servicedesk', name: 'Service Desk Ticket System', rarity: 'common', type: 'backend',
-    stage: 'Basic', hp: 1903, hpMetric: 'loc', icon: '🎫',
+    stage: 'Basic', hp: 1903, hpMetric: 'loc', icon: '🎫', mascot: 'servicedesk',
     attacks: [{ cost: ['backend', 'data'], name: 'Queue & Route', dmg: null, text: 'Ticketing system, C#/MongoDB, academic build.' }],
     role: 'Team Lead', resistance: '—', retreat: 1,
     languages: ['C#', 'MongoDB'],

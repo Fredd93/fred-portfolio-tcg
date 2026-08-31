@@ -117,3 +117,93 @@
   .tcg-card:hover .impala-m-tail-heat, .tcg-card.tilting .impala-m-tail-heat,
   .tcg-card:hover .impala-m-tail-cold, .tcg-card.tilting .impala-m-tail-cold{ animation: none; }
 }
+
+/* ---- Non-flagship lenticular mascots: generic frame-swap ---- */
+.layout-classic .art .mascot-frames.mascot-classic{ position:relative; width:52px; height:52px; }
+.mascot-frame{ position:absolute; inset:0; width:100%; height:100%; opacity:0; overflow:visible; transition: opacity .18s ease; }
+.tcg-card:not([data-tilt-frame]) .mascot-frame-0,
+.tcg-card[data-tilt-frame="0"] .mascot-frame-0,
+.tcg-card[data-tilt-frame="1"] .mascot-frame-1,
+.tcg-card[data-tilt-frame="2"] .mascot-frame-2{ opacity:1; }
+
+@media (prefers-reduced-motion: reduce){
+  .tcg-card .mascot-frame-1, .tcg-card .mascot-frame-2{ opacity:0 !important; }
+  .tcg-card:not([data-tilt-frame]) .mascot-frame-0,
+  .tcg-card[data-tilt-frame] .mascot-frame-0{ opacity:1 !important; }
+}
+
+/* ---- Grand Transmission Auto: Varoom/Revavroom engine-block ---- */
+.gta-m-body{ fill:rgba(138,143,154,.35); stroke:#cfd3da; stroke-width:1.4; }
+.gta-m-block{ fill:rgba(138,143,154,.5); stroke:#cfd3da; stroke-width:1.2; }
+.gta-m-bolt{ fill:#cfd3da; }
+.gta-m-whisker{ fill:none; stroke:#9aa0ab; stroke-width:2; stroke-linecap:round; }
+.gta-m-light{ fill:#3a3d44; stroke:#cfd3da; stroke-width:1; }
+.gta-m-light-on{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }
+.gta-m-exhaust{ fill:#c7cbd2; opacity:.5; }
+
+/* ---- Haarlem Festival: Comfey-lineage bunting decorator ---- */
+.haarlem-m-body{ fill:rgba(47,168,90,.28); stroke:#7be0a0; stroke-width:1.4; }
+.haarlem-m-stem, .haarlem-m-leaf{ fill:rgba(47,168,90,.35); stroke:#7be0a0; stroke-width:1.2; }
+.haarlem-m-eye{ fill:#1c3d24; }
+.haarlem-m-flag{ opacity:.5; fill:#ffb6d6; }
+.haarlem-m-flag:nth-of-type(even){ fill:#ffe08a; }
+.haarlem-m-flag-active{ opacity:.9; }
+.haarlem-m-lantern{ fill:#ffe08a; filter:drop-shadow(0 0 3px #ffe08a); }
+
+/* ---- Self-Hosted AI Infrastructure: Rotom-lineage server spark ---- */
+.selfhost-m-tower{ fill:rgba(127,140,156,.3); stroke:#c7ccd3; stroke-width:1.4; }
+.selfhost-m-vent, .selfhost-m-led{ fill:#c7ccd3; }
+.selfhost-m-spark-dim{ fill:#5a6068; opacity:.3; }
+.selfhost-m-spark-mid{ fill:var(--type-color); opacity:.6; }
+.selfhost-m-spark-full{ fill:var(--type-color); opacity:1; filter:drop-shadow(0 0 4px var(--type-color)); }
+.selfhost-m-fan{ fill:none; stroke:var(--type-color); stroke-width:1; stroke-dasharray:3 2; opacity:.6; }
+
+/* ---- Somerin: Swablu-lineage camp cloud-bird ---- */
+.somerin-m-body{ fill:rgba(230,240,250,.85); stroke:#d7e6f4; stroke-width:1.4; }
+.somerin-m-head{ fill:rgba(230,240,250,.9); stroke:#d7e6f4; stroke-width:1.4; }
+.somerin-m-eye{ fill:#1c1c1c; }
+.somerin-m-beak{ fill:#ffcf6b; }
+.somerin-m-bandana{ fill:var(--type-color); opacity:.85; }
+.somerin-m-bandana-flap{ opacity:1; }
+.somerin-m-wing{ fill:none; stroke:#c3d6e8; stroke-width:2.5; stroke-linecap:round; }
+.somerin-m-wing-open{ stroke:#e6effa; }
+
+/* ---- Souls Within: Gastly-lineage sprite ghost ---- */
+.souls-m-body{ stroke:#a58ae0; stroke-width:1.2; }
+.souls-m-body-faint{ fill:#6a4fa3; opacity:.3; }
+.souls-m-body-mid{ fill:#6a4fa3; opacity:.6; }
+.souls-m-body-full{ fill:#6a4fa3; opacity:.95; }
+.souls-m-eye{ fill:#f4ead0; }
+.souls-m-eye-glow{ filter:drop-shadow(0 0 4px var(--type-color)); }
+
+/* ---- Chapeau POS: Chatot-lineage beret parrot ---- */
+.chapeau-m-body{ fill:rgba(43,127,209,.25); stroke:#8fbeeb; stroke-width:1.4; }
+.chapeau-m-head{ fill:rgba(43,127,209,.3); stroke:#8fbeeb; stroke-width:1.4; }
+.chapeau-m-crest{ fill:var(--type-color); opacity:.8; }
+.chapeau-m-crest-raised{ opacity:1; filter:drop-shadow(0 0 3px var(--type-color)); }
+.chapeau-m-eye{ fill:#12202e; }
+.chapeau-m-beak{ fill:#ffcf6b; }
+.chapeau-m-note{ fill:none; stroke:#f4ead0; stroke-width:1.6; stroke-linecap:round; }
+
+/* ---- Greenhouse Automation: Sunkern-lineage seed sprout ---- */
+.greenhouse-m-seed{ fill:rgba(192,57,43,.2); stroke:#e0a89f; stroke-width:1.4; }
+.greenhouse-m-face{ fill:none; stroke:#5a2b22; stroke-width:1.6; stroke-linecap:round; }
+.greenhouse-m-wire{ fill:none; stroke:#7a5a3a; stroke-width:2; opacity:.5; }
+.greenhouse-m-wire-active{ stroke:var(--type-color); opacity:.9; filter:drop-shadow(0 0 3px var(--type-color)); }
+.greenhouse-m-droplet{ fill:#8fc6e8; opacity:.85; }
+.greenhouse-m-sprout{ fill:#4a9a4a; }
+
+/* ---- Movie Theater Ticketing: Klefki-lineage ticket-stub keyring ---- */
+.movie-m-ring{ fill:none; stroke:#c7ccd3; stroke-width:2.5; }
+.movie-m-ring-turn{ stroke:var(--type-color); }
+.movie-m-eye{ fill:#1c1c1c; }
+.movie-m-stub{ fill:#ffe08a; stroke:#c9a24a; stroke-width:1; }
+.movie-m-stub-torn{ fill:var(--type-color); filter:drop-shadow(0 0 3px var(--type-color)); }
+
+/* ---- Service Desk Ticket System: Yamask-lineage archivist ghost ---- */
+.servicedesk-m-body{ fill:rgba(43,127,209,.22); stroke:#8fbeeb; stroke-width:1.4; }
+.servicedesk-m-eye{ fill:#12202e; }
+.servicedesk-m-plaque{ fill:#3a3428; stroke:#c9a24a; stroke-width:1.2; }
+.servicedesk-m-plaque-active{ stroke:var(--type-color); }
+.servicedesk-m-plaque-line{ stroke:#c9a24a; stroke-width:1.4; stroke-linecap:round; }
+.servicedesk-m-plaque-check{ fill:none; stroke:var(--type-color); stroke-width:2; stroke-linecap:round; stroke-linejoin:round; filter:drop-shadow(0 0 3px var(--type-color)); }
