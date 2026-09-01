@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Card from '../components/Card.jsx';
 import CardModal from '../components/CardModal.jsx';
 import IntroReveal from '../components/IntroReveal.jsx';
+import { TrainerArt } from '../components/TrainerArt.jsx';
 import { PROJECTS, SUPPORTERS, CERTS, TYPES, TYPE_SKILLS } from '../data/cards.js';
 
 function EnergyPip({ type }) {
@@ -76,6 +77,7 @@ export default function GalleryView({ activeCardId, navigate, motionTiltEnabled 
           {SUPPORTERS.map((s) => (
             <div className="supporter" key={s.id}>
               <div className="supporter-top"><span>Trainer</span><span>Supporter</span></div>
+              <TrainerArt id={s.trainerArt} className="supporter-art" />
               <div className="supporter-body">
                 <h4>{s.name}</h4>
                 <div className="role-meta">{s.sub} · {s.dates}</div>

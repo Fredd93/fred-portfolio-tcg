@@ -1,9 +1,11 @@
 import { CardFace } from './Card.jsx';
+import { TrainerArt } from './TrainerArt.jsx';
 
 function SupporterFace({ data }) {
   return (
     <div className="pack-supporter">
       <div className="ps-top"><span>Trainer</span><span>Supporter</span></div>
+      <TrainerArt id={data.trainerArt} className="supporter-art" />
       <div className="ps-body">
         <h4>{data.name}</h4>
         <div className="ps-meta">{data.sub} · {data.dates}</div>
