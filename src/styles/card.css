@@ -385,7 +385,7 @@
 .pack-supporter .ps-meta{font-size:9.5px;color:#c9b876;margin-bottom:8px;}
 .pack-supporter p{font-size:10.5px;color:#d4d8e6;flex:1;}
 .pack-supporter .ps-rule{border-top:1px solid #d9b23c55;padding-top:6px;font-size:9px;font-style:italic;color:#c9b876;}
-.pack-supporter .supporter-art{ height:100px; }
+.pack-supporter .supporter-art{ height:64px; flex:none; }
 
 .pack-energy{align-items:center;justify-content:center;text-align:center;gap:10px;}
 .pack-energy .pe-orb{

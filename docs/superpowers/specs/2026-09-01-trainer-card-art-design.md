@@ -30,7 +30,7 @@ Both illustrations are flat-vector inline SVG (`viewBox="0 0 100 100"`-style sha
 | E-Commerce Manager | Trainer figure standing at a shop counter/desk, one hand resting near a small open laptop, a simple storefront-gable shape in the background. Reads as "at their post" — a static, grounded pose. |
 | ITIL 4 → 5 Transition | Trainer figure mid-presentation gesture: one arm extended outward/up as if addressing a room, the other arm at rest, with two faint motion-line arcs near the raised hand suggesting mid-speech energy. No whiteboard, no literal screen prop — the pose itself carries the "presenting" read. |
 
-Approved mockup reference (visual-companion session): both figures centered in a ~190px-tall art band, gold-tinted background wash (`#241f14`), sized/positioned consistently between the two cards.
+Approved mockup reference (visual-companion session): both figures centered in an art band ~150px tall (gallery; smaller in the pack-opening flow to fit its fixed card size), gold-tinted background wash (`#241f14`), sized/positioned consistently between the two cards.
 
 ## Section 2 — Component architecture
 
@@ -83,7 +83,7 @@ Both import `TrainerArt` from `../components/TrainerArt.jsx`.
 
 New CSS in `src/styles/layout.css`, alongside the existing `.supporter-*` rules (no new stylesheet file needed — this is a small, static addition, unlike the mascot passes' dedicated `mascot.css`):
 
-- `.supporter-art`: fixed-height band (~190px, matching the mockup), gold-tinted background wash, contains the SVG centered and appropriately sized.
+- `.supporter-art`: fixed-height band (~150px in the gallery, matching the mockup; smaller in the pack-opening flow to fit its fixed card size), gold-tinted background wash, contains the SVG centered and appropriately sized.
 - Per-illustration detail classes (hair, glasses, stubble, counter/laptop, presentation-arc details) styled with the shared gold/amber palette listed in Section 1.
 - No `@keyframes`, no `prefers-reduced-motion` override needed — there is no animation to gate.
 
