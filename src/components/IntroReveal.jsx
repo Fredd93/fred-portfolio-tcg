@@ -4,7 +4,7 @@
 // via `autoplay`), and replays whenever `replayKey` changes.
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import fredPhoto from '../assets/fred-photo.jpeg';
+import fredCutout from '../assets/fred-photo-cutout.png';
 
 const SESSION_KEY = 'fredtcg_intro_seen';
 
@@ -88,16 +88,21 @@ export default function IntroReveal({ replayKey = 0, onReplayRequest }) {
       >
         <div className="intro-reveal-face intro-reveal-face-front">
           <div className="intro-reveal-burst" />
-          <div
-            className="intro-reveal-photo intro-reveal-silhouette"
-            style={{ backgroundImage: `url(${fredPhoto})` }}
+          <img
+            className="intro-reveal-cutout intro-reveal-silhouette"
+            src={fredCutout}
+            alt=""
+            aria-hidden="true"
           />
           <div className="intro-reveal-qmark" aria-hidden="true">?</div>
         </div>
         <div className="intro-reveal-face intro-reveal-face-back">
-          <div
-            className="intro-reveal-photo intro-reveal-color"
-            style={{ backgroundImage: `url(${fredPhoto})` }}
+          <div className="intro-reveal-burst" />
+          <img
+            className="intro-reveal-cutout"
+            src={fredCutout}
+            alt=""
+            aria-hidden="true"
           />
         </div>
       </motion.div>

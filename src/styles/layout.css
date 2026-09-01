@@ -149,17 +149,14 @@ footer .foot-links{margin-top:10px;display:flex;gap:16px;justify-content:center;
 .intro-reveal-burst{
   position:absolute; inset:0;
   background:
-    radial-gradient(circle at center, rgba(244,234,208,.85) 0%, var(--gold) 24%, transparent 58%),
-    repeating-conic-gradient(from 0deg, #0e1016 0deg 8deg, var(--gold) 8deg 16deg);
+    radial-gradient(circle at center, rgba(244,234,208,.85) 0%, var(--gold) 20%, #3d6bff 55%, #0e1016 85%),
+    repeating-conic-gradient(from 0deg, rgba(14,16,22,.55) 0deg 8deg, transparent 8deg 16deg);
 }
-.intro-reveal-photo{
-  position:absolute; inset:0; background-size:cover; background-position:center;
+.intro-reveal-cutout{
+  position:absolute; left:50%; bottom:2px; transform:translateX(-50%);
+  height:150px; width:auto; max-width:200px; z-index:1;
 }
-.intro-reveal-silhouette{
-  filter: brightness(0) saturate(100%); z-index:1;
-  inset:16px; border-radius:50%;
-}
-.intro-reveal-color{ filter:none; }
+.intro-reveal-silhouette{ filter: brightness(0) saturate(100%); }
 .intro-reveal-qmark{
   position:absolute; top:-8px; right:-4px; z-index:2;
   font-family:'Baloo 2'; font-weight:800; font-size:60px; line-height:1;
