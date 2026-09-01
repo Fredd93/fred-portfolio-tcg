@@ -207,6 +207,7 @@ export const SUPPORTERS = [
     name: 'ITIL 4 → 5 Transition', sub: 'Garden Group', dates: 'Process initiative',
     text: "Guided the organization's shift from ITIL 4 toward ITIL 5 practices — service-management process design, not a line of code, but the same discipline applied to people and workflow.",
     rule: 'This card counts as a Supporter card, not an Item card.',
+    trainerArt: 'itil',
   },
 ];
 

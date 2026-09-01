@@ -100,6 +100,12 @@
 .ecom-t-laptop{ fill:#4a4128; stroke:#f4de8e; stroke-width:1.2; }
 .ecom-t-laptop-line{ stroke:#f4de8e; stroke-width:1; }
 
+/* ---- ITIL 4 -> 5 Transition: presenting gesture ---- */
+.itil-t-hand{ fill:#e6c877; }
+.itil-t-motion-a, .itil-t-motion-b{ fill:none; stroke:#f4de8e; stroke-width:1.4; }
+.itil-t-motion-a{ opacity:.6; }
+.itil-t-motion-b{ opacity:.4; }
+
 /* ---- energy cards ---- */
 .energy-grid{display:flex;flex-wrap:wrap;gap:16px;}
 .energy-card{width:150px;border-radius:14px;border:1px solid var(--line);background:var(--panel);padding:14px;text-align:center;}
