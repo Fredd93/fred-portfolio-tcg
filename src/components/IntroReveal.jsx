@@ -4,7 +4,7 @@
 // via `autoplay`), and replays whenever `replayKey` changes.
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import fredPhoto from '../assets/fred-photo-placeholder.svg';
+import fredPhoto from '../assets/fred-photo.jpeg';
 
 const SESSION_KEY = 'fredtcg_intro_seen';
 
