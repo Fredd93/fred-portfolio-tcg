@@ -200,12 +200,14 @@ export const SUPPORTERS = [
     name: 'E-Commerce Manager', sub: 'Middle East Motors · Cairo, Egypt', dates: 'Sept 2012 – Jun 2019 · 7 years',
     text: 'Led the digital transformation of a traditionally offline automotive business — built and ran online sales channels end to end. Grew the online customer base by 39,000 through SEO and social-media strategy. Delivered end-to-end website development, integrated CRM + e-commerce systems, and trained staff on digital sales strategy.',
     rule: 'You may play as many Leadership cards as you like during your turn.',
+    trainerArt: 'ecommerce',
   },
   {
     id: 'itil',
     name: 'ITIL 4 → 5 Transition', sub: 'Garden Group', dates: 'Process initiative',
     text: "Guided the organization's shift from ITIL 4 toward ITIL 5 practices — service-management process design, not a line of code, but the same discipline applied to people and workflow.",
     rule: 'This card counts as a Supporter card, not an Item card.',
+    trainerArt: 'itil',
   },
 ];
 
