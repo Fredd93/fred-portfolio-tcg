@@ -3,7 +3,7 @@
 // re-skinned. Plays once per session (sessionStorage-gated by the parent
 // via `autoplay`), and replays whenever `replayKey` changes.
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import fredPhoto from '../assets/fred-photo.jpeg';
 
 const SESSION_KEY = 'fredtcg_intro_seen';
@@ -81,28 +81,26 @@ export default function IntroReveal({ replayKey = 0, onReplayRequest }) {
       aria-label={resolved ? "It's Fred! Click to replay" : "Who's that Dev? Click to reveal"}
       onKeyDown={handleKeyDown}
     >
-      <AnimatePresence mode="wait">
-        {!resolved ? (
-          <motion.div
-            key="silhouette"
+      <motion.div
+        className="intro-reveal-flip"
+        animate={{ rotateY: resolved ? 180 : 0 }}
+        transition={{ duration: reduce ? 0 : 0.6, ease: 'easeInOut' }}
+      >
+        <div className="intro-reveal-face intro-reveal-face-front">
+          <div className="intro-reveal-burst" />
+          <div
             className="intro-reveal-photo intro-reveal-silhouette"
             style={{ backgroundImage: `url(${fredPhoto})` }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: reduce ? 0 : 0.3 }}
           />
-        ) : (
-          <motion.div
-            key="revealed"
+          <div className="intro-reveal-qmark" aria-hidden="true">?</div>
+        </div>
+        <div className="intro-reveal-face intro-reveal-face-back">
+          <div
             className="intro-reveal-photo intro-reveal-color"
             style={{ backgroundImage: `url(${fredPhoto})` }}
-            initial={{ opacity: 0, scale: 1.08 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: reduce ? 0 : 0.35 }}
           />
-        )}
-      </AnimatePresence>
+        </div>
+      </motion.div>
       <div className="intro-reveal-caption">
         {resolved ? 'It\'s Fred!' : "Who's that Dev?"}
       </div>
