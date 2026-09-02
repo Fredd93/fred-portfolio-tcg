@@ -14,23 +14,24 @@ function DefaultFullArtScene({ icon }) {
   );
 }
 
+// Jericho (SSIR) — a quiet domestic room at dusk, Node perched at the
+// literal periphery of the frame (a windowsill/shelf edge, off-center),
+// dormant until the card is engaged. Directly illustrates the flavor text:
+// "Lives at the periphery until you need it — then it's already listening."
 function JerichoScene() {
   return (
     <div className="art-bg scene-jericho">
-      <div className="jericho-stars" />
-      <div className="jericho-horizon" />
-      <div className="jericho-hex" />
-      <div className="jericho-signal" />
-      <div className="jericho-house-glow" />
-      <span className="jericho-house">🏠</span>
-      <div className="jericho-sat-wrap">
-        <div className="jericho-rings">
-          <span className="jericho-ring jericho-ring-3" />
-          <span className="jericho-ring jericho-ring-2" />
-          <span className="jericho-ring jericho-ring-1" />
-        </div>
-        <JerichoMascot className="jericho-sat" />
+      <div className="jericho-wall" />
+      <div className="jericho-hextile" />
+      <div className="jericho-window" />
+      <div className="jericho-lamp-glow" />
+      <div className="jericho-lamp" />
+      <div className="jericho-shelf" />
+      <div className="jericho-rug" />
+      <div className="jericho-node-wrap">
+        <JerichoMascot className="jericho-node" />
       </div>
+      <div className="jericho-wake-text">Jericho</div>
     </div>
   );
 }

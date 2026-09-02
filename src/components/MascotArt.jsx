@@ -5,6 +5,15 @@
 // pattern in FullArtScenes.jsx. Each mascot uses class hooks (no inline
 // style) so mascot.css can drive idle/hover/frame-swap animation.
 
+// "Node" — a glass-orb core with three hex-plated satellite modules, in the
+// Magneton/Electrode lineage (three linked units is Magneton's real canon;
+// hex-faceting on the modules is the deliberate departure that reads as
+// "ports around a core," matching Jericho's hexagonal-architecture concept).
+// The core is a true sphere in silhouette (circular clip) with faceted
+// internal chords (Cryogonal-style hard angular facets) and a soft inner
+// light visible through the glass (Solosis/Reuniclus cue) — no literal
+// shape-morphing. Dormant vs. activated is entirely a lighting change,
+// driven by the card's existing .tcg-card:hover / .tilting state.
 export function JerichoMascot({ className = '' }) {
   return (
     <svg
@@ -12,19 +21,50 @@ export function JerichoMascot({ className = '' }) {
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Jericho sentinel mascot"
+      aria-label="Node, Jericho's satellite-core sentinel"
     >
-      <polygon className="jericho-m-body" points="50,30 68,40 68,62 50,72 32,62 32,40" />
-      <circle className="jericho-m-head" cx="50" cy="24" r="14" />
-      <polygon className="jericho-m-ear jericho-m-ear-l" points="38,16 30,2 44,12" />
-      <polygon className="jericho-m-ear jericho-m-ear-r" points="62,16 70,2 56,12" />
-      <circle className="jericho-m-tip jericho-m-tip-l" cx="31" cy="4" r="2.4" />
-      <circle className="jericho-m-tip jericho-m-tip-r" cx="69" cy="4" r="2.4" />
-      <circle className="jericho-m-eye jericho-m-eye-l" cx="45" cy="24" r="2" />
-      <circle className="jericho-m-eye jericho-m-eye-r" cx="55" cy="24" r="2" />
-      <line className="jericho-m-seam" x1="50" y1="30" x2="50" y2="72" />
-      <line className="jericho-m-seam" x1="32" y1="40" x2="68" y2="40" />
-      <line className="jericho-m-seam" x1="32" y1="62" x2="68" y2="62" />
+      <defs>
+        <clipPath id="jericho-m-core-clip">
+          <circle cx="50" cy="54" r="16" />
+        </clipPath>
+      </defs>
+
+      {/* arcs jump between modules on activation, module hex-seams light in sequence as each arc lands */}
+      <path className="jericho-m-arc jericho-m-arc-1" d="M50,20 Q35,40 20.6,71" />
+      <path className="jericho-m-arc jericho-m-arc-2" d="M20.6,71 Q50,90 79.4,71" />
+
+      <g className="jericho-m-orbit">
+        <g className="jericho-m-sat jericho-m-sat-a" transform="translate(50,20)">
+          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
+          <rect className="jericho-m-stub" x="-1" y="-15" width="2" height="5" rx="0.6" />
+          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+        </g>
+        <g className="jericho-m-sat jericho-m-sat-b" transform="translate(20.6,71)">
+          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
+          <rect className="jericho-m-stub" x="-10.5" y="-1" width="5" height="2" rx="0.6" />
+          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+        </g>
+        <g className="jericho-m-sat jericho-m-sat-c" transform="translate(79.4,71)">
+          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
+          <rect className="jericho-m-stub" x="5.5" y="-1" width="5" height="2" rx="0.6" />
+          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
+        </g>
+      </g>
+
+      <circle className="jericho-m-core-rim" cx="50" cy="54" r="16" />
+      <g clipPath="url(#jericho-m-core-clip)">
+        <circle className="jericho-m-core-glass" cx="50" cy="54" r="16" />
+        <circle className="jericho-m-core-light" cx="50" cy="50" r="10" />
+        <polygon className="jericho-m-facet jericho-m-facet-a" points="50,54 50,38 63.86,46" />
+        <polygon className="jericho-m-facet jericho-m-facet-b" points="50,54 63.86,46 63.86,62" />
+        <polygon className="jericho-m-facet jericho-m-facet-c" points="50,54 63.86,62 50,70" />
+        <polygon className="jericho-m-facet jericho-m-facet-d" points="50,54 50,70 36.14,62" />
+        <polygon className="jericho-m-facet jericho-m-facet-e" points="50,54 36.14,62 36.14,46" />
+        <polygon className="jericho-m-facet jericho-m-facet-f" points="50,54 36.14,46 50,38" />
+      </g>
     </svg>
   );
 }

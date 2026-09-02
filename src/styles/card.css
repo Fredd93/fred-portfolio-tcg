@@ -103,58 +103,78 @@
 .art-bg.scene-jericho span, .art-bg.scene-impala span, .art-bg.scene-tulip span{
   filter:none;
 }
-/* Jericho (SSIR) — night sky, circuit-skyline horizon, centered satellite
-   listening over a small house it watches, connected by a signal line */
-.scene-jericho{
-  background:linear-gradient(180deg,#2a2c55 0%,#3a3670 32%,#171a2e 68%,#0a0a10 100%);
+/* Jericho (SSIR) — a quiet domestic room at dusk, single lamp as the only
+   light source, Node perched at the literal periphery of the frame
+   (shelf edge, off-center), dormant until the card wakes it. */
+.art-bg.scene-jericho{
+  background:linear-gradient(180deg,#171625 0%,#221f38 42%,#2b2440 68%,#14121d 100%);
 }
-.jericho-stars{
+.jericho-wall{
   position:absolute;inset:0;
-  background-image:radial-gradient(1.5px 1.5px at 20% 18%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 72% 12%, #fff, transparent),
-    radial-gradient(1px 1px at 42% 25%, #fff, transparent),
-    radial-gradient(1px 1px at 86% 22%, #fff, transparent),
-    radial-gradient(1.5px 1.5px at 58% 8%, #fff, transparent);
-  opacity:.7;
+  background:radial-gradient(120% 70% at 20% 8%, rgba(58,74,122,.25), transparent 60%);
 }
-.jericho-horizon{
-  position:absolute;left:-10%;right:-10%;bottom:26%;height:40%;
-  background:linear-gradient(180deg, transparent, #0d0e1c 85%);
-  clip-path:polygon(0% 70%, 10% 45%, 24% 60%, 38% 25%, 52% 50%, 66% 32%, 80% 55%, 100% 40%, 100% 100%, 0% 100%);
-}
-.jericho-hex{
-  position:absolute;left:14%;bottom:34%;width:30px;height:30px;opacity:.3;
-  background:linear-gradient(135deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%),
+.jericho-hextile{
+  position:absolute;inset:0;opacity:.05;
+  background-image:linear-gradient(135deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%),
     linear-gradient(45deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%);
+  background-size:22px 22px;
 }
-.jericho-sat-wrap{position:absolute;left:50%;top:26%;transform:translate(-50%,-50%);}
-.art-bg.scene-jericho .jericho-sat{position:relative;width:46px;height:46px;display:block;z-index:2;filter:drop-shadow(0 4px 8px rgba(0,0,0,.6));}
-.jericho-ring{
-  position:absolute;left:50%;top:50%;border:1px solid rgba(180,183,240,.5);
-  border-radius:50%;transform:translate(-50%,-50%);
+/* The bottom stats panel (.layout-fullart .bottom) covers roughly the
+   lower two-thirds of this canvas once a card has real attack/description
+   copy — same constraint every flagship scene lives with. Every element
+   that has to stay legible (window, shelf, Node, wake-text, lamp) is
+   anchored from the top within that surviving band; only pure floor
+   texture (rug) is allowed to run off the bottom edge, mostly hidden. */
+.jericho-window{
+  position:absolute;left:8%;top:4%;width:28%;height:24%;border-radius:2px;
+  background:linear-gradient(200deg, #3a4a7a, #201d3c 75%);
+  box-shadow:inset 0 0 0 3px rgba(18,17,28,.65);opacity:.6;
 }
-.jericho-ring-1{width:50px;height:50px;animation: jericho-ring-pulse 3s ease-out infinite;}
-.jericho-ring-2{width:83px;height:83px;animation: jericho-ring-pulse 3s ease-out infinite .6s;}
-.jericho-ring-3{width:115px;height:115px;animation: jericho-ring-pulse 3s ease-out infinite 1.2s;}
-@keyframes jericho-ring-pulse{
-  0%{ transform: translate(-50%,-50%) scale(.85); opacity:.65; }
-  80%{ opacity:.15; }
-  100%{ transform: translate(-50%,-50%) scale(1.15); opacity:0; }
+.jericho-shelf{
+  position:absolute;left:0;right:0;top:33%;height:2.2%;
+  background:linear-gradient(180deg,#35304a,#1c192a);
 }
-.jericho-signal{
-  position:absolute;left:50%;top:26%;width:1.5px;height:34%;
-  background:repeating-linear-gradient(180deg, rgba(180,183,240,.55) 0 4px, transparent 4px 9px);
+.jericho-rug{
+  position:absolute;left:10%;right:10%;bottom:4%;height:16%;border-radius:6px;opacity:.65;
+  background:#241f34;
+  background-image:linear-gradient(135deg, transparent 46%, rgba(139,143,224,.16) 49%, rgba(139,143,224,.16) 51%, transparent 54%);
+  background-size:16px 16px;
 }
-.art-bg.scene-jericho .jericho-house{
-  position:absolute;left:50%;bottom:32%;transform:translateX(-50%);
-  font-size:23px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.6));
+.jericho-lamp{
+  position:absolute;right:13%;top:18%;width:9px;height:15px;border-radius:2px 2px 5px 5px;
+  background:linear-gradient(180deg,#cbb877,#8a6b2e);
 }
-.jericho-house-glow{
-  position:absolute;left:50%;bottom:29%;width:39px;height:16px;
-  transform:translateX(-50%);background:radial-gradient(ellipse, rgba(255,224,140,.35), transparent 70%);
-  transition: opacity .2s ease, transform .2s ease;
+.jericho-lamp-glow{
+  position:absolute;right:7%;top:14%;width:60px;height:60px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,214,140,.32), transparent 70%);
+  opacity:.5;transition: opacity .5s ease, transform .5s ease;
 }
-.tcg-card.tilting .jericho-house-glow{ transform: translateX(-50%) scale(1.15); opacity:.5; }
+.tcg-card:hover .jericho-lamp-glow, .tcg-card.tilting .jericho-lamp-glow{
+  opacity:.9;transform:scale(1.12);
+  transition: opacity .4s ease 1s, transform .4s ease 1s;
+}
+/* Node perched at the periphery: shelf edge, off-center, not the centered
+   full-art icon the generic layout would otherwise give it */
+.jericho-node-wrap{
+  position:absolute;left:74%;top:17%;width:52px;height:52px;transform:translateX(-50%);
+  filter:drop-shadow(0 4px 9px rgba(0,0,0,.55));
+}
+.jericho-node-wrap .mascot{width:100%;height:100%;display:block;}
+.jericho-wake-text{
+  position:absolute;left:38%;top:19%;transform:translateX(-50%);white-space:nowrap;
+  font-weight:800;font-size:12.5px;letter-spacing:.02em;color:#f4efe0;
+  text-shadow:0 2px 6px rgba(0,0,0,.75), 0 0 10px var(--type-color);
+  opacity:0;pointer-events:none;transition: opacity 1s ease;
+}
+.tcg-card:hover .jericho-wake-text, .tcg-card.tilting .jericho-wake-text{
+  opacity:1;transition: opacity .25s ease;
+}
+/* holo-foil streak sweeps once, timed to the completion of the arc
+   sequence (~1s) instead of the generic instant hover reveal — same
+   .holo-shine element/technique, just a synced delay for this card */
+.tcg-card:has(.scene-jericho) .holo-shine{ transition: opacity .3s ease; }
+.tcg-card:hover:has(.scene-jericho) .holo-shine,
+.tcg-card.tilting:has(.scene-jericho) .holo-shine{ transition: opacity .5s ease 1.05s; }
 /* TulipVision (IR) — dusk field with a full spread of tulips; three in the
    foreground carry R-CNN detection boxes at varying confidence, evoking
    the project's actual best-of-four object-detection result */
@@ -417,7 +437,6 @@
 /* IntersectionObserver-driven pause for off-screen cards. Placed after the
    scene rules above (e.g. .art-bg.scene-impala .impala-crystal) so that,
    at equal selector specificity, this pause wins the cascade tie. */
-.tcg-card.scene-paused .jericho-ring-1, .tcg-card.scene-paused .jericho-ring-2, .tcg-card.scene-paused .jericho-ring-3,
 .tcg-card.scene-paused .impala-wind, .tcg-card.scene-paused .impala-shimmer,
 .tcg-card.scene-paused .impala-crystal, .tcg-card.scene-paused .impala-icing,
 .tcg-card.scene-paused .tulip-box-scanline{
@@ -425,7 +444,8 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-  .jericho-ring-1, .jericho-ring-2, .jericho-ring-3{ animation: none; opacity:.35; }
+  .jericho-wake-text{ opacity:1; transition:none; }
+  .jericho-lamp-glow{ opacity:.9; transform:scale(1.12); transition:none; }
   .tulip-box{ opacity:.7; }
   .tulip-box-active{ animation:none; }
   .tulip-box-scanline{ display:none; }
@@ -435,10 +455,6 @@
 }
 
 @media (max-width:640px){
-  .jericho-stars{
-    background-image:radial-gradient(1.5px 1.5px at 20% 18%, #fff, transparent),
-      radial-gradient(1px 1px at 42% 25%, #fff, transparent);
-  }
   .art-bg.scene-tulip .tulip-glyph:nth-child(n+6){ display:none; }
   .impala-crystal-b{ display:none; }
 }
