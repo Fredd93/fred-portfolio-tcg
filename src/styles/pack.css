@@ -70,9 +70,9 @@
 .pull-thumb span{font-size:26px;}
 .pull-thumb b{font-size:11px;line-height:1.2;}
 .pull-thumb small{font-size:9px;color:var(--muted);}
-.pull-thumb.rarity-ssir{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);}
+.pull-thumb.rarity-hyperrare{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold);}
 .pull-thumb.rarity-sir, .pull-thumb.rarity-ir{border-color:var(--gold);}
-.pull-thumb.rarity-reverseholo{border-color:#ffd27a;}
+.pull-thumb.rarity-ultrarare{border-color:#ffd27a;}
 .pull-actions{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
 
 @media (max-width:420px){

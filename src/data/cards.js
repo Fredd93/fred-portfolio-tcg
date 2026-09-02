@@ -21,18 +21,22 @@ export const TYPES = {
   arch:     { name: 'Architecture',   color: '#5a5ec9', code: 'AR' },
 };
 
+// Modern US rarity ladder (Scarlet & Violet era) — star color (starColor)
+// is the load-bearing visual signal in real cards, not just star count.
 export const RARITY = {
-  common:      { label: 'Common',       sym: '●',   order: 0 },
-  holo:        { label: 'Holo Rare',    sym: '◆',   order: 1 },
-  reverseholo: { label: 'Reverse Holo', sym: '★',   order: 2 },
-  ir:          { label: 'IR',           sym: '★',   order: 3 },
-  sir:         { label: 'SIR',          sym: '★★',  order: 4 },
-  ssir:        { label: 'SSIR',         sym: '★★★', order: 5 },
+  common:     { label: 'Common',                    sym: '●',  starColor: null,     order: 0 },
+  uncommon:   { label: 'Uncommon',                   sym: '◆',  starColor: null,     order: 1 },
+  rare:       { label: 'Rare',                       sym: '★',  starColor: 'black',  order: 2 },
+  doublerare: { label: 'Double Rare',                sym: '★★', starColor: 'black',  order: 3 },
+  ultrarare:  { label: 'Ultra Rare',                 sym: '★☆', starColor: 'silver', order: 4 },
+  ir:         { label: 'Illustration Rare',          sym: '★',  starColor: 'gold',   order: 5 },
+  sir:        { label: 'Special Illustration Rare',  sym: '★★', starColor: 'gold',   order: 6 },
+  hyperrare:  { label: 'Hyper Rare',                 sym: '★★★',starColor: 'gold',   order: 7 },
 };
 
 export const PROJECTS = [
   {
-    id: 'jericho', name: 'Jericho', rarity: 'ssir', type: 'arch',
+    id: 'jericho', name: 'Jericho', rarity: 'hyperrare', type: 'arch',
     stage: 'Stage 2 · In Progress', hp: 4108, hpMetric: 'loc', icon: '🛰️',
     attacks: [
       { cost: ['arch'], name: 'Hexagonal Enforcement', dmg: null,
@@ -83,7 +87,7 @@ export const PROJECTS = [
     link: 'github.com/Fredd93/Inholland_IT3B_tulip_object_detection', linkLabel: 'View repo',
   },
   {
-    id: 'gta', name: 'Grand Transmission Auto', rarity: 'reverseholo', type: 'frontend',
+    id: 'gta', name: 'Grand Transmission Auto', rarity: 'ultrarare', type: 'frontend',
     stage: 'Stage 1 · Primary Dev', hp: 9534, hpMetric: 'loc', icon: '🚗', mascot: 'gta',
     attacks: [
       { cost: ['frontend', 'backend'], name: 'Dual Frontend Serve', dmg: null,
@@ -99,7 +103,7 @@ export const PROJECTS = [
     context: 'Web Dev 2 · Final Assignment', dates: 'Apr 2025 – Jul 2026', link: null, linkLabel: 'Private repo',
   },
   {
-    id: 'haarlem', name: 'Haarlem Festival', rarity: 'holo', type: 'frontend',
+    id: 'haarlem', name: 'Haarlem Festival', rarity: 'uncommon', type: 'frontend',
     stage: 'Stage 1 · Design Lead', hp: 4583, hpMetric: 'loc', icon: '🎪', mascot: 'haarlem',
     attacks: [
       { cost: ['frontend'], name: 'Design → Ship', dmg: null,
@@ -113,7 +117,7 @@ export const PROJECTS = [
     context: 'Team project', dates: '2025', link: null, linkLabel: null,
   },
   {
-    id: 'selfhost', name: 'Self-Hosted AI Infrastructure', rarity: 'holo', type: 'devops',
+    id: 'selfhost', name: 'Self-Hosted AI Infrastructure', rarity: 'uncommon', type: 'devops',
     stage: 'Basic', hp: 159, hpMetric: 'loc', icon: '🖥️', mascot: 'selfhost',
     attacks: [
       { cost: ['devops'], name: 'Local-First Stack', dmg: null,
