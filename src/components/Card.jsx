@@ -6,7 +6,7 @@ import { MascotArt } from './MascotArt.jsx';
 import { subscribeTilt } from '../utils/motionTiltBus.js';
 import { useInViewAnimation } from '../hooks/useInViewAnimation.js';
 
-const FULLART = new Set(['ir', 'sir', 'ssir']);
+const FULLART = new Set(['ir', 'sir', 'hyperrare']);
 
 export function EnergyPip({ type }) {
   const t = TYPES[type];

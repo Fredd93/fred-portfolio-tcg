@@ -203,7 +203,7 @@ export default function PackOpeningView({ pull, navigate }) {
             <motion.div key="done" className="pull-summary" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
               <div className="pull-grid">
                 {PACK_ORDER.map((item, i) => (
-                  <div key={i} className={`pull-thumb rarity-${item.kind === 'project' ? item.data.rarity : 'holo'}`}>
+                  <div key={i} className={`pull-thumb rarity-${item.kind === 'project' ? item.data.rarity : 'uncommon'}`}>
                     <span>{item.kind === 'project' ? item.data.icon : item.kind === 'supporter' ? '🤝' : '⚡'}</span>
                     <b>{item.data.name}</b>
                     <small>{item.kind === 'project' ? RARITY[item.data.rarity].label : item.kind === 'supporter' ? 'Supporter' : 'Energy'}</small>
