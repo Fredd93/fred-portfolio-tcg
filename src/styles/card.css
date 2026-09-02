@@ -158,7 +158,7 @@
 /* TulipVision (IR) — dusk field with a full spread of tulips; three in the
    foreground carry R-CNN detection boxes at varying confidence, evoking
    the project's actual best-of-four object-detection result */
-.scene-tulip{
+.art-bg.scene-tulip{
   background:linear-gradient(180deg,#159487 0%,#0d5a52 35%,#101a22 72%,#0a0a10 100%);
 }
 .tulip-rows{
@@ -219,7 +219,7 @@
 /* Severe Weather Alert System (SIR) — hard vertical split telling the
    heatwave-vs-cold-snap story: sun + wind on the heat side, snowflake +
    creeping ice-frost on the cold side. No central icon. */
-.scene-impala{
+.art-bg.scene-impala{
   background:linear-gradient(90deg,#e6791f 0%,#c94a1c 46%,#1d2340 52%,#1c3f6b 100%);
 }
 .impala-sun{
