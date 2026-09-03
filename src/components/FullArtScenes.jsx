@@ -535,17 +535,17 @@ function JerichoScene() {
             He is leaning in over the work, so the limb comes almost straight
             down, heavily foreshortened. */}
         <g className="j-forearm">
-          <path className="j-limb-ink" d="M159,150 L167,168" />
-          <path className="j-limb-ink" d="M167,168 L164,178" />
-          <path className="j-upperarm" d="M159,150 L167,168" />
-          <path className="j-forearm-skin" d="M167,168 L164,178" />
+          <path className="j-limb-ink" d="M165,150 L172,171" />
+          <path className="j-limb-ink" d="M172,171 L152,183" />
+          <path className="j-upperarm" d="M165,150 L172,171" />
+          <path className="j-forearm-skin" d="M172,171 L152,183" />
           {/* rolled sleeve end, across the arm rather than blobbed at the joint */}
-          <path className="j-fred-cuff" d="M160,166 L174,170" />
+          <path className="j-fred-cuff" d="M165,166 L179,172" />
         </g>
 
         {/* scaled to read against the head — at full size the hand was larger
             than his face and pulled the eye away from Node */}
-        <g className="j-hand" transform="translate(2 4) scale(0.88)">
+        <g className="j-hand" transform="translate(-16 10) scale(0.88)">
           <ellipse className="j-hand-shadow" cx="136" cy="190" rx="22" ry="4.6" />
           {/* Digits are drawn as round-capped strokes, twice: a heavier dark
               pass underneath for the contour, a skin pass on top. At ~5px wide
