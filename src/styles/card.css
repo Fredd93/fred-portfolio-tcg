@@ -116,72 +116,176 @@
 .art-bg.scene-jericho span, .art-bg.scene-impala span, .art-bg.scene-tulip span{
   filter:none;
 }
-/* Jericho (SSIR) — a quiet domestic room at dusk, single lamp as the only
-   light source, Node perched at the literal periphery of the frame
-   (shelf edge, off-center), dormant until the card wakes it. */
-.art-bg.scene-jericho{
-  background:linear-gradient(180deg,#171625 0%,#221f38 42%,#2b2440 68%,#14121d 100%);
+/* ---- Jericho (Hyper Rare) — "Mending, late afternoon" ----
+   A Character Rare of Fred and Node: he is mid-repair on one of the three
+   units, it holds still for him with its eyes shut and one ear turned his way.
+   The whole illustration is one 242x346 SVG in FullArtScenes.jsx; these rules
+   only supply material colour, plane separation and motion. */
+.art-bg.scene-jericho{ background:#e8d3b0; }
+.jericho-scene{ position:absolute;inset:0;width:100%;height:100%;display:block; }
+
+/* Bold, confident, warm-dark outlines on every object in the room. This is the
+   register Komatsu works in on Magnezone GG18 -- one of Fred's own three picks
+   -- and it is what the technique audit calls the most warmth-relevant item in
+   the whole spec: a heavy outline is what makes a drawn thing read as friendly
+   and toy-like rather than technical. Without it the scene sits between
+   painterly and graphic and reads as neither. Never neutral grey, never #000. */
+.j-books rect, .j-jars path, .j-jars rect, .j-penmug path, .j-plant path,
+.j-plant ellipse, .j-tools path, .j-tools circle, .j-tools rect,
+.j-photo rect, .j-photo path, .j-calendar > rect, .j-shelf, .j-sill,
+.j-window-frame, .j-mug-rim, .j-tray-body, .j-notebook, .j-mat-body,
+.j-fred-torso, .j-fred-face, .j-fred-hair, .j-fred-sleeve, .j-fred-arm,
+.j-fred-neck, .j-fred-collar, .j-fred-cuff, .j-rooftop{
+  stroke:#3a2a1e; stroke-width:1.1; stroke-linejoin:round;
 }
-.jericho-wall{
-  position:absolute;inset:0;
-  background:radial-gradient(120% 70% at 20% 8%, rgba(58,74,122,.25), transparent 60%);
-}
-.jericho-hextile{
-  position:absolute;inset:0;opacity:.05;
-  background-image:linear-gradient(135deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%),
-    linear-gradient(45deg, transparent 48%, #8b8fe0 49%, #8b8fe0 51%, transparent 52%);
-  background-size:22px 22px;
-}
-/* The bottom stats panel (.layout-fullart .bottom) covers roughly the
-   lower two-thirds of this canvas once a card has real attack/description
-   copy — same constraint every flagship scene lives with. Every element
-   that has to stay legible (window, shelf, Node, wake-text, lamp) is
-   anchored from the top within that surviving band; only pure floor
-   texture (rug) is allowed to run off the bottom edge, mostly hidden. */
-.jericho-window{
-  position:absolute;left:8%;top:4%;width:28%;height:24%;border-radius:2px;
-  background:linear-gradient(200deg, #3a4a7a, #201d3c 75%);
-  box-shadow:inset 0 0 0 3px rgba(18,17,28,.65);opacity:.6;
-}
-.jericho-shelf{
-  position:absolute;left:0;right:0;top:33%;height:2.2%;
-  background:linear-gradient(180deg,#35304a,#1c192a);
-}
-.jericho-rug{
-  position:absolute;left:10%;right:10%;bottom:4%;height:16%;border-radius:6px;opacity:.65;
-  background:#241f34;
-  background-image:linear-gradient(135deg, transparent 46%, rgba(139,143,224,.16) 49%, rgba(139,143,224,.16) 51%, transparent 54%);
-  background-size:16px 16px;
-}
-.jericho-lamp{
-  position:absolute;right:13%;top:18%;width:9px;height:15px;border-radius:2px 2px 5px 5px;
-  background:linear-gradient(180deg,#cbb877,#8a6b2e);
-}
-.jericho-lamp-glow{
-  position:absolute;right:7%;top:14%;width:60px;height:60px;border-radius:50%;
-  background:radial-gradient(circle, rgba(255,214,140,.32), transparent 70%);
-  opacity:.5;transition: opacity .5s ease, transform .5s ease;
-}
-.tcg-card:hover .jericho-lamp-glow, .tcg-card.tilting .jericho-lamp-glow{
-  opacity:.9;transform:scale(1.12);
-  transition: opacity .4s ease 1s, transform .4s ease 1s;
-}
-/* Node perched at the periphery: shelf edge, off-center, not the centered
-   full-art icon the generic layout would otherwise give it */
-.jericho-node-wrap{
-  position:absolute;left:74%;top:17%;width:52px;height:52px;transform:translateX(-50%);
-  filter:drop-shadow(0 4px 9px rgba(0,0,0,.55));
-}
-.jericho-node-wrap .mascot{width:100%;height:100%;display:block;}
+/* the figure carries a heavier contour than the props, the way a subject does */
+.j-fred-torso, .j-fred-face, .j-fred-hair{ stroke-width:1.6; }
+.j-shelf, .j-window-frame{ stroke-width:1.4; }
+
+/* every card in the reference set that is warm is also bright; the two dark
+   ones are both action cards, where darkness serves threat */
+.j-peg-holes circle{ fill:#2e1d0f; opacity:.22; }
+.j-falloff{ pointer-events:none; }
+.j-cloud{ fill:#fdf1e0; opacity:.72; }
+.j-rooftop{ fill:#96725a; opacity:.85; }
+.j-muntin rect{ fill:#f0e2c6; }
+.j-window-frame{ fill:none; stroke:#c9a97f; stroke-width:4; }
+.j-sill{ fill:#e5cfa6; }
+.j-sill-shadow{ fill:#a8825e; opacity:.55; }
+.j-shelf{ fill:#a8703f; }
+.j-shelf-lip{ fill:none; stroke:#e0bd8c; stroke-width:1.4; }
+.j-tool-line{ fill:none; stroke:#8a7a63; stroke-width:1.2; }
+.j-grille circle{ fill:#2f2a24; }
+.j-halftone-coarse{ opacity:.14; }
+.j-halftone-fine{ opacity:.09; }
+/* plane separation: the room is pushed back with a flat scrim of the ambient
+   wall tone, exactly as Kitaoka flattens his background Magnemite */
+.j-room-scrim{ fill:#c9a476; opacity:.14; }
+.j-shelf-shadow{ fill:#33200f; opacity:.4; }
+
+/* --- Fred. The emotional load sits in the hand, not the face: at 44px a face
+   must be a handful of confident marks, and a bad face is worse than none.
+   Glasses and a full beard are what make this read as him. --- */
+.j-fred-torso{ fill:#5f5238; }
+.j-fred-shade{ fill:#332c1d; opacity:.66; }
+.j-fred-collar{ fill:#8a7b5f; }
+.j-fred-sleeve{ fill:#544829; }
+.j-fred-cuff{ fill:#8b7c5c; }
+.j-fred-arm, .j-fred-neck, .j-fred-face{ fill:#d9a074; }
+.j-fred-neck-shade{ fill:#a97853; }
+.j-fred-hair, .j-fred-beard{ fill:#3a2a1e; }
+.j-fred-tache{ fill:#33241a; }
+.j-fred-eye, .j-fred-brow{ fill:none; stroke:#33241a; stroke-width:1.6; stroke-linecap:round; }
+.j-fred-smile{ fill:none; stroke:#7d4f38; stroke-width:1.3; stroke-linecap:round; }
+.j-fred-glasses rect{ fill:rgba(255,255,255,.14); stroke:#9a8a6a; stroke-width:1.1; }
+.j-fred-glasses path{ fill:none; stroke:#9a8a6a; stroke-width:1.1; stroke-linecap:round; }
+.j-fred-rim{ fill:none; stroke:#f7d08a; stroke-width:2.2; stroke-linecap:round; opacity:.85; }
+
+.j-desk-lip{ fill:none; stroke:#f2d9a8; stroke-width:2.2; }
+.j-desk-edge{ fill:none; stroke:#8a6a52; stroke-width:1.4; opacity:.5; }
+
+/* desk props stay pale on purpose so the text scrim over them can stay a warm
+   haze — but they are properly drawn, with outlines and cast shadows. What
+   makes the Rotom IR's text read is that its lower third is pale, not empty. */
+.j-prop-shadow{ fill:#9a7a5c; opacity:.28; }
+.j-notebook{ fill:#f2e7d1; }
+.j-notebook-edge{ fill:none; stroke:#b39a72; stroke-width:1.1; }
+.j-notebook-page{ fill:none; stroke:#cdb890; stroke-width:.8; }
+.j-pen{ fill:none; stroke:#5a4a3a; stroke-width:2.2; stroke-linecap:round; }
+.j-pen-tip{ fill:none; stroke:#c9c0b0; stroke-width:2.2; stroke-linecap:round; }
+.j-mug path{ fill:#f6efe0; stroke:#bda887; stroke-width:1.1; }
+.j-mug-handle{ fill:none !important; stroke:#bda887; stroke-width:2.6; }
+.j-mug-rim{ fill:#fdf8ec; stroke:#bda887; stroke-width:1; }
+.j-mug-inner{ fill:#c9b393; stroke:none; }
+.j-steam{ fill:none; stroke:#fffaf0; stroke-width:1.6; stroke-linecap:round; opacity:.2; }
+.j-tray-body{ fill:#e0d3b8; stroke:#b09a76; stroke-width:1; }
+.j-tray-in{ fill:#c4b190; }
+.j-tray-part{ fill:#8a94a0; }
+.j-cable{ fill:none; stroke:#7d6b52; stroke-width:1.8; stroke-linecap:round; opacity:.6; }
+.j-cable-hi{ stroke:#d8c39c; stroke-width:.9; opacity:.55; }
+
+/* --- the beam. It must be visible as an object, and its job is to land on
+   A's open panel; a beam that lights nothing in particular is generic. --- */
+/* no screen blend: over this area it lifted the whole frame back into one
+   flat bright band and cancelled the falloff the wall gradient was building */
+.j-beam-shaft{ opacity:.3; filter:url(#j-soft); }
+.j-beam-pool{ fill:#ffe6b0; opacity:.42; filter:url(#j-soft); }
+.j-mote{ fill:#fff6e2; opacity:.3; }
+.j-sparkle{ fill:#fff8e8; opacity:.38; }
+
+.j-mat-body{ fill:#d9bb92; }
+.j-mat-inner{ fill:#e6cda8; }
+.j-mat-ruck{ fill:#b8613c; stroke:#3a2a1e; stroke-width:.9; }
+/* a crocheted pattern is regular and low-contrast; scattered saturated blobs
+   read as toppings on a pizza */
+.j-mat-hex path{ opacity:.55; }
+.j-contact-soft{ fill:#8a6a52; opacity:.18; filter:url(#j-soft); }
+.j-contact-core{ fill:#6f5340; opacity:.5; filter:url(#j-soft-sm); }
+
+/* B and C sit one plane back: same shells, slightly desaturated and lifted
+   toward the ambient tone. This is what lets the family be in frame without
+   clutter, and it is quietly one of the tenderest things in Kitaoka's card. */
+.j-unit-b{ opacity:.9; filter:saturate(.72) brightness(1.04); }
+.j-unit-c{ opacity:.94; filter:saturate(.82) brightness(1.02); }
+.j-unit-a{ transform:rotate(8deg); transform-origin:80px 168px; }
+
+.j-loose-dish{ fill:#cfd5e0; stroke:#2e2119; stroke-width:.9; }
+.j-loose-cone{ fill:#c0392b; }
+.j-loose-screw{ fill:#b9bfcb; stroke:#2e2119; stroke-width:.7; }
+
+.j-hand-shadow{ fill:#8a6a52; opacity:.34; filter:url(#j-soft-sm); }
+/* separated digits, each with its own outline — at this size the gaps between
+   fingers are what read as a hand, not shading inside a mitten */
+.j-digit-ink{ fill:none; stroke:#3a2a1e; stroke-width:6.4; stroke-linecap:round; }
+.j-digit{ fill:none; stroke:#d59a6c; stroke-width:4.6; stroke-linecap:round; }
+.j-thumb{ stroke:#dda577; stroke-width:5.2; }
+.j-hand-palm{ fill:#dda577; stroke:#3a2a1e; stroke-width:1.3; stroke-linejoin:round; }
+.j-hand-knuckle{ fill:none; stroke:#f2cda3; stroke-width:1.3; stroke-linecap:round; opacity:.75; }
+.j-screwdriver-shaft{ fill:none; stroke:#c9cfd8; stroke-width:2.4; stroke-linecap:round; }
+.j-screwdriver-grip{ fill:none; stroke:#b8442f; stroke-width:5; stroke-linecap:round; }
+.j-screwdriver-collar{ fill:none; stroke:#8a9099; stroke-width:3.4; }
+
+.j-fg-mug{ fill:#c3a67f; opacity:.9; filter:url(#j-soft); }
+.j-fg-mug-rim{ fill:none; stroke:#e0c9a4; stroke-width:3; opacity:.55; filter:url(#j-soft-sm); }
+
+.j-grain{ opacity:.035; mix-blend-mode:overlay; pointer-events:none; }
+
+/* rays and arcs are wake-only; at rest they are not there at all */
+.j-rays{ opacity:0; transform-origin:86px 178px; }
+.j-arc{ fill:none; stroke:var(--type-color); stroke-width:1.1; stroke-linejoin:round; opacity:0; }
+
 .jericho-wake-text{
-  position:absolute;left:38%;top:19%;transform:translateX(-50%);white-space:nowrap;
-  font-weight:800;font-size:12.5px;letter-spacing:.02em;color:#f4efe0;
-  text-shadow:0 2px 6px rgba(0,0,0,.75), 0 0 10px var(--type-color);
+  position:absolute;left:9%;bottom:36%;white-space:nowrap;
+  font-weight:800;font-size:12.5px;letter-spacing:.02em;color:#2a1d12;
+  text-shadow:0 1px 0 rgba(255,246,228,.9), 0 0 8px rgba(255,246,228,.8);
   opacity:0;pointer-events:none;transition: opacity 1s ease;
 }
 .tcg-card:hover .jericho-wake-text, .tcg-card.tilting .jericho-wake-text{
   opacity:1;transition: opacity .25s ease;
 }
+
+/* Dark ink with a cream halo, not light ink with a dark stroke. Every full-art
+   card in docs/reference/jericho-inspiration/ sets its attack names and rules
+   text in near-black with a light outline over a composed-pale lower third --
+   Magnemite, Rotom IR, Rotom V, Electrode SR, Deoxys, Magnezone. Not one is
+   white-on-dark. This scene is a bright daylight room, so dark-on-pale is both
+   the authentic and the legible choice, and it is why the scrim can be a warm
+   haze at .42 instead of an opaque panel at .94. */
+.tcg-face.layout-fullart:has(.scene-jericho){
+  --fa-scrim:rgba(250,238,214,.42);
+  --fa-ink:#241a12;
+  --fa-ink-dim:#3f2e1f;
+  --fa-ink-faint:#5a4632;
+  --fa-halo:rgba(255,250,236,.95);
+}
+.layout-fullart:has(.scene-jericho) .bottom{
+  paint-order:stroke fill;
+  -webkit-text-stroke:1.4px var(--fa-halo);
+}
+.layout-fullart:has(.scene-jericho) .atk-dmg{ color:#9a5f14; }
+/* the top of this scene is the shaded pegboard, so the name and HP stay light
+   over the existing dark gradient -- exactly as "Magnemite" sits in white over
+   the dark upper third of Kitaoka's card */
 /* holo-foil streak sweeps once, timed to the completion of the arc
    sequence (~1s) instead of the generic instant hover reveal — same
    .holo-shine element/technique, just a synced delay for this card */
@@ -324,10 +428,10 @@
 .layout-fullart .bottom{
   position:relative;z-index:2;margin-top:auto;
   background:linear-gradient(0deg, var(--fa-scrim) 45%, transparent);
-  padding:8px 10px 8px;
+  padding:6px 10px 6px;
 }
-.layout-fullart .attacks{margin-bottom:4px;min-height:0;overflow:hidden;}
-.layout-fullart .attack{display:flex;gap:6px;padding:3px 0;}
+.layout-fullart .attacks{margin-bottom:2px;min-height:0;overflow:hidden;}
+.layout-fullart .attack{display:flex;gap:6px;padding:2px 0;}
 .layout-fullart .atk-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;}
 .layout-fullart .atk-dmg{color:var(--gold);}
 /* Two lines, not one: at 8.8px in a 222px column one line truncates mid-word and
@@ -336,8 +440,11 @@
   font-size:8.8px;color:var(--fa-ink-dim);margin-top:1px;
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
 }
-.layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:var(--fa-ink-faint);margin-top:2px;}
-.layout-fullart .flavor{font-size:8px;font-style:italic;color:var(--fa-ink-dim);margin:4px 0 2px;}
+.layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:var(--fa-ink-faint);margin-top:1px;}
+.layout-fullart .flavor{
+  font-size:8px;font-style:italic;color:var(--fa-ink-dim);margin:3px 0 1px;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
+}
 .layout-fullart .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.4px;color:var(--fa-ink-faint);}
 
 /* rarity-specific accents on top of the frame */
@@ -459,8 +566,14 @@
 }
 
 @media (prefers-reduced-motion: reduce){
-  .jericho-wake-text{ opacity:1; transition:none; }
-  .jericho-lamp-glow{ opacity:.9; transform:scale(1.12); transition:none; }
+  /* Pin Jericho to the REST frame, not a half-woken one: eyes closed in their
+     arcs, A's ear turned toward Fred, panel open and amber at base, beam at
+     base, no rays, no arcs. v1 pinned to a half-woken frame because rest was
+     emotionally empty; rest is now the emotionally complete state, which is the
+     strongest single piece of evidence that the register change is right. */
+  .jericho-wake-text{ opacity:0; transition:none; }
+  .j-beam-shaft, .j-mote, .j-sparkle, .j-steam{ animation:none; }
+  .j-rays, .j-arc{ opacity:0; transition:none; }
   .tulip-box{ opacity:.7; }
   .tulip-box-active{ animation:none; }
   .tulip-box-scanline{ display:none; }

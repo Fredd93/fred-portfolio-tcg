@@ -71,14 +71,14 @@
 }
 
 /* flank panel — warm amber inside, the one place the card's inner light lives */
-.jericho-panel-cavity{ fill:#26150a; stroke:var(--node-outline); stroke-width:1.2; }
-.jericho-panel-glow{ fill:#ffb347; opacity:.95; filter:blur(2.2px); }
-.jericho-panel-core{ fill:#fff0cf; opacity:.95; filter:blur(1.4px); }
+.jericho-panel-cavity{ fill:#1c0e05; stroke:var(--node-outline); stroke-width:1.6; }
+.jericho-panel-glow{ fill:#ff9d1e; opacity:1; filter:blur(1.6px); }
+.jericho-panel-core{ fill:#ffe8a8; opacity:1; filter:blur(1.1px); }
 /* components read as silhouettes against the backlight, which is what makes
    the cavity feel lit from within rather than painted amber */
-.jericho-panel-part{ fill:#5a3413; opacity:.92; }
+.jericho-panel-part{ fill:#4a2a0e; opacity:.95; }
 .jericho-panel-lip{ fill:none; stroke:#f6e7c9; stroke-width:1.2; stroke-linecap:round; opacity:.8; }
-.jericho-panel-door{ fill:#c6ccd8; stroke:var(--node-outline); stroke-width:1.2; }
+.jericho-panel-door{ fill:#aeb6c4; stroke:var(--node-outline); stroke-width:1.4; }
 .jericho-panel-hinge{ fill:none; stroke:var(--node-outline); stroke-width:.6; opacity:.7; }
 
 /* eye — rest is a closed contented arc, exactly how Kitaoka draws his

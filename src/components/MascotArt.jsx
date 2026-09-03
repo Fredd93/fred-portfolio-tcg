@@ -31,9 +31,12 @@
 // `b` is the cloud provider, cleaner and cooler; `c` is the core, smallest.
 // Every id is variant-suffixed — three instances share one document, and
 // duplicate SVG ids silently cross-wire clipPath references.
-export function JerichoMascot({ variant = 'a', className = '' }) {
+export function JerichoMascot({ variant = 'a', className = '', x, y, size }) {
   const v = variant;
   const clip = `jericho-clip-${v}`;
+  // When placed inside the scene SVG these become a nested viewport; standalone
+  // (the pack thumbnail, any future use) they are omitted and it scales to its box.
+  const placement = size != null ? { x, y, width: size, height: size } : {};
 
   // Phillips head: rim, recessed face, two slot lines, plus a wake glint.
   // Placed as on Magnemite — two low, one on the crown reading as an antenna.
@@ -54,6 +57,7 @@ export function JerichoMascot({ variant = 'a', className = '' }) {
 
   return (
     <svg
+      {...placement}
       className={`mascot mascot-jericho jericho-unit jericho-unit-${v} ${className}`}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
@@ -111,9 +115,13 @@ export function JerichoMascot({ variant = 'a', className = '' }) {
         <g className="jericho-panel">
           <g clipPath={`url(#${clip})`}>
             <path className="jericho-panel-cavity" d="M18,60 h18 a2.5,2.5 0 0 1 2.5,2.5 v14 a2.5,2.5 0 0 1 -2.5,2.5 h-22 a2.5,2.5 0 0 1 -2.5,-2.5 v-14 a2.5,2.5 0 0 1 2.5,-2.5Z" />
-            <ellipse className="jericho-panel-glow" cx="26" cy="70" rx="13" ry="9" />
-            <ellipse className="jericho-panel-core" cx="26" cy="70" rx="7" ry="4.6" />
-            <path className="jericho-panel-part" d="M19,65 h6 v3.4 h-6Z M30,64 h4.5 v9 h-4.5Z M19,71.5 h5 v2.6 h-5Z" />
+            {/* This cavity is about 10px across on the finished card, so it gets
+                a dark edge, one saturated glow and one hot core and nothing else
+                -- internal components at this scale only muddy it back to beige,
+                and the lit interior is the focal point the whole beam aims at. */}
+            <ellipse className="jericho-panel-glow" cx="26" cy="70" rx="14" ry="10" />
+            <ellipse className="jericho-panel-core" cx="25" cy="69" rx="8" ry="5.4" />
+            <path className="jericho-panel-part" d="M31,63 h4 v11 h-4Z" />
             {/* bright lip along the cut edge — what sells it as a recess rather
                 than a sticker painted on the shell */}
             <path className="jericho-panel-lip" d="M15.6,60.4 H36.4" />
