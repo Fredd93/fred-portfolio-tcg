@@ -5,65 +5,147 @@
 // pattern in FullArtScenes.jsx. Each mascot uses class hooks (no inline
 // style) so mascot.css can drive idle/hover/frame-swap animation.
 
-// "Node" — a glass-orb core with three hex-plated satellite modules, in the
-// Magneton/Electrode lineage (three linked units is Magneton's real canon;
-// hex-faceting on the modules is the deliberate departure that reads as
-// "ports around a core," matching Jericho's hexagonal-architecture concept).
-// The core is a true sphere in silhouette (circular clip) with faceted
-// internal chords (Cryogonal-style hard angular facets) and a soft inner
-// light visible through the glass (Solosis/Reuniclus cue) — no literal
-// shape-morphing. Dormant vs. activated is entirely a lighting change,
-// driven by the card's existing .tcg-card:hover / .tilting state.
-export function JerichoMascot({ className = '' }) {
+// "Node" — one of three linked steel shells in the Magneton/Magnemite lineage.
+// Three linked units is Magneton's printed canon ("They're formed by several
+// Magnemite linked together"), and the parts that make that lineage legible at
+// thumbnail size are the ones Bulbapedia lists and Magneton_common.jpg / SVP 159
+// both show plainly: a single large eye, red- and blue-tipped appendages either
+// side, and Phillips-head screws. Ours swaps the horseshoe magnets for parabolic
+// dish-ears — the most literal object-language for "listening" — at the same
+// silhouette position, keeping the red/blue cone tips.
+//
+// The shell is a slightly flattened river stone, not a circle: a perfect circle
+// is the shape the previous pass already failed with. It is rendered with the
+// four-part sphere recipe transcribed off Voltorb ex ASC 058/217 — broad soft
+// highlight up-left, hard hotspot inside it, a dark terminator band that is
+// darker than the shadow following it, and a warm bounce rim along the far
+// lower-right edge. The terminator and the bounce rim are what make it read as
+// a solid body, and v1 had neither.
+//
+// At rest the eye is a closed contented arc and the ears stay turned toward
+// Fred. Devotion is postural, not ocular — an unblinking eye trained on someone
+// in a room is a security camera. The eye opens on wake (see mascot.css).
+//
+// Renders at three scales as siblings with different characters: `a` is the
+// local model, scuffed and warm, being repaired with its flank panel open;
+// `b` is the cloud provider, cleaner and cooler; `c` is the core, smallest.
+// Every id is variant-suffixed — three instances share one document, and
+// duplicate SVG ids silently cross-wire clipPath references.
+export function JerichoMascot({ variant = 'a', className = '' }) {
+  const v = variant;
+  const clip = `jericho-clip-${v}`;
+
+  // Phillips head: rim, recessed face, two slot lines, plus a wake glint.
+  // Placed as on Magnemite — two low, one on the crown reading as an antenna.
+  const screw = (cx, cy, r, key) => (
+    <g className="jericho-screw" key={key}>
+      <circle className="jericho-screw-rim" cx={cx} cy={cy} r={r} />
+      <circle className="jericho-screw-face" cx={cx} cy={cy} r={r * 0.72} />
+      <path
+        className="jericho-screw-slot"
+        d={`M${cx - r * 0.5},${cy} H${cx + r * 0.5} M${cx},${cy - r * 0.5} V${cy + r * 0.5}`}
+      />
+      <path
+        className="jericho-screw-glint"
+        d={`M${cx - r * 1.9},${cy} H${cx + r * 1.9} M${cx},${cy - r * 1.9} V${cy + r * 1.9}`}
+      />
+    </g>
+  );
+
   return (
     <svg
-      className={`mascot mascot-jericho ${className}`}
+      className={`mascot mascot-jericho jericho-unit jericho-unit-${v} ${className}`}
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Node, Jericho's satellite-core sentinel"
+      aria-label="Node, Jericho's listening companion"
     >
       <defs>
-        <clipPath id="jericho-m-core-clip">
-          <circle cx="50" cy="54" r="16" />
+        <clipPath id={clip}>
+          <path d="M15,58 C15,39 29,25 50,25 C71,25 85,38 85,56 C85,73 70,85 50,85 C30,85 15,74 15,58Z" />
         </clipPath>
       </defs>
 
-      {/* arcs jump between modules on activation, module hex-seams light in sequence as each arc lands */}
-      <path className="jericho-m-arc jericho-m-arc-1" d="M50,20 Q35,40 20.6,71" />
-      <path className="jericho-m-arc jericho-m-arc-2" d="M20.6,71 Q50,90 79.4,71" />
-
-      <g className="jericho-m-orbit">
-        <g className="jericho-m-sat jericho-m-sat-a" transform="translate(50,20)">
-          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
-          <rect className="jericho-m-stub" x="-1" y="-15" width="2" height="5" rx="0.6" />
-          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-        </g>
-        <g className="jericho-m-sat jericho-m-sat-b" transform="translate(20.6,71)">
-          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
-          <rect className="jericho-m-stub" x="-10.5" y="-1" width="5" height="2" rx="0.6" />
-          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-        </g>
-        <g className="jericho-m-sat jericho-m-sat-c" transform="translate(79.4,71)">
-          <polygon className="jericho-m-plate" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-          <circle className="jericho-m-rivet" cx="0" cy="0" r="1.6" />
-          <rect className="jericho-m-stub" x="5.5" y="-1" width="5" height="2" rx="0.6" />
-          <polygon className="jericho-m-seam-glow" points="0,-9 7.8,-4.5 7.8,4.5 0,9 -7.8,4.5 -7.8,-4.5" />
-        </g>
+      {/* ---- ears: parabolic dishes on short gimbals, at the horseshoe magnets'
+           silhouette position. Authored in absolute coordinates with no group
+           transform so CSS rotation owns the transform channel outright. ---- */}
+      <g className="jericho-ear jericho-ear-l">
+        <path className="jericho-ear-stem" d="M24,52 L12,46" />
+        <ellipse className="jericho-ear-dish" cx="9" cy="43" rx="5" ry="11.5" transform="rotate(20 9 43)" />
+        {/* inner cone offset toward the body so the dish reads concave, not flat */}
+        <ellipse className="jericho-ear-cone jericho-ear-cone-l" cx="11" cy="43.5" rx="2.6" ry="7.6" transform="rotate(20 9 43)" />
+        <circle className="jericho-ear-feed" cx="13.6" cy="43" r="1.4" />
+      </g>
+      <g className="jericho-ear jericho-ear-r">
+        <path className="jericho-ear-stem" d="M76,52 L88,46" />
+        <ellipse className="jericho-ear-dish" cx="91" cy="43" rx="5" ry="11.5" transform="rotate(-20 91 43)" />
+        <ellipse className="jericho-ear-cone jericho-ear-cone-r" cx="89" cy="43.5" rx="2.6" ry="7.6" transform="rotate(-20 91 43)" />
+        <circle className="jericho-ear-feed" cx="86.4" cy="43" r="1.4" />
       </g>
 
-      <circle className="jericho-m-core-rim" cx="50" cy="54" r="16" />
-      <g clipPath="url(#jericho-m-core-clip)">
-        <circle className="jericho-m-core-glass" cx="50" cy="54" r="16" />
-        <circle className="jericho-m-core-light" cx="50" cy="50" r="10" />
-        <polygon className="jericho-m-facet jericho-m-facet-a" points="50,54 50,38 63.86,46" />
-        <polygon className="jericho-m-facet jericho-m-facet-b" points="50,54 63.86,46 63.86,62" />
-        <polygon className="jericho-m-facet jericho-m-facet-c" points="50,54 63.86,62 50,70" />
-        <polygon className="jericho-m-facet jericho-m-facet-d" points="50,54 50,70 36.14,62" />
-        <polygon className="jericho-m-facet jericho-m-facet-e" points="50,54 36.14,62 36.14,46" />
-        <polygon className="jericho-m-facet jericho-m-facet-f" points="50,54 36.14,46 50,38" />
+      {/* crown screw reads as an antenna, exactly as Magnemite's does; it sits
+          on the shell edge rather than floating clear of it */}
+      {screw(50, 25.5, 3.2, 'crown')}
+
+      {/* ---- shell ---- */}
+      <path
+        className="jericho-body"
+        d="M15,58 C15,39 29,25 50,25 C71,25 85,38 85,56 C85,73 70,85 50,85 C30,85 15,74 15,58Z"
+      />
+      <g clipPath={`url(#${clip})`}>
+        {/* cel-edged shadow shape, then the terminator band over its lit edge —
+            the band is deliberately darker than the shadow it borders */}
+        <path className="jericho-shadow" d="M96,32 C74,48 59,66 47,96 L100,100 L100,32Z" />
+        <path className="jericho-terminator" d="M92,30 C71,47 57,66 45,97" />
+        {/* warm bounce rim along the far lower-right edge */}
+        <path className="jericho-bounce" d="M85,50 C85,72 70,85 50,85.5" />
+        {/* broad soft blowout up-left, with a hard hotspot inside it */}
+        <ellipse className="jericho-highlight" cx="37" cy="43" rx="19" ry="14" transform="rotate(-24 37 43)" />
+        <ellipse className="jericho-hotspot" cx="33" cy="39" rx="6" ry="4.2" transform="rotate(-24 33 39)" />
+      </g>
+
+      {/* ---- flank panel: open only on unit A, which is the one being repaired.
+           An open machine with a warm light inside it and a human hand beside
+           it is the single most Jericho-specific image on the card. ---- */}
+      {v === 'a' && (
+        <g className="jericho-panel">
+          <g clipPath={`url(#${clip})`}>
+            <path className="jericho-panel-cavity" d="M18,60 h18 a2.5,2.5 0 0 1 2.5,2.5 v14 a2.5,2.5 0 0 1 -2.5,2.5 h-22 a2.5,2.5 0 0 1 -2.5,-2.5 v-14 a2.5,2.5 0 0 1 2.5,-2.5Z" />
+            <ellipse className="jericho-panel-glow" cx="26" cy="70" rx="13" ry="9" />
+            <ellipse className="jericho-panel-core" cx="26" cy="70" rx="7" ry="4.6" />
+            <path className="jericho-panel-part" d="M19,65 h6 v3.4 h-6Z M30,64 h4.5 v9 h-4.5Z M19,71.5 h5 v2.6 h-5Z" />
+            {/* bright lip along the cut edge — what sells it as a recess rather
+                than a sticker painted on the shell */}
+            <path className="jericho-panel-lip" d="M15.6,60.4 H36.4" />
+          </g>
+          {/* hinged down at the cavity's lower edge and folded toward the
+              viewer, so it foreshortens into a shallow trapezoid below the
+              shell. It swings past the silhouette, so it sits outside the clip. */}
+          <path className="jericho-panel-door" d="M16,78.4 L37,78.4 L41,90 L11.5,90Z" />
+          <path className="jericho-panel-hinge" d="M16,78.4 H37" />
+        </g>
+      )}
+
+      {/* two low screws, per Magnemite's placement */}
+      {screw(38, 79, 2.9, 'low-l')}
+      {screw(66, 79, 2.9, 'low-r')}
+
+      {/* ---- eye: both states authored, cross-faded. Never morphed.
+           Dominant and centred, as on every card in bucket 01. ---- */}
+      {/* A filled tapered crescent, not a stroked arch. A heavy symmetric arch
+          reads as an angry brow; the taper to a point at each end is what makes
+          it unmistakably a shut eyelid, and it is how Kitaoka draws it. */}
+      <g className="jericho-eye-closed">
+        <path className="jericho-eye-arc" d="M40.5,54.6 Q50.5,45.8 60.4,52.6 Q50.5,50.4 40.5,54.6Z" />
+        <path className="jericho-eye-lash" d="M60.4,52.6 Q62.6,51.6 63.4,49.6" />
+      </g>
+      <g className="jericho-eye-open">
+        <ellipse className="jericho-eye-socket" cx="50" cy="52" rx="12.6" ry="12" />
+        <circle className="jericho-eye-iris" cx="50" cy="52" r="7.2" />
+        <circle className="jericho-eye-pupil" cx="50" cy="52" r="3.8" />
+        <path className="jericho-eye-lid" d="M38,49.5 Q50,38.6 62,49.5" />
+        <circle className="jericho-eye-catchlight" cx="45.8" cy="47.6" r="2.7" />
+        <circle className="jericho-eye-spark" cx="54.4" cy="56.4" r="1.1" />
       </g>
     </svg>
   );

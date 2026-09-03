@@ -3,7 +3,6 @@
    Hover/activate reuses the card's existing .tcg-card:hover / .tilting
    state (set by Card.jsx's pointer handlers) — no separate JS wiring. */
 
-.tcg-card.scene-paused .jericho-m-orbit, .tcg-card.scene-paused .jericho-m-core-light,
 .tcg-card.scene-paused .tulip-m-bloom, .tcg-card.scene-paused .tulip-m-lens-outer,
 .tcg-card.scene-paused .mascot-impala{
   animation-play-state: paused;
@@ -11,84 +10,96 @@
 
 .mascot{ overflow:visible; }
 
-/* ---- Jericho: "Node" — glass-orb core + three hex-plated satellites ----
-   Steel-slate/silver-white/glass material only; the arch accent (indigo-
-   violet, --type-color on this card) is reserved for glowing details —
-   inner light, seam glow, activation arcs. No gold on the creature. */
+/* ---- Jericho: "Node" — three linked steel shells, Magneton lineage ----
 
-/* idle: satellites drift in a slow, small orbit; core light pulses faintly,
-   never fully dark */
-.jericho-m-orbit{
-  animation: jericho-m-orbit-drift 7s ease-in-out infinite;
-  transform-origin: 50px 54px;
-}
-@keyframes jericho-m-orbit-drift{
-  0%, 100%{ transform: rotate(-2.5deg) scale(1); }
-  50%{ transform: rotate(2.5deg) scale(1.015); }
-}
+   Line weight is a three-tier hierarchy, never uniform: outer silhouette 2.6,
+   major internal separations 1.2, surface detail 0.6. Uniform stroke-width is
+   the number-one vector-slop tell and is what the rejected v1 did everywhere.
 
-.jericho-m-plate{ fill: rgba(180,185,201,.32); stroke: #c7cbd6; stroke-width: 1.3; }
-.jericho-m-rivet{ fill: #dfe2ea; }
-.jericho-m-stub{ fill: #9aa0ac; }
-.jericho-m-seam-glow{
-  fill: none; stroke: var(--type-color); stroke-width: 1.6;
-  opacity: 0; transition: opacity 1s ease;
-}
+   The outline colour is a warm brown-black, never neutral grey and never #000.
+   Kitaoka's linework on Magnemite 242/236 is warm, and that is half of why the
+   card feels warm.
 
-.jericho-m-core-rim{ fill: none; stroke: rgba(223,226,234,.55); stroke-width: 1.2; }
-.jericho-m-core-glass{ fill: rgba(200,205,220,.18); }
-.jericho-m-facet{ fill: #e8eaf0; }
-.jericho-m-facet-a, .jericho-m-facet-d{ opacity: .05; }
-.jericho-m-facet-b, .jericho-m-facet-e{ opacity: .12; }
-.jericho-m-facet-c, .jericho-m-facet-f{ opacity: .02; }
-.jericho-m-core-light{
-  fill: var(--type-color); opacity: .38; filter: blur(.4px);
-  animation: jericho-m-core-pulse 4s ease-in-out infinite;
-  transform-origin: 50px 50px;
+   Node is the coolest, brightest, cleanest thing in a warm room — Kitaoka's
+   exact device, and why the creature holds the eye without being the largest
+   thing in frame. No gold on the creature: real Hyper Rares gild the frame and
+   background while the Pokemon keeps its own coloration. */
+.jericho-unit{
+  --node-outline:#2e2119;
+  --node-base:#dfe3ea;
+  --node-shadow:#a79dba;
+  --node-terminator:#8a7f9c;
+  --node-bounce:#f0c89a;
+  --node-spec:#f8f9fc;
+  --node-metal:#b9bfcb;
 }
-@keyframes jericho-m-core-pulse{
-  0%, 100%{ opacity: .3; }
-  50%{ opacity: .55; }
-}
+/* siblings, not copies: A is the local model — always been here, scuffed and
+   warm; B is the cloud provider, newer, cleaner, cooler; C is the core. None
+   of this needs to be legible, it just needs to be true, because it is what
+   stops the three from being three copies of one shape. */
+.jericho-unit-a{ --node-base:#dcdfe4; --node-bounce:#f3cd9e; }
+.jericho-unit-b{ --node-base:#e7ecf4; --node-bounce:#e3c6ac; --node-terminator:#8f88a6; }
+.jericho-unit-c{ --node-base:#e0e5ed; }
 
-.jericho-m-arc{
-  fill: none; stroke: var(--type-color); stroke-width: 1.4; stroke-linecap: round;
-  stroke-dasharray: 3 3; opacity: 0; filter: drop-shadow(0 0 3px var(--type-color));
-  transition: opacity 1s ease;
-}
+.jericho-body{ fill:var(--node-base); stroke:var(--node-outline); stroke-width:2.6; }
+.jericho-shadow{ fill:var(--node-shadow); opacity:.8; }
+.jericho-terminator{ fill:none; stroke:var(--node-terminator); stroke-width:5.5; opacity:.5; }
+.jericho-bounce{ fill:none; stroke:var(--node-bounce); stroke-width:4.6; stroke-linecap:round; }
+.jericho-highlight{ fill:#f1f4f9; opacity:.7; }
+.jericho-hotspot{ fill:var(--node-spec); }
 
-/* activation sequence: wake-text (scene, beat 0) already settling; arc-1
-   jumps between two modules half a beat later, its landing lights both
-   module seams; arc-2 follows to the third module a beat after that,
-   lighting the last seam; the core brightens last, once all arcs are live */
-.tcg-card:hover .jericho-m-arc-1, .tcg-card.tilting .jericho-m-arc-1{
-  opacity: .85; transition: opacity .3s ease .25s;
-}
-.tcg-card:hover .jericho-m-arc-2, .tcg-card.tilting .jericho-m-arc-2{
-  opacity: .85; transition: opacity .3s ease .55s;
-}
-.tcg-card:hover .jericho-m-sat-a .jericho-m-seam-glow,
-.tcg-card.tilting .jericho-m-sat-a .jericho-m-seam-glow,
-.tcg-card:hover .jericho-m-sat-b .jericho-m-seam-glow,
-.tcg-card.tilting .jericho-m-sat-b .jericho-m-seam-glow{
-  opacity: .9; filter: drop-shadow(0 0 3px var(--type-color)); transition: opacity .3s ease .45s;
-}
-.tcg-card:hover .jericho-m-sat-c .jericho-m-seam-glow,
-.tcg-card.tilting .jericho-m-sat-c .jericho-m-seam-glow{
-  opacity: .9; filter: drop-shadow(0 0 3px var(--type-color)); transition: opacity .3s ease .75s;
-}
-.tcg-card:hover .jericho-m-core-light, .tcg-card.tilting .jericho-m-core-light{
-  animation: none; opacity: .8; filter: drop-shadow(0 0 6px var(--type-color));
-  transition: opacity .4s ease 1s, filter .4s ease 1s;
+/* ears — the listening organ, and the whole character. A satellite dish is the
+   most literal object-language for "listening"; the red and blue inner cones
+   quote Magnemite's blue-and-red magnet caps, which is the detail that makes
+   the lineage legible at a glance. Colours come from the deck's own TYPES table. */
+.jericho-ear-stem{ fill:none; stroke:var(--node-metal); stroke-width:3.2; stroke-linecap:round; }
+.jericho-ear-dish{ fill:#cfd5e0; stroke:var(--node-outline); stroke-width:1.2; }
+.jericho-ear-cone-l{ fill:#c0392b; }
+.jericho-ear-cone-r{ fill:#2b7fd1; }
+.jericho-ear-feed{ fill:var(--node-metal); stroke:var(--node-outline); stroke-width:.6; }
+/* rotate about the gimbal root, not the group centre */
+.jericho-ear-l{ transform-origin:24px 52px; }
+.jericho-ear-r{ transform-origin:76px 52px; }
+
+/* nine screws across three units: nine free speculars, nine bits of surface
+   density, nine authentic lineage cues */
+.jericho-screw-rim{ fill:var(--node-metal); stroke:var(--node-outline); stroke-width:.9; }
+.jericho-screw-face{ fill:#cdd3dd; }
+.jericho-screw-slot{ fill:none; stroke:#6b7280; stroke-width:1; stroke-linecap:round; }
+.jericho-screw-glint{
+  fill:none; stroke:#fffdf4; stroke-width:1.1; stroke-linecap:round; opacity:0;
 }
 
-@media (prefers-reduced-motion: reduce){
-  /* pin to the "just woken" static frame: arcs present, seams lit, core lit */
-  .jericho-m-orbit{ animation: none; }
-  .jericho-m-core-light{ animation: none; opacity: .8; filter: drop-shadow(0 0 6px var(--type-color)); }
-  .jericho-m-arc{ opacity: .85; transition: none; }
-  .jericho-m-seam-glow{ opacity: .9; filter: drop-shadow(0 0 3px var(--type-color)); transition: none; }
+/* flank panel — warm amber inside, the one place the card's inner light lives */
+.jericho-panel-cavity{ fill:#26150a; stroke:var(--node-outline); stroke-width:1.2; }
+.jericho-panel-glow{ fill:#ffb347; opacity:.95; filter:blur(2.2px); }
+.jericho-panel-core{ fill:#fff0cf; opacity:.95; filter:blur(1.4px); }
+/* components read as silhouettes against the backlight, which is what makes
+   the cavity feel lit from within rather than painted amber */
+.jericho-panel-part{ fill:#5a3413; opacity:.92; }
+.jericho-panel-lip{ fill:none; stroke:#f6e7c9; stroke-width:1.2; stroke-linecap:round; opacity:.8; }
+.jericho-panel-door{ fill:#c6ccd8; stroke:var(--node-outline); stroke-width:1.2; }
+.jericho-panel-hinge{ fill:none; stroke:var(--node-outline); stroke-width:.6; opacity:.7; }
+
+/* eye — rest is a closed contented arc, exactly how Kitaoka draws his
+   Magnemite's, and the reason that Magnemite looks blissful rather than blank */
+.jericho-eye-closed{ opacity:1; }
+.jericho-eye-arc{ fill:var(--node-outline); stroke:none; }
+/* the outer end lifts — that small upturn is what reads as contentment
+   rather than as a shut-off machine */
+.jericho-eye-lash{
+  fill:none; stroke:var(--node-outline); stroke-width:2.1;
+  stroke-linecap:round;
 }
+.jericho-eye-open{ opacity:0; }
+.jericho-eye-socket{ fill:#f4f6fa; stroke:var(--node-outline); stroke-width:2; }
+.jericho-eye-iris{ fill:none; stroke:var(--type-color); stroke-width:3.6; }
+.jericho-eye-pupil{ fill:#241b2e; }
+.jericho-eye-lid{ fill:none; stroke:var(--node-outline); stroke-width:2.8; stroke-linecap:round; }
+/* the catchlight is what makes an eye alive; it is present on every
+   Magnemite/Magneton/Magnezone eye across bucket 01 */
+.jericho-eye-catchlight{ fill:#fff6e2; }
+.jericho-eye-spark{ fill:#fff6e2; opacity:.75; }
 
 /* ---- TulipVision: bloom-scanner ---- */
 .tulip-m-stem, .tulip-m-leaf{ fill: none; stroke: #1f8f6a; stroke-width: 2; stroke-linejoin: round; }
