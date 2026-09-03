@@ -135,11 +135,11 @@
 .j-photo rect, .j-photo path, .j-calendar > rect, .j-shelf, .j-sill,
 .j-window-frame, .j-mug-rim, .j-tray-body, .j-notebook, .j-mat-body,
 .j-fred-torso, .j-fred-face, .j-fred-hair, .j-fred-sleeve, .j-fred-arm,
-.j-fred-neck, .j-fred-collar, .j-fred-cuff, .j-rooftop{
+.j-fred-neck, .j-fred-collar, .j-fred-cuff, .j-fred-ear, .j-rooftop{
   stroke:#3a2a1e; stroke-width:1.1; stroke-linejoin:round;
 }
 /* the figure carries a heavier contour than the props, the way a subject does */
-.j-fred-torso, .j-fred-face, .j-fred-hair{ stroke-width:1.6; }
+.j-fred-torso, .j-fred-face, .j-fred-hair, .j-fred-arm, .j-fred-sleeve{ stroke-width:1.6; }
 .j-shelf, .j-window-frame{ stroke-width:1.4; }
 
 /* every card in the reference set that is warm is also bright; the two dark
@@ -163,23 +163,41 @@
 .j-room-scrim{ fill:#c9a476; opacity:.14; }
 .j-shelf-shadow{ fill:#33200f; opacity:.4; }
 
-/* --- Fred. The emotional load sits in the hand, not the face: at 44px a face
-   must be a handful of confident marks, and a bad face is worse than none.
-   Glasses and a full beard are what make this read as him. --- */
-.j-fred-torso{ fill:#5f5238; }
-.j-fred-shade{ fill:#332c1d; opacity:.66; }
-.j-fred-collar{ fill:#8a7b5f; }
-.j-fred-sleeve{ fill:#544829; }
-.j-fred-cuff{ fill:#8b7c5c; }
-.j-fred-arm, .j-fred-neck, .j-fred-face{ fill:#d9a074; }
-.j-fred-neck-shade{ fill:#a97853; }
+/* --- Fred. Two-tone cel shading on skin and cloth: one base plus one
+   hard-edged darker SHAPE, never a gradient. That is what Kitaoka does and it
+   is most of what separates a drawn person from a flat silhouette. Glasses and
+   a full beard are what make this read as him specifically. --- */
+.j-fred-torso{ fill:#5f6b4e; }
+.j-fred-shade{ fill:#3b4433; opacity:.85; }
+.j-fred-collar{ fill:#78855f; }
+.j-fred-placket{ fill:none; stroke:#3b4433; stroke-width:1; opacity:.8; }
+.j-fred-seam{ fill:none; stroke:#3b4433; stroke-width:.9; opacity:.6; }
+.j-limb-ink{ fill:none; stroke:#2a1d13; stroke-width:21; stroke-linecap:round; }
+.j-upperarm{ fill:none; stroke:#5f6b4e; stroke-width:17.5; stroke-linecap:round; }
+.j-forearm-skin{ fill:none; stroke:#d3a074; stroke-width:15; stroke-linecap:round; }
+.j-fred-sleeve{ fill:#556047; }
+.j-fred-cuff{ fill:none; stroke:#78855f; stroke-width:5.5; stroke-linecap:round; }
+.j-fred-arm, .j-fred-neck, .j-fred-face, .j-fred-ear{ fill:#d3a074; }
+.j-fred-arm-sh, .j-fred-neck-shade, .j-fred-face-shade{ fill:#ab7148; }
+.j-fred-neck-shade{ opacity:.9; }
+.j-fred-face-shade{ opacity:.55; }
+.j-fred-arm-sh{ opacity:.75; }
+.j-fred-ear-in{ fill:none; stroke:#a06c47; stroke-width:.9; stroke-linecap:round; }
+.j-fred-nose{ fill:none; stroke:#a06c47; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.j-fred-nose-sh{ fill:none; stroke:#8f5c3a; stroke-width:1; stroke-linecap:round; }
 .j-fred-hair, .j-fred-beard{ fill:#3a2a1e; }
-.j-fred-tache{ fill:#33241a; }
-.j-fred-eye, .j-fred-brow{ fill:none; stroke:#33241a; stroke-width:1.6; stroke-linecap:round; }
-.j-fred-smile{ fill:none; stroke:#7d4f38; stroke-width:1.3; stroke-linecap:round; }
-.j-fred-glasses rect{ fill:rgba(255,255,255,.14); stroke:#9a8a6a; stroke-width:1.1; }
-.j-fred-glasses path{ fill:none; stroke:#9a8a6a; stroke-width:1.1; stroke-linecap:round; }
-.j-fred-rim{ fill:none; stroke:#f7d08a; stroke-width:2.2; stroke-linecap:round; opacity:.85; }
+.j-fred-hair-lock{ fill:#2a1d14; }
+.j-fred-hair-hi{ fill:none; stroke:#6a5138; stroke-width:1.6; stroke-linecap:round; opacity:.7; }
+.j-fred-tache{ fill:#31231a; }
+.j-fred-sclera{ fill:#f6f1e6; }
+.j-fred-iris{ fill:#2f2318; }
+/* the upper lid is the heaviest line on the face, as it is on every TCG human */
+.j-fred-lid{ fill:none; stroke:#2a1d13; stroke-width:2.2; stroke-linecap:round; }
+.j-fred-brow{ fill:none; stroke:#2f2118; stroke-width:2.4; stroke-linecap:round; }
+.j-fred-lip{ fill:none; stroke:#8a4f36; stroke-width:1.3; stroke-linecap:round; }
+.j-fred-glasses rect{ fill:rgba(240,246,255,.12); stroke:#8e7d5e; stroke-width:1.2; }
+.j-fred-glasses path{ fill:none; stroke:#8e7d5e; stroke-width:1.2; stroke-linecap:round; }
+.j-fred-rim{ fill:none; stroke:#f7d08a; stroke-width:2; stroke-linecap:round; opacity:.7; }
 
 .j-desk-lip{ fill:none; stroke:#f2d9a8; stroke-width:2.2; }
 .j-desk-edge{ fill:none; stroke:#8a6a52; stroke-width:1.4; opacity:.5; }

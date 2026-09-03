@@ -295,42 +295,76 @@ function JerichoScene() {
 
         {/* ================= PLANE 2 — desk and Fred ================= */}
         {/* Fred sits behind the desk, so he is drawn first */}
+        {/* ---------------- Fred ----------------
+            Built off the anatomy Kitaoka actually draws on Magnemite 242/236,
+            because the previous pass was an oval with a beard pasted on and read
+            as an avatar sticker rather than a person. What a Pokemon TCG human
+            has, and what was missing: a skull that narrows to a real jaw and
+            chin; a bold nose as one of the most prominent features; eyes with
+            sclera, iris and a heavy tapering upper lid rather than two arcs; a
+            drawn ear; hair as separate pointed locks rather than a helmet; and
+            hard-edged two-tone cel shadows on skin and cloth. Line weight varies
+            hard -- very heavy on the silhouette and the eyelids, thin on the
+            cheek and collar creases.
+
+            He is also bigger. Surge's head is about 21% of his card's height;
+            this is now ~17%, up from 12.7%, because he is half the relationship
+            the illustration is about. */}
         <g className="j-fred">
-          {/* torso, cropped at the shoulder by the right frame edge. The far
-              shoulder rides higher than the near one because he is leaning in
-              over the work — a level shoulder line reads as a mannequin. */}
-          <path className="j-fred-torso" d="M152,232 C150,186 164,152 188,145 C216,137 240,150 246,182 L246,232Z" />
-          <path className="j-fred-shade" d="M204,150 C224,152 238,164 244,184 L246,232 L214,232Z" />
-          <path className="j-fred-collar" d="M175,152 L187,172 L201,150 L195,146 L187,160 L181,148Z" />
-          {/* The forearm crosses the whole frame from his elbow to the hand.
-              That long diagonal is what carries the eye from his face down to
-              Node, which is the second half of the reading loop. */}
-          <path className="j-fred-sleeve" d="M212,160 C220,168 222,178 220,190 L198,190 C199,180 200,170 198,162Z" />
-          <path className="j-fred-cuff" d="M200,176 C204,174 210,175 213,178 L211,186 C207,183 203,182 199,183Z" />
-          <path className="j-fred-arm" d="M204,180 C190,175 178,172 167,171 L166,183 C177,184 191,187 203,191Z" />
-          {/* head, three-quarter, turned down-left toward the work */}
-          <path className="j-fred-neck" d="M178,118 C178,130 180,140 186,146 C192,141 196,132 196,118Z" />
-          <path className="j-fred-neck-shade" d="M178,118 C178,128 180,136 184,142 C186,134 186,126 186,118Z" />
-          <path className="j-fred-face" d="M166,100 C166,86 174,78 186,78 C198,78 205,87 205,100 C205,114 197,125 185,125 C173,125 166,113 166,100Z" />
-          {/* hair, receding at the temples — one of the two marks that make a
-              44px head read as him rather than as generic-man */}
-          <path className="j-fred-hair" d="M165,99 C163,84 171,74 186,74 C201,74 207,84 206,98 C204,90 198,84 189,83 C179,82 170,88 165,99Z" />
-          {/* full beard and moustache — the other identifying mark */}
-          <path className="j-fred-beard" d="M168,102 C169,118 176,126 185,126 C195,126 203,117 204,101 C202,110 196,114 185,114 C175,114 170,110 168,102Z" />
-          <path className="j-fred-tache" d="M178,104 C181,102 190,102 193,104 C190,107 181,107 178,104Z" />
-          {/* eyes cast down-left toward the work: lids as short arcs, not dots */}
-          <path className="j-fred-eye" d="M172,97 C175,100 179,100 181,97 M190,97 C193,100 197,100 199,97" />
-          <path className="j-fred-brow" d="M171,92 C174,90 179,90 182,91 M189,91 C192,90 197,90 200,92" />
-          <path className="j-fred-smile" d="M179,110 C182,112 188,112 191,110" />
-          {/* thin metal glasses */}
+          {/* torso. The far shoulder rides higher because he is leaning in over
+              the work -- a level shoulder line reads as a mannequin. */}
+          <path className="j-fred-torso" d="M144,232 C142,186 155,156 177,148 C207,139 238,148 248,180 L248,232Z" />
+          <path className="j-fred-shade" d="M206,155 C228,158 242,170 248,190 L248,232 L216,232Z" />
+          {/* folded collar with two lapel points and a placket, per the uniform */}
+          <path className="j-fred-collar" d="M171,153 L186,175 L204,149 L196,144 L186,161 L178,147Z" />
+          <path className="j-fred-placket" d="M186,175 L188,232" />
+          <path className="j-fred-seam" d="M164,160 C158,172 155,190 156,206" />
+
+          {/* neck, thick, with the hard cast shadow the jaw throws on it */}
+          <path className="j-fred-neck" d="M175,122 C175,134 177,144 186,150 C195,144 199,134 199,122Z" />
+          <path className="j-fred-neck-shade" d="M175,122 C175,132 177,140 183,146 C186,138 186,130 185,122Z" />
+
+          {/* skull: broad cranium narrowing through the cheekbone to a jaw
+              angle and a defined chin */}
+          <path className="j-fred-face" d="M162,102 C162,85 170,73 185,73 C201,73 208,85 208,101 C208,112 206,120 201,127 C197,132 191,135 184,135 C176,135 169,130 166,121 C163,114 162,108 162,102Z" />
+          {/* ear, at the jaw hinge */}
+          <path className="j-fred-ear" d="M163,99 C157,97 154,102 155,108 C156,114 161,116 165,114Z" />
+          <path className="j-fred-ear-in" d="M161,103 C159,104 159,108 161,110" />
+          {/* hard-edged shadow shape on the side away from the window */}
+          <path className="j-fred-face-shade" d="M196,80 C204,88 208,94 208,101 C208,112 206,120 201,127 C198,131 193,134 187,135 C195,126 199,112 198,98 C197,90 197,84 196,80Z" />
+          {/* nose — a wedge with a tip and one nostril line, not an absence */}
+          <path className="j-fred-nose" d="M180,97 C178,102 174,107 175,110 C176,112 180,112 182,110" />
+          <path className="j-fred-nose-sh" d="M175.5,110.5 C177.5,111.5 180,111.5 181.5,110.5" />
+
+          {/* eyes cast down toward the work: sclera, iris, heavy upper lid */}
+          <ellipse className="j-fred-sclera" cx="176" cy="100.6" rx="4.6" ry="2.8" />
+          <ellipse className="j-fred-sclera" cx="195" cy="100.6" rx="4.3" ry="2.6" />
+          <circle className="j-fred-iris" cx="174.4" cy="102.2" r="2.5" />
+          <circle className="j-fred-iris" cx="193.4" cy="102.2" r="2.4" />
+          <path className="j-fred-lid" d="M171.2,100.2 C173.5,98.7 178.8,98.7 181,100 M190.6,100.2 C192.8,98.7 197.6,98.7 199.4,100" />
+          <path className="j-fred-brow" d="M170,91.5 C173.5,89 180,89.2 183.5,91 M189.5,91 C193,89.2 199.5,89 202.5,91.5" />
+
+          {/* hair as separate locks, receding at the temples */}
+          <path className="j-fred-hair" d="M161,101 C159,84 168,71 185,71 C202,71 210,83 209,99 C207,90 203,84 197,81 C199,86 199,90 198,93 C195,86 189,82 181,82 C172,82 165,89 161,101Z" />
+          <path className="j-fred-hair-lock" d="M167,84 C171,78 178,75 185,76 C177,77 171,80 167,84Z M196,78 C202,81 206,87 207,93 C204,86 200,81 196,78Z" />
+          <path className="j-fred-hair-hi" d="M172,80 C177,76 184,75 190,76" />
+
+          {/* full beard following the jawline, and a moustache */}
+          <path className="j-fred-beard" d="M164,104 C165,118 169,128 176,133 C179,135 190,135 194,132 C201,127 205,117 206,103 C204,114 199,120 192,122 C186,124 180,124 175,122 C169,119 165,113 164,104Z" />
+          <path className="j-fred-tache" d="M178,113.4 C181,112 189,112 192,113.4 C189,114.9 181,114.9 178,113.4Z" />
+          {/* the mouth stays visible between moustache and beard — a dark mass
+              across the whole lower face reads as a smudge, not as a person */}
+          <path className="j-fred-lip" d="M179,118.5 C182.5,120.5 188.5,120.5 192,118.5" />
+
+          {/* thin metal glasses, with a temple arm running back to the ear */}
           <g className="j-fred-glasses">
-            <rect x="169" y="92" width="13" height="9.5" rx="2.6" />
-            <rect x="188" y="92" width="13" height="9.5" rx="2.6" />
-            <path d="M182,96 h6" />
-            <path d="M169,95 L164,97" />
+            <rect x="169" y="93" width="15" height="11" rx="3.4" />
+            <rect x="188" y="93" width="14" height="10.5" rx="3.4" />
+            <path d="M184,97 h4" />
+            <path d="M169,96 L162,100" />
           </g>
           {/* warm sun rim down his window-side contour */}
-          <path className="j-fred-rim" d="M165,98 C164,112 169,124 177,130 M164,152 C154,160 148,172 145,186" />
+          <path className="j-fred-rim" d="M164,84 C160,90 158,96 158,102 M158,162 C150,172 146,186 145,200" />
         </g>
 
         <g className="j-desk">
@@ -479,9 +513,39 @@ function JerichoScene() {
             on this card has to be drawn well it is this one: a hand resting next
             to a small creature is one of the most reliably tender images there
             is, and it carries the emotional load the face cannot be trusted with. */}
-        {/* scaled to read against a 44px head — at full size the hand was
-            larger than his face and pulled the eye away from Node */}
-        <g className="j-hand" transform="translate(7 5) scale(0.86)">
+        {/* The forearm rests ON the desk, so it is drawn after it — a limb
+            behind the desk edge cannot rest on the surface it is touching.
+            Upper arm to elbow on the right, forearm running back left to the
+            hand: that diagonal is the second half of the reading loop, carrying
+            the eye from his face down to Node. */}
+        {/* Limbs are round-capped strokes drawn twice — a heavier dark pass
+            for the contour, then the fill — rather than hand-authored outline
+            shapes. At this scale an authored closed path reads as a bean; a
+            stroked segment is guaranteed to read as a tapered tube with a real
+            joint at the elbow. Same construction as the fingers. */}
+        {/* Limbs are round-capped strokes drawn twice — a heavier dark pass for
+            the contour, then the fill — rather than hand-authored outline shapes.
+            At this scale an authored closed path reads as a bean; a stroked
+            segment is guaranteed to read as a tapered tube. Same construction as
+            the fingers.
+
+            The arm is short and steep on purpose. His near shoulder sits only
+            about 13 units right of the hand, so any long forearm has to fold
+            back across his chest and reads as folded arms rather than reaching.
+            He is leaning in over the work, so the limb comes almost straight
+            down, heavily foreshortened. */}
+        <g className="j-forearm">
+          <path className="j-limb-ink" d="M159,150 L167,168" />
+          <path className="j-limb-ink" d="M167,168 L164,178" />
+          <path className="j-upperarm" d="M159,150 L167,168" />
+          <path className="j-forearm-skin" d="M167,168 L164,178" />
+          {/* rolled sleeve end, across the arm rather than blobbed at the joint */}
+          <path className="j-fred-cuff" d="M160,166 L174,170" />
+        </g>
+
+        {/* scaled to read against the head — at full size the hand was larger
+            than his face and pulled the eye away from Node */}
+        <g className="j-hand" transform="translate(2 4) scale(0.88)">
           <ellipse className="j-hand-shadow" cx="136" cy="190" rx="22" ry="4.6" />
           {/* Digits are drawn as round-capped strokes, twice: a heavier dark
               pass underneath for the contour, a skin pass on top. At ~5px wide
