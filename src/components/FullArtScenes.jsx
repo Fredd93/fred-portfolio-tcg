@@ -62,9 +62,9 @@ const SPARKLES = [
   { x: 30, y: 96, s: 1.3, d: 0 }, { x: 52, y: 128, s: 0.8, d: 2.4 },
   { x: 40, y: 168, s: 1.7, d: 5.1 }, { x: 74, y: 148, s: 1.0, d: 1.3 },
   { x: 62, y: 200, s: 1.2, d: 6.8 }, { x: 96, y: 186, s: 0.85, d: 3.7 },
-  { x: 24, y: 140, s: 1.1, d: 8.2 }, { x: 86, y: 226, s: 1.5, d: 4.4 },
-  { x: 108, y: 210, s: 0.9, d: 7.6 }, { x: 46, y: 228, s: 1.25, d: 2.9 },
-  { x: 18, y: 186, s: 0.75, d: 9.4 }, { x: 118, y: 242, s: 1.05, d: 5.8 },
+  { x: 24, y: 140, s: 1.1, d: 8.2 }, { x: 36, y: 112, s: 1.5, d: 4.4 },
+  { x: 88, y: 158, s: 0.9, d: 7.6 }, { x: 56, y: 176, s: 1.25, d: 2.9 },
+  { x: 18, y: 152, s: 0.75, d: 9.4 }, { x: 106, y: 190, s: 1.05, d: 5.8 },
   { x: 66, y: 96, s: 0.9, d: 6.3 }, { x: 100, y: 124, s: 1.4, d: 1.8 },
 ];
 
@@ -163,7 +163,7 @@ function JerichoScene() {
             <stop offset="1" stopColor="#fff" stopOpacity="0" />
           </radialGradient>
           <mask id="j-ray-fade">
-            <circle cx="80" cy="168" r="116" fill="url(#j-ray-mask)" />
+            <circle cx="80" cy="168" r="86" fill="url(#j-ray-mask)" />
           </mask>
         </defs>
 
@@ -479,7 +479,9 @@ function JerichoScene() {
             on this card has to be drawn well it is this one: a hand resting next
             to a small creature is one of the most reliably tender images there
             is, and it carries the emotional load the face cannot be trusted with. */}
-        <g className="j-hand">
+        {/* scaled to read against a 44px head — at full size the hand was
+            larger than his face and pulled the eye away from Node */}
+        <g className="j-hand" transform="translate(7 5) scale(0.86)">
           <ellipse className="j-hand-shadow" cx="136" cy="190" rx="22" ry="4.6" />
           {/* Digits are drawn as round-capped strokes, twice: a heavier dark
               pass underneath for the contour, a skin pass on top. At ~5px wide

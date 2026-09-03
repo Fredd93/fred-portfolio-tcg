@@ -101,6 +101,159 @@
 .jericho-eye-catchlight{ fill:#fff6e2; }
 .jericho-eye-spark{ fill:#fff6e2; opacity:.75; }
 
+/* ================= Node: idle, wake, sleep =================
+   Every beat hangs off state the card already tracks — .tcg-card:hover and
+   .tcg-card.tilting (set on touchstart, cleared on touchend/touchcancel by
+   Card.jsx). No new event plumbing, so desktop hover and mobile
+   touch-and-hold drive identical selectors. */
+
+/* A's left dish is off — he unscrewed it, and it is lying on the mat with two
+   loose screws beside it. The empty gimbal stays, which is what tells you it
+   was taken off rather than never drawn. */
+.jericho-unit-a .jericho-ear-l .jericho-ear-dish,
+.jericho-unit-a .jericho-ear-l .jericho-ear-cone{ display:none; }
+
+/* REST. A's right ear is deployed and turned toward Fred; B's and C's are
+   folded. Every eye is closed. This is the whole design in one frame:
+   devotion is postural, not ocular. An unblinking eye trained on someone in a
+   room is a security camera; a sleeping dog with one ear cocked is devotion. */
+.jericho-unit-a .jericho-ear-r{ transform:rotate(-11deg); }
+.jericho-unit-b .jericho-ear-l, .jericho-unit-c .jericho-ear-l{ transform:rotate(24deg); }
+.jericho-unit-b .jericho-ear-r, .jericho-unit-c .jericho-ear-r{ transform:rotate(-24deg); }
+.jericho-ear-l, .jericho-ear-r{ transition:transform .4s ease; }
+.jericho-eye-closed, .jericho-eye-open{ transition:opacity .14s ease; }
+.jericho-panel-glow{ transition:opacity .3s ease; }
+
+/* I2 — the ear-flick. Every ~9s A's deployed dish turns 3-4 degrees and
+   settles, and nothing else moves. This is the most important beat in the
+   design: it is what a sleeping dog's ear does, it says "listening" with zero
+   menace, and it costs one rotate. */
+.jericho-unit-a .jericho-ear-r{ animation:j-ear-flick 9s ease-out infinite; }
+@keyframes j-ear-flick{
+  0%{ transform:rotate(-11deg); }
+  1.4%{ transform:rotate(-14.5deg); }
+  2.4%{ transform:rotate(-11deg); }
+  100%{ transform:rotate(-11deg); }
+}
+
+/* I3 — the amber interior breathes. A slow heartbeat, not a pulse. */
+.jericho-panel-glow{ animation:j-amber-breathe 4s ease-in-out infinite; }
+@keyframes j-amber-breathe{
+  0%, 100%{ opacity:.62; }
+  50%{ opacity:.78; }
+}
+
+/* WAKE — it opens its eyes and looks up at you. Everything else supports that. */
+/* t=0.00 the ear turns 6 degrees toward the viewer. It heard something before
+   anything lit up. */
+.tcg-card:hover .jericho-unit-a .jericho-ear-r,
+.tcg-card.tilting .jericho-unit-a .jericho-ear-r{
+  animation:none !important; transform:rotate(-17deg) !important;
+  transition:transform .09s ease-out;
+}
+/* t=0.12 / 0.22 / 0.30 — A, then B, then C open, 140ms each */
+.tcg-card:hover .jericho-unit-a .jericho-eye-closed,
+.tcg-card.tilting .jericho-unit-a .jericho-eye-closed{ opacity:0; transition-delay:.12s; }
+.tcg-card:hover .jericho-unit-a .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-a .jericho-eye-open{ opacity:1; transition-delay:.12s; }
+.tcg-card:hover .jericho-unit-b .jericho-eye-closed,
+.tcg-card.tilting .jericho-unit-b .jericho-eye-closed{ opacity:0; transition-delay:.22s; }
+.tcg-card:hover .jericho-unit-b .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-b .jericho-eye-open{ opacity:1; transition-delay:.22s; }
+.tcg-card:hover .jericho-unit-c .jericho-eye-closed,
+.tcg-card.tilting .jericho-unit-c .jericho-eye-closed{ opacity:0; transition-delay:.30s; }
+.tcg-card:hover .jericho-unit-c .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-c .jericho-eye-open{ opacity:1; transition-delay:.30s; }
+
+/* t=0.36 B and C's ears deploy with a small overshoot. Mechanical parts should
+   overshoot; that is what makes them read as sprung rather than tweened. */
+.tcg-card:hover .jericho-unit-b .jericho-ear-l, .tcg-card.tilting .jericho-unit-b .jericho-ear-l,
+.tcg-card:hover .jericho-unit-c .jericho-ear-l, .tcg-card.tilting .jericho-unit-c .jericho-ear-l,
+.tcg-card:hover .jericho-unit-b .jericho-ear-r, .tcg-card.tilting .jericho-unit-b .jericho-ear-r,
+.tcg-card:hover .jericho-unit-c .jericho-ear-r, .tcg-card.tilting .jericho-unit-c .jericho-ear-r{
+  transform:rotate(0deg);
+  transition:transform .18s cubic-bezier(.34,1.4,.64,1) .36s;
+}
+
+/* t=0.42 the interior brightens and warms */
+.tcg-card:hover .jericho-panel-glow, .tcg-card.tilting .jericho-panel-glow{
+  animation:none; opacity:.92; transition:opacity .26s ease .42s;
+}
+
+/* t=0.66 all nine screws pop a cross-glint in a staggered 25ms cascade
+   travelling left to right, reading as one light sweeping across metal */
+.tcg-card:hover .jericho-screw-glint, .tcg-card.tilting .jericho-screw-glint{
+  animation:j-screw-glint .08s ease-out .66s;
+}
+.tcg-card:hover .jericho-unit-c .jericho-screw-glint,
+.tcg-card.tilting .jericho-unit-c .jericho-screw-glint{ animation-delay:.685s; }
+.tcg-card:hover .jericho-unit-b .jericho-screw-glint,
+.tcg-card.tilting .jericho-unit-b .jericho-screw-glint{ animation-delay:.71s; }
+@keyframes j-screw-glint{
+  0%{ opacity:0; } 50%{ opacity:.95; } 100%{ opacity:0; }
+}
+
+/* HELD — every open eye blinks on a ~3.5s stagger. An eye that never closes is
+   a camera; an eye that blinks is alive. This is the deliberate inversion of
+   the rejected design's "A's eye never closes". */
+.tcg-card:hover .jericho-unit-a .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-a .jericho-eye-open{ animation:j-blink 3.5s ease-in-out 1.4s infinite; }
+.tcg-card:hover .jericho-unit-b .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-b .jericho-eye-open{ animation:j-blink 3.5s ease-in-out 2.6s infinite; }
+.tcg-card:hover .jericho-unit-c .jericho-eye-open,
+.tcg-card.tilting .jericho-unit-c .jericho-eye-open{ animation:j-blink 3.5s ease-in-out 3.9s infinite; }
+@keyframes j-blink{
+  0%, 94%, 100%{ opacity:1; }
+  96.5%{ opacity:0; }
+}
+
+/* SLEEP is the reverse, slower, and it falls out of the transitions above --
+   except for one thing, which is the point of the card:
+
+     The eyes close. The ear stays turned toward him.
+
+   A's deployed ear returns to rotate(-11deg), still aimed at Fred, never to
+   the folded angle. If an implementer ever folds that ear on leave, the card
+   has lost its point. */
+.jericho-unit-c .jericho-eye-closed{ transition-delay:.56s; }
+.jericho-unit-b .jericho-eye-closed{ transition-delay:.70s; }
+.jericho-unit-a .jericho-eye-closed{ transition-delay:.90s; }
+.jericho-unit-c .jericho-eye-open{ transition-delay:.56s; }
+.jericho-unit-b .jericho-eye-open{ transition-delay:.70s; }
+.jericho-unit-a .jericho-eye-open{ transition-delay:.90s; }
+.jericho-unit-b .jericho-ear-l, .jericho-unit-b .jericho-ear-r{ transition-delay:.40s; }
+.jericho-unit-c .jericho-ear-l, .jericho-unit-c .jericho-ear-r{ transition-delay:.52s; }
+
+.tcg-card.scene-paused .jericho-ear-r, .tcg-card.scene-paused .jericho-panel-glow,
+.tcg-card.scene-paused .jericho-eye-open{
+  animation-play-state:paused;
+}
+
+@media (prefers-reduced-motion: reduce){
+  /* Pin to REST, not to a half-woken frame: eyes closed in their arcs, A's ear
+     turned toward Fred, panel open and amber at base. The rejected design
+     pinned to half-woken because rest was emotionally empty; rest is now the
+     emotionally complete state, which is the strongest single piece of
+     evidence that the register change is right. */
+  .jericho-ear-l, .jericho-ear-r, .jericho-panel-glow,
+  .jericho-eye-closed, .jericho-eye-open, .jericho-screw-glint{
+    animation:none !important; transition:none !important;
+  }
+  .tcg-card:hover .jericho-unit-a .jericho-ear-r,
+  .tcg-card.tilting .jericho-unit-a .jericho-ear-r{ transform:rotate(-11deg) !important; }
+  .tcg-card:hover .jericho-eye-closed, .tcg-card.tilting .jericho-eye-closed{ opacity:1 !important; }
+  .tcg-card:hover .jericho-eye-open, .tcg-card.tilting .jericho-eye-open{ opacity:0 !important; }
+  .tcg-card:hover .jericho-panel-glow, .tcg-card.tilting .jericho-panel-glow{ opacity:.7 !important; }
+  .tcg-card:hover .jericho-unit-b .jericho-ear-l, .tcg-card.tilting .jericho-unit-b .jericho-ear-l,
+  .tcg-card:hover .jericho-unit-c .jericho-ear-l, .tcg-card.tilting .jericho-unit-c .jericho-ear-l{
+    transform:rotate(24deg);
+  }
+  .tcg-card:hover .jericho-unit-b .jericho-ear-r, .tcg-card.tilting .jericho-unit-b .jericho-ear-r,
+  .tcg-card:hover .jericho-unit-c .jericho-ear-r, .tcg-card.tilting .jericho-unit-c .jericho-ear-r{
+    transform:rotate(-24deg);
+  }
+}
+
 /* ---- TulipVision: bloom-scanner ---- */
 .tulip-m-stem, .tulip-m-leaf{ fill: none; stroke: #1f8f6a; stroke-width: 2; stroke-linejoin: round; }
 .tulip-m-leaf{ fill: rgba(31,143,106,.35); }
