@@ -87,7 +87,20 @@
 .layout-classic .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.6px;color:#4a4636;}
 
 /* -------- full-art layout (ir / sir / ssir) -------- */
-.tcg-face.layout-fullart{background:#0c0d13;color:#f4efe0;}
+/* Scrim + ink are custom properties so each scene picks its own treatment.
+   The defaults here suit a dark scene (impala, tulip): light ink over a strong
+   bottom-up scrim. Jericho overrides them further down — its scene is a bright
+   daylight room composed pale in the lower third, so it runs dark ink with a
+   cream halo and a much weaker scrim, which is what every full-art reference
+   card in docs/reference/jericho-inspiration/ actually does. */
+.tcg-face.layout-fullart{
+  background:#0c0d13;color:var(--fa-ink);
+  --fa-scrim:rgba(6,6,10,.78);
+  --fa-ink:#f4efe0;
+  --fa-ink-dim:#c9c6ba;
+  --fa-ink-faint:#a9a596;
+  --fa-halo:rgba(0,0,0,.55);
+}
 .layout-fullart .art-bg{
   position:absolute;inset:0;z-index:0;
   background:radial-gradient(120% 120% at 30% 20%, var(--type-color) 0%, #0c0d13 72%);
@@ -310,20 +323,22 @@
 
 .layout-fullart .bottom{
   position:relative;z-index:2;margin-top:auto;
-  background:linear-gradient(0deg, rgba(6,6,10,.94) 40%, rgba(6,6,10,.7) 80%, transparent);
+  background:linear-gradient(0deg, var(--fa-scrim) 45%, transparent);
   padding:8px 10px 8px;
 }
 .layout-fullart .attacks{margin-bottom:4px;min-height:0;overflow:hidden;}
 .layout-fullart .attack{display:flex;gap:6px;padding:3px 0;}
 .layout-fullart .atk-head{display:flex;justify-content:space-between;font-size:11px;font-weight:800;}
 .layout-fullart .atk-dmg{color:var(--gold);}
-.layout-fullart .atk-text{font-size:8.8px;color:#c9c6ba;margin-top:1px;}
-.layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:#a9a596;margin-top:2px;}
-.layout-fullart .flavor{font-size:8px;font-style:italic;color:#c9c6ba;margin:4px 0 2px;}
-.layout-fullart .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.4px;color:#a9a596;}
-.layout-fullart .card-description{font-size:9.5px;line-height:1.35;color:#e4e1d6;margin:2px 0 6px;}
-.layout-fullart .card-languages{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px;}
-.layout-fullart .lang-pip{font-size:7.4px;font-weight:700;background:rgba(255,255,255,.12);color:#f4efe0;border-radius:4px;padding:2px 6px;letter-spacing:.02em;}
+/* Two lines, not one: at 8.8px in a 222px column one line truncates mid-word and
+   reads as a bug. Two lands at the same visual weight as the Rotom IR's rules text. */
+.layout-fullart .atk-text{
+  font-size:8.8px;color:var(--fa-ink-dim);margin-top:1px;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;
+}
+.layout-fullart .wrr{display:flex;justify-content:space-between;font-size:7.6px;font-weight:700;color:var(--fa-ink-faint);margin-top:2px;}
+.layout-fullart .flavor{font-size:8px;font-style:italic;color:var(--fa-ink-dim);margin:4px 0 2px;}
+.layout-fullart .foot{display:flex;justify-content:space-between;align-items:center;font-size:7.4px;color:var(--fa-ink-faint);}
 
 /* rarity-specific accents on top of the frame */
 .tcg-card.rarity-common, .tcg-card.rarity-uncommon, .tcg-card.rarity-rare, .tcg-card.rarity-doublerare, .tcg-card.rarity-ultrarare{
