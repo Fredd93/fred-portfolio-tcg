@@ -8,6 +8,13 @@ import { useInViewAnimation } from '../hooks/useInViewAnimation.js';
 
 const FULLART = new Set(['ir', 'sir', 'hyperrare']);
 
+// Real full-art cards carry 1-2 attacks with 1-2 lines of rules text and nothing
+// else; everything past that is what forced the old opaque .bottom panel over the
+// illustration. At 3 attacks plus a description paragraph the block was taller than
+// .tcg-face, which clips — so role/retreat, flavor and the footer never rendered.
+// The full set still renders in CardModal, which is the click-through detail view.
+const FACE_ATTACK_LIMIT = 2;
+
 export function EnergyPip({ type }) {
   const t = TYPES[type];
   return (
@@ -22,7 +29,6 @@ export function CardFace({ project, index = 0, total = 17 }) {
   const r = RARITY[project.rarity];
   const type = TYPES[project.type];
   const fullArt = FULLART.has(project.rarity);
-  const languages = project.languages ?? [];
 
   return (
     <div className={`tcg-face ${fullArt ? 'layout-fullart' : 'layout-classic'}`} style={{ '--type-color': type.color }}>
@@ -70,7 +76,7 @@ export function CardFace({ project, index = 0, total = 17 }) {
       <div className="bottom">
         {fullArt && (
           <div className="attacks">
-            {project.attacks.map((a) => (
+            {project.attacks.slice(0, FACE_ATTACK_LIMIT).map((a) => (
               <div className="attack" key={a.name}>
                 <div className="atk-cost">{a.cost.map((c) => <EnergyPip key={c} type={c} />)}</div>
                 <div style={{ flex: 1 }}>
@@ -81,16 +87,6 @@ export function CardFace({ project, index = 0, total = 17 }) {
                   <div className="atk-text">{a.text}</div>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-        {fullArt && project.description && (
-          <div className="card-description">{project.description}</div>
-        )}
-        {fullArt && languages.length > 0 && (
-          <div className="card-languages">
-            {languages.map((lang) => (
-              <span className="lang-pip" key={lang}>{lang}</span>
             ))}
           </div>
         )}
