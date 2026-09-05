@@ -28,14 +28,30 @@ Reuse this block verbatim in every prompt so the creature stays consistent acros
 > A small hand-thrown ceramic creature shaped like a rounded, slightly lopsided gourd,
 > hanging from a single braided fabric cord tied in a simple overhand knot above it. Warm
 > terracotta clay body with a cream underside. It has a small friendly face in the upper third:
-> two small dark ochre eyes and one soft curved seam for a mouth. A narrow horizontal slot low
-> on its body reveals a small brass-brown teardrop weight hanging inside on its own short
-> thread. Two small soft indigo fabric pennant flags hang from its sides. One small carved
-> wooden hexagonal bead is threaded onto the cord knot above it.
+> two small dark ochre eyes and one soft curved seam for a mouth. Below the body, on its own
+> short thread, hangs a small brass-brown teardrop weight — the clapper, dangling freely outside
+> the body, well clear of the face. Two small soft indigo fabric pennant flags hang from its
+> sides. One small carved wooden hexagonal bead is threaded onto the cord knot above it.
 
 **Proportion note to include if the model drifts:** *the body is about two thirds as tall as it
 is wide, and the face sits high on it — this is a small cupped-in-two-hands object, not a large
 bell.*
+
+**Revision 2026-09-04 — the clapper is external, not internal.** The original brief (§1, first
+draft) had the clapper visible *through a slot in the body*, on the reasoning that "you can see
+the voice organ" mattered more than the mechanism. Four back-to-back generations across
+different seeds all read "a slot revealing something hanging inside it" as **a second mouth** —
+two of the four came out as a wide-open, near-screaming mouth, directly working against
+"peaceful and asleep." The failure was consistent across seeds, which is the signal that it was
+the wording, not chance.
+
+The fix drops the slot entirely. The clapper hanging *outside* the body on its own thread
+rendered correctly and consistently in **all four** generations without being asked twice — it
+was already the best-executed part of every image. Cutting the internal-slot description removes
+the competing "second mouth" object and lets the one closed-crescent smile carry the face
+uncontested, which is what the design wants. This is a simplification of the object itself, not
+just a prompt patch: a chime whose clapper hangs freely below it, in the open, is if anything a
+more accurate wind-chime than one behind a window.
 
 ---
 
@@ -184,6 +200,11 @@ Reject a generation that fails any of these:
 - [ ] Outlines are warm brown-black, not pure black or grey, and vary in weight.
 - [ ] Shadows are hard-edged shapes, not soft gradients.
 - [ ] No pennant crosses in front of the body (unmaskable seam).
+- [ ] **Only one mouth-like shape on the face.** A dark oval or slot low on the body reads as a
+      second mouth — this happened on 4/4 early generations and is the single most likely defect
+      now that the prompt has been revised to describe the clapper as external. If it recurs,
+      the fix is compositional (crop tighter, reposition the clapper further from centre-line),
+      not another prompt patch.
 - [ ] It reads as a creature — a face you feel something about — at 50px, not just at full size.
 - [ ] No gold on the creature itself. Gilding belongs to the frame and background.
 
